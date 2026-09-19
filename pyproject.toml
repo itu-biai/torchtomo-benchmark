@@ -1,0 +1,17 @@
+# Scripts and recorded results, not a package: this file only configures the tools.
+# Dependencies are in requirements.txt.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The scripts import their neighbours by module name, as they do when run directly.
+pythonpath = ["libraries", "training"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.ruff.lint.isort]
+# Kept in its own import block, as in the torchtomo repository these scripts came from.
+known-first-party = ["torchtomo"]

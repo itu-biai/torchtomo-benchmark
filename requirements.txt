@@ -1,0 +1,17 @@
+# torchtomo itself. The results here were made with unreleased features such as
+# backend="cuda", so install a checkout while this repository runs ahead of the
+# release:
+#   pip install -e /path/to/torchtomo
+# pip then treats the line below as already satisfied.
+torchtomo
+
+matplotlib
+numpy
+pytest
+ruff
+scikit-image
+scipy
+
+# Optional, for libraries/: torch-radon (pip install torch-radon) and LEAP, which
+# is built from source. libraries/README.md has the build steps; everything that
+# needs either one skips when it is missing.
