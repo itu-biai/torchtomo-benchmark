@@ -59,6 +59,7 @@ All at 512 x 512 with 90 angles except the first. The tables and figures are in
 | `results-ctw-cuda` | CT slices | parallel | torchtomo, `backend="cuda"` | all ten |
 | `results-ctw-fan` | CT slices | fan | torchtomo | all ten |
 | `results-ctw-fan-cuda` | CT slices | fan | torchtomo, `backend="cuda"` | all ten |
+| `results-ctw-fan-leap` | CT slices | fan | LEAP | all ten |
 
 Git keeps each run's configuration, metrics, logs, and figures. Checkpoints,
 datasets, and reconstructions (`*.pt`) and the packed CT slices
