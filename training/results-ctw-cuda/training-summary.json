@@ -3,7 +3,7 @@
     "parameters": 118305,
     "best_epoch": 60,
     "epochs": 60,
-    "training_seconds": 175.7106377389864,
+    "training_seconds": 175.4136071940011,
     "supervised": true,
     "criterion": "image MSE against the clean image",
     "peak_memory_bytes": 2220387328
@@ -12,7 +12,7 @@
     "parameters": 253220,
     "best_epoch": 60,
     "epochs": 60,
-    "training_seconds": 1159.9776094440022,
+    "training_seconds": 1161.1871952229994,
     "supervised": true,
     "criterion": "image MSE against the clean image",
     "peak_memory_bytes": 9078700032
@@ -21,7 +21,7 @@
     "parameters": 23973409,
     "best_epoch": 60,
     "epochs": 60,
-    "training_seconds": 405.7689373040048,
+    "training_seconds": 384.2704823059903,
     "supervised": true,
     "criterion": "image MSE against the clean image",
     "peak_memory_bytes": 4141336064
@@ -30,7 +30,7 @@
     "parameters": 118305,
     "best_epoch": 60,
     "epochs": 60,
-    "training_seconds": 211.13517711800523,
+    "training_seconds": 211.9351035519794,
     "supervised": false,
     "criterion": "held-out subset MSE",
     "peak_memory_bytes": 2623178240
@@ -39,7 +39,7 @@
     "parameters": 118305,
     "best_epoch": 60,
     "epochs": 60,
-    "training_seconds": 207.41090340100345,
+    "training_seconds": 207.70710333800525,
     "supervised": false,
     "criterion": "masked projection MSE",
     "peak_memory_bytes": 2617854976

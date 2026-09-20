@@ -355,3 +355,360 @@
 2026-09-19 19:58:12,962 INFO TEST method=lpd mean_psnr_db=39.6824 roi_psnr_db=38.6147 window_psnr_db=24.3121 std_psnr_db=3.4457 mse=0.0001797 seconds=1159.98
 2026-09-19 19:58:13,187 INFO TEST reference=noiseless-fbp mean_psnr_db=34.1447 roi_psnr_db=33.0771 window_psnr_db=20.0867
 2026-09-19 19:58:20,907 INFO complete outputs=/home/ozan/torchtomo/examples/ellipses/results-ctw-cuda
+2026-09-20 16:54:49,295 INFO run device=cuda torch=2.4.0+cu121 geometry=parallel image_size=512 angles=90 seed=2026
+2026-09-20 16:54:50,280 INFO loaded real CT slices scale=1.000000 from examples/ellipses/ct-subset
+2026-09-20 16:55:22,320 INFO clean train FBP psnr_db=36.5683 roi_psnr_db=35.5007 window_psnr_db=24.2826
+2026-09-20 16:55:22,320 INFO photons fixed at 100000.000; calibration skipped
+2026-09-20 16:55:34,613 INFO dataset /home/ozan/torchtomo/examples/ellipses/ct-subset size=300 split=200/50/50 photons=100000.000 zero_count_fraction=0.00000000
+2026-09-20 16:55:35,274 INFO baseline split=train fbp_psnr_db=24.9780 fbp_window_psnr_db=13.8110
+2026-09-20 16:55:35,342 INFO baseline split=val fbp_psnr_db=24.8135 fbp_window_psnr_db=13.7559
+2026-09-20 16:55:45,455 INFO operator_norm=0.77849591
+2026-09-20 16:55:46,015 INFO model=fbp-unet parameters=118305 epochs=60 lr=0.001 device=cuda supervised=True selected_on=image MSE against the clean image
+2026-09-20 16:55:46,220 INFO model=fbp-unet initial_gradient_norm=6.7249297e-05
+2026-09-20 16:55:49,063 INFO model=fbp-unet epoch=001/060 train_mse=0.0025352 val_mse=0.0011478 val_psnr_db=29.7125 lr=0.001 seconds=3.04 best_epoch=1
+2026-09-20 16:55:51,962 INFO model=fbp-unet epoch=002/060 train_mse=0.0006056 val_mse=0.0004911 val_psnr_db=34.1636 lr=0.000999 seconds=2.88 best_epoch=2
+2026-09-20 16:55:54,863 INFO model=fbp-unet epoch=003/060 train_mse=0.0003230 val_mse=0.0003580 val_psnr_db=36.2155 lr=0.000997 seconds=2.89 best_epoch=3
+2026-09-20 16:55:57,764 INFO model=fbp-unet epoch=004/060 train_mse=0.0002497 val_mse=0.0003146 val_psnr_db=37.0901 lr=0.000994 seconds=2.89 best_epoch=4
+2026-09-20 16:56:00,670 INFO model=fbp-unet epoch=005/060 train_mse=0.0002232 val_mse=0.0002897 val_psnr_db=37.7238 lr=0.000989 seconds=2.89 best_epoch=5
+2026-09-20 16:56:03,579 INFO model=fbp-unet epoch=006/060 train_mse=0.0002031 val_mse=0.0002826 val_psnr_db=38.0047 lr=0.000983 seconds=2.90 best_epoch=6
+2026-09-20 16:56:06,491 INFO model=fbp-unet epoch=007/060 train_mse=0.0001959 val_mse=0.0002601 val_psnr_db=38.3881 lr=0.000976 seconds=2.90 best_epoch=7
+2026-09-20 16:56:09,409 INFO model=fbp-unet epoch=008/060 train_mse=0.0001810 val_mse=0.0002488 val_psnr_db=38.6823 lr=0.000967 seconds=2.90 best_epoch=8
+2026-09-20 16:56:12,311 INFO model=fbp-unet epoch=009/060 train_mse=0.0001786 val_mse=0.0002524 val_psnr_db=38.6296 lr=0.000957 seconds=2.89 best_epoch=8
+2026-09-20 16:56:15,226 INFO model=fbp-unet epoch=010/060 train_mse=0.0001713 val_mse=0.0002386 val_psnr_db=38.8090 lr=0.000946 seconds=2.90 best_epoch=10
+2026-09-20 16:56:18,137 INFO model=fbp-unet epoch=011/060 train_mse=0.0001650 val_mse=0.0002326 val_psnr_db=39.1583 lr=0.000934 seconds=2.90 best_epoch=11
+2026-09-20 16:56:21,047 INFO model=fbp-unet epoch=012/060 train_mse=0.0001615 val_mse=0.0002290 val_psnr_db=39.3428 lr=0.00092 seconds=2.90 best_epoch=12
+2026-09-20 16:56:23,963 INFO model=fbp-unet epoch=013/060 train_mse=0.0001585 val_mse=0.0002272 val_psnr_db=39.2529 lr=0.000905 seconds=2.90 best_epoch=13
+2026-09-20 16:56:26,883 INFO model=fbp-unet epoch=014/060 train_mse=0.0001600 val_mse=0.0002231 val_psnr_db=39.3381 lr=0.00089 seconds=2.91 best_epoch=14
+2026-09-20 16:56:29,800 INFO model=fbp-unet epoch=015/060 train_mse=0.0001541 val_mse=0.0002297 val_psnr_db=39.2750 lr=0.000873 seconds=2.91 best_epoch=14
+2026-09-20 16:56:32,719 INFO model=fbp-unet epoch=016/060 train_mse=0.0001540 val_mse=0.0002195 val_psnr_db=39.5402 lr=0.000855 seconds=2.90 best_epoch=16
+2026-09-20 16:56:35,639 INFO model=fbp-unet epoch=017/060 train_mse=0.0001504 val_mse=0.0002149 val_psnr_db=39.6927 lr=0.000836 seconds=2.91 best_epoch=17
+2026-09-20 16:56:38,568 INFO model=fbp-unet epoch=018/060 train_mse=0.0001481 val_mse=0.0002130 val_psnr_db=39.7614 lr=0.000817 seconds=2.91 best_epoch=18
+2026-09-20 16:56:41,490 INFO model=fbp-unet epoch=019/060 train_mse=0.0001469 val_mse=0.0002096 val_psnr_db=39.7781 lr=0.000796 seconds=2.91 best_epoch=19
+2026-09-20 16:56:44,410 INFO model=fbp-unet epoch=020/060 train_mse=0.0001457 val_mse=0.0002091 val_psnr_db=39.8441 lr=0.000775 seconds=2.91 best_epoch=20
+2026-09-20 16:56:47,325 INFO model=fbp-unet epoch=021/060 train_mse=0.0001451 val_mse=0.0002106 val_psnr_db=39.8185 lr=0.000753 seconds=2.91 best_epoch=20
+2026-09-20 16:56:50,243 INFO model=fbp-unet epoch=022/060 train_mse=0.0001439 val_mse=0.0002099 val_psnr_db=39.7190 lr=0.00073 seconds=2.91 best_epoch=20
+2026-09-20 16:56:53,167 INFO model=fbp-unet epoch=023/060 train_mse=0.0001433 val_mse=0.0002057 val_psnr_db=39.8698 lr=0.000706 seconds=2.91 best_epoch=23
+2026-09-20 16:56:56,085 INFO model=fbp-unet epoch=024/060 train_mse=0.0001414 val_mse=0.0002043 val_psnr_db=40.0112 lr=0.000682 seconds=2.90 best_epoch=24
+2026-09-20 16:56:59,008 INFO model=fbp-unet epoch=025/060 train_mse=0.0001408 val_mse=0.0002038 val_psnr_db=39.9966 lr=0.000658 seconds=2.91 best_epoch=25
+2026-09-20 16:57:01,924 INFO model=fbp-unet epoch=026/060 train_mse=0.0001394 val_mse=0.0002052 val_psnr_db=39.8284 lr=0.000633 seconds=2.91 best_epoch=25
+2026-09-20 16:57:04,846 INFO model=fbp-unet epoch=027/060 train_mse=0.0001404 val_mse=0.0002023 val_psnr_db=40.0973 lr=0.000608 seconds=2.91 best_epoch=27
+2026-09-20 16:57:07,767 INFO model=fbp-unet epoch=028/060 train_mse=0.0001381 val_mse=0.0002003 val_psnr_db=40.0925 lr=0.000582 seconds=2.91 best_epoch=28
+2026-09-20 16:57:10,685 INFO model=fbp-unet epoch=029/060 train_mse=0.0001380 val_mse=0.0002037 val_psnr_db=40.0146 lr=0.000557 seconds=2.91 best_epoch=28
+2026-09-20 16:57:13,595 INFO model=fbp-unet epoch=030/060 train_mse=0.0001377 val_mse=0.0002010 val_psnr_db=39.9877 lr=0.000531 seconds=2.90 best_epoch=28
+2026-09-20 16:57:16,519 INFO model=fbp-unet epoch=031/060 train_mse=0.0001361 val_mse=0.0002018 val_psnr_db=40.1160 lr=0.000505 seconds=2.91 best_epoch=28
+2026-09-20 16:57:19,442 INFO model=fbp-unet epoch=032/060 train_mse=0.0001375 val_mse=0.0002055 val_psnr_db=40.0370 lr=0.000479 seconds=2.91 best_epoch=28
+2026-09-20 16:57:22,368 INFO model=fbp-unet epoch=033/060 train_mse=0.0001358 val_mse=0.0001985 val_psnr_db=40.0901 lr=0.000453 seconds=2.91 best_epoch=33
+2026-09-20 16:57:25,288 INFO model=fbp-unet epoch=034/060 train_mse=0.0001347 val_mse=0.0001988 val_psnr_db=40.1253 lr=0.000428 seconds=2.91 best_epoch=33
+2026-09-20 16:57:28,219 INFO model=fbp-unet epoch=035/060 train_mse=0.0001354 val_mse=0.0001970 val_psnr_db=40.2373 lr=0.000402 seconds=2.91 best_epoch=35
+2026-09-20 16:57:31,148 INFO model=fbp-unet epoch=036/060 train_mse=0.0001341 val_mse=0.0001963 val_psnr_db=40.2546 lr=0.000377 seconds=2.92 best_epoch=36
+2026-09-20 16:57:34,077 INFO model=fbp-unet epoch=037/060 train_mse=0.0001339 val_mse=0.0001961 val_psnr_db=40.2078 lr=0.000352 seconds=2.91 best_epoch=37
+2026-09-20 16:57:37,000 INFO model=fbp-unet epoch=038/060 train_mse=0.0001330 val_mse=0.0001961 val_psnr_db=40.3572 lr=0.000328 seconds=2.91 best_epoch=37
+2026-09-20 16:57:39,930 INFO model=fbp-unet epoch=039/060 train_mse=0.0001334 val_mse=0.0001954 val_psnr_db=40.2341 lr=0.000304 seconds=2.91 best_epoch=39
+2026-09-20 16:57:42,860 INFO model=fbp-unet epoch=040/060 train_mse=0.0001327 val_mse=0.0001953 val_psnr_db=40.2640 lr=0.00028 seconds=2.92 best_epoch=40
+2026-09-20 16:57:45,786 INFO model=fbp-unet epoch=041/060 train_mse=0.0001324 val_mse=0.0001947 val_psnr_db=40.3445 lr=0.000258 seconds=2.91 best_epoch=41
+2026-09-20 16:57:48,715 INFO model=fbp-unet epoch=042/060 train_mse=0.0001319 val_mse=0.0001940 val_psnr_db=40.3446 lr=0.000235 seconds=2.91 best_epoch=42
+2026-09-20 16:57:51,645 INFO model=fbp-unet epoch=043/060 train_mse=0.0001315 val_mse=0.0001934 val_psnr_db=40.3769 lr=0.000214 seconds=2.92 best_epoch=43
+2026-09-20 16:57:54,570 INFO model=fbp-unet epoch=044/060 train_mse=0.0001313 val_mse=0.0001937 val_psnr_db=40.3614 lr=0.000193 seconds=2.92 best_epoch=43
+2026-09-20 16:57:57,496 INFO model=fbp-unet epoch=045/060 train_mse=0.0001313 val_mse=0.0001963 val_psnr_db=40.1152 lr=0.000174 seconds=2.92 best_epoch=43
+2026-09-20 16:58:00,421 INFO model=fbp-unet epoch=046/060 train_mse=0.0001326 val_mse=0.0001944 val_psnr_db=40.3242 lr=0.000155 seconds=2.91 best_epoch=43
+2026-09-20 16:58:03,351 INFO model=fbp-unet epoch=047/060 train_mse=0.0001307 val_mse=0.0001942 val_psnr_db=40.2512 lr=0.000137 seconds=2.92 best_epoch=43
+2026-09-20 16:58:06,285 INFO model=fbp-unet epoch=048/060 train_mse=0.0001304 val_mse=0.0001928 val_psnr_db=40.3743 lr=0.00012 seconds=2.92 best_epoch=48
+2026-09-20 16:58:09,214 INFO model=fbp-unet epoch=049/060 train_mse=0.0001302 val_mse=0.0001926 val_psnr_db=40.3705 lr=0.000105 seconds=2.91 best_epoch=49
+2026-09-20 16:58:12,141 INFO model=fbp-unet epoch=050/060 train_mse=0.0001298 val_mse=0.0001919 val_psnr_db=40.4308 lr=8.99e-05 seconds=2.91 best_epoch=50
+2026-09-20 16:58:15,066 INFO model=fbp-unet epoch=051/060 train_mse=0.0001296 val_mse=0.0001923 val_psnr_db=40.3781 lr=7.63e-05 seconds=2.92 best_epoch=50
+2026-09-20 16:58:17,995 INFO model=fbp-unet epoch=052/060 train_mse=0.0001296 val_mse=0.0001917 val_psnr_db=40.3889 lr=6.4e-05 seconds=2.91 best_epoch=52
+2026-09-20 16:58:20,918 INFO model=fbp-unet epoch=053/060 train_mse=0.0001296 val_mse=0.0001917 val_psnr_db=40.4053 lr=5.28e-05 seconds=2.91 best_epoch=52
+2026-09-20 16:58:23,847 INFO model=fbp-unet epoch=054/060 train_mse=0.0001294 val_mse=0.0001916 val_psnr_db=40.4213 lr=4.29e-05 seconds=2.91 best_epoch=54
+2026-09-20 16:58:26,775 INFO model=fbp-unet epoch=055/060 train_mse=0.0001292 val_mse=0.0001915 val_psnr_db=40.3985 lr=3.42e-05 seconds=2.91 best_epoch=55
+2026-09-20 16:58:29,699 INFO model=fbp-unet epoch=056/060 train_mse=0.0001293 val_mse=0.0001918 val_psnr_db=40.4388 lr=2.69e-05 seconds=2.91 best_epoch=55
+2026-09-20 16:58:32,631 INFO model=fbp-unet epoch=057/060 train_mse=0.0001291 val_mse=0.0001914 val_psnr_db=40.4365 lr=2.08e-05 seconds=2.91 best_epoch=57
+2026-09-20 16:58:35,555 INFO model=fbp-unet epoch=058/060 train_mse=0.0001290 val_mse=0.0001915 val_psnr_db=40.4287 lr=1.61e-05 seconds=2.91 best_epoch=57
+2026-09-20 16:58:38,479 INFO model=fbp-unet epoch=059/060 train_mse=0.0001290 val_mse=0.0001914 val_psnr_db=40.4462 lr=1.27e-05 seconds=2.91 best_epoch=57
+2026-09-20 16:58:41,415 INFO model=fbp-unet epoch=060/060 train_mse=0.0001290 val_mse=0.0001914 val_psnr_db=40.4456 lr=1.07e-05 seconds=2.92 best_epoch=60
+2026-09-20 16:58:41,429 INFO model=fbp-unet training_complete seconds=175.41 best_epoch=60 peak_memory_bytes=2220387328
+2026-09-20 16:58:41,433 INFO model=lpd parameters=253220 epochs=60 lr=0.001 device=cuda supervised=True selected_on=image MSE against the clean image
+2026-09-20 16:58:41,872 INFO model=lpd initial_gradient_norm=0.6079337
+2026-09-20 16:58:41,873 INFO model=lpd first_dual_updates_gradient_norm=0.00066765429
+2026-09-20 16:58:41,873 INFO model=lpd first_primal_updates_gradient_norm=0.18857432
+2026-09-20 16:59:00,757 INFO model=lpd epoch=001/060 train_mse=0.0081464 val_mse=0.0044711 val_psnr_db=23.8572 lr=0.001 seconds=19.31 best_epoch=1
+2026-09-20 16:59:20,110 INFO model=lpd epoch=002/060 train_mse=0.0039585 val_mse=0.0034259 val_psnr_db=25.4345 lr=0.000999 seconds=19.31 best_epoch=2
+2026-09-20 16:59:39,452 INFO model=lpd epoch=003/060 train_mse=0.0029380 val_mse=0.0036367 val_psnr_db=25.0873 lr=0.000997 seconds=19.31 best_epoch=2
+2026-09-20 16:59:58,804 INFO model=lpd epoch=004/060 train_mse=0.0029425 val_mse=0.0026704 val_psnr_db=26.6856 lr=0.000994 seconds=19.31 best_epoch=4
+2026-09-20 17:00:18,149 INFO model=lpd epoch=005/060 train_mse=0.0019912 val_mse=0.0040312 val_psnr_db=24.0209 lr=0.000989 seconds=19.32 best_epoch=4
+2026-09-20 17:00:37,507 INFO model=lpd epoch=006/060 train_mse=0.0019404 val_mse=0.0016818 val_psnr_db=28.4358 lr=0.000983 seconds=19.32 best_epoch=6
+2026-09-20 17:00:56,862 INFO model=lpd epoch=007/060 train_mse=0.0013522 val_mse=0.0011053 val_psnr_db=30.3839 lr=0.000976 seconds=19.31 best_epoch=7
+2026-09-20 17:01:16,201 INFO model=lpd epoch=008/060 train_mse=0.0013992 val_mse=0.0015940 val_psnr_db=28.6493 lr=0.000967 seconds=19.31 best_epoch=7
+2026-09-20 17:01:35,543 INFO model=lpd epoch=009/060 train_mse=0.0010546 val_mse=0.0009591 val_psnr_db=31.1557 lr=0.000957 seconds=19.30 best_epoch=9
+2026-09-20 17:01:54,897 INFO model=lpd epoch=010/060 train_mse=0.0007630 val_mse=0.0008037 val_psnr_db=32.0068 lr=0.000946 seconds=19.31 best_epoch=10
+2026-09-20 17:02:14,236 INFO model=lpd epoch=011/060 train_mse=0.0006211 val_mse=0.0006315 val_psnr_db=33.3714 lr=0.000934 seconds=19.30 best_epoch=11
+2026-09-20 17:02:33,573 INFO model=lpd epoch=012/060 train_mse=0.0004611 val_mse=0.0005291 val_psnr_db=34.4248 lr=0.00092 seconds=19.30 best_epoch=12
+2026-09-20 17:02:52,903 INFO model=lpd epoch=013/060 train_mse=0.0006742 val_mse=0.0014275 val_psnr_db=29.0905 lr=0.000905 seconds=19.30 best_epoch=12
+2026-09-20 17:03:12,230 INFO model=lpd epoch=014/060 train_mse=0.0010518 val_mse=0.0007851 val_psnr_db=32.3969 lr=0.00089 seconds=19.30 best_epoch=12
+2026-09-20 17:03:31,564 INFO model=lpd epoch=015/060 train_mse=0.0005327 val_mse=0.0005694 val_psnr_db=33.9635 lr=0.000873 seconds=19.30 best_epoch=12
+2026-09-20 17:03:50,912 INFO model=lpd epoch=016/060 train_mse=0.0004160 val_mse=0.0005020 val_psnr_db=34.6933 lr=0.000855 seconds=19.31 best_epoch=16
+2026-09-20 17:04:10,261 INFO model=lpd epoch=017/060 train_mse=0.0003712 val_mse=0.0004660 val_psnr_db=35.1415 lr=0.000836 seconds=19.31 best_epoch=17
+2026-09-20 17:04:29,618 INFO model=lpd epoch=018/060 train_mse=0.0003394 val_mse=0.0004372 val_psnr_db=35.5349 lr=0.000817 seconds=19.32 best_epoch=18
+2026-09-20 17:04:48,968 INFO model=lpd epoch=019/060 train_mse=0.0003182 val_mse=0.0004140 val_psnr_db=35.8879 lr=0.000796 seconds=19.31 best_epoch=19
+2026-09-20 17:05:08,325 INFO model=lpd epoch=020/060 train_mse=0.0003048 val_mse=0.0004016 val_psnr_db=36.1163 lr=0.000775 seconds=19.32 best_epoch=20
+2026-09-20 17:05:27,663 INFO model=lpd epoch=021/060 train_mse=0.0002920 val_mse=0.0003886 val_psnr_db=36.4075 lr=0.000753 seconds=19.30 best_epoch=21
+2026-09-20 17:05:47,013 INFO model=lpd epoch=022/060 train_mse=0.0002868 val_mse=0.0003831 val_psnr_db=36.5176 lr=0.00073 seconds=19.31 best_epoch=22
+2026-09-20 17:06:06,368 INFO model=lpd epoch=023/060 train_mse=0.0002764 val_mse=0.0003714 val_psnr_db=36.7067 lr=0.000706 seconds=19.32 best_epoch=23
+2026-09-20 17:06:25,723 INFO model=lpd epoch=024/060 train_mse=0.0002702 val_mse=0.0003697 val_psnr_db=36.6842 lr=0.000682 seconds=19.32 best_epoch=24
+2026-09-20 17:06:45,080 INFO model=lpd epoch=025/060 train_mse=0.0002651 val_mse=0.0003612 val_psnr_db=36.8969 lr=0.000658 seconds=19.32 best_epoch=25
+2026-09-20 17:07:04,440 INFO model=lpd epoch=026/060 train_mse=0.0002588 val_mse=0.0003537 val_psnr_db=36.9953 lr=0.000633 seconds=19.32 best_epoch=26
+2026-09-20 17:07:23,803 INFO model=lpd epoch=027/060 train_mse=0.0002571 val_mse=0.0003479 val_psnr_db=37.1700 lr=0.000608 seconds=19.32 best_epoch=27
+2026-09-20 17:07:43,152 INFO model=lpd epoch=028/060 train_mse=0.0002555 val_mse=0.0003609 val_psnr_db=36.6451 lr=0.000582 seconds=19.32 best_epoch=27
+2026-09-20 17:08:02,516 INFO model=lpd epoch=029/060 train_mse=0.0002552 val_mse=0.0003429 val_psnr_db=37.2595 lr=0.000557 seconds=19.32 best_epoch=29
+2026-09-20 17:08:21,875 INFO model=lpd epoch=030/060 train_mse=0.0002464 val_mse=0.0003404 val_psnr_db=37.2282 lr=0.000531 seconds=19.32 best_epoch=30
+2026-09-20 17:08:41,234 INFO model=lpd epoch=031/060 train_mse=0.0002436 val_mse=0.0003326 val_psnr_db=37.3941 lr=0.000505 seconds=19.32 best_epoch=31
+2026-09-20 17:09:00,578 INFO model=lpd epoch=032/060 train_mse=0.0002441 val_mse=0.0003355 val_psnr_db=37.3482 lr=0.000479 seconds=19.32 best_epoch=31
+2026-09-20 17:09:19,933 INFO model=lpd epoch=033/060 train_mse=0.0002369 val_mse=0.0003280 val_psnr_db=37.4831 lr=0.000453 seconds=19.32 best_epoch=33
+2026-09-20 17:09:39,289 INFO model=lpd epoch=034/060 train_mse=0.0002356 val_mse=0.0003270 val_psnr_db=37.4983 lr=0.000428 seconds=19.32 best_epoch=34
+2026-09-20 17:09:58,634 INFO model=lpd epoch=035/060 train_mse=0.0002341 val_mse=0.0003235 val_psnr_db=37.5704 lr=0.000402 seconds=19.31 best_epoch=35
+2026-09-20 17:10:17,990 INFO model=lpd epoch=036/060 train_mse=0.0002304 val_mse=0.0003209 val_psnr_db=37.6532 lr=0.000377 seconds=19.32 best_epoch=36
+2026-09-20 17:10:37,344 INFO model=lpd epoch=037/060 train_mse=0.0002293 val_mse=0.0003211 val_psnr_db=37.5666 lr=0.000352 seconds=19.32 best_epoch=36
+2026-09-20 17:10:56,693 INFO model=lpd epoch=038/060 train_mse=0.0002280 val_mse=0.0003220 val_psnr_db=37.5381 lr=0.000328 seconds=19.32 best_epoch=36
+2026-09-20 17:11:16,050 INFO model=lpd epoch=039/060 train_mse=0.0002273 val_mse=0.0003171 val_psnr_db=37.6691 lr=0.000304 seconds=19.31 best_epoch=39
+2026-09-20 17:11:35,421 INFO model=lpd epoch=040/060 train_mse=0.0002266 val_mse=0.0003136 val_psnr_db=37.7529 lr=0.00028 seconds=19.33 best_epoch=40
+2026-09-20 17:11:54,780 INFO model=lpd epoch=041/060 train_mse=0.0002238 val_mse=0.0003115 val_psnr_db=37.8380 lr=0.000258 seconds=19.32 best_epoch=41
+2026-09-20 17:12:14,135 INFO model=lpd epoch=042/060 train_mse=0.0002220 val_mse=0.0003108 val_psnr_db=37.8497 lr=0.000235 seconds=19.31 best_epoch=42
+2026-09-20 17:12:33,493 INFO model=lpd epoch=043/060 train_mse=0.0002201 val_mse=0.0003099 val_psnr_db=37.8306 lr=0.000214 seconds=19.32 best_epoch=43
+2026-09-20 17:12:52,860 INFO model=lpd epoch=044/060 train_mse=0.0002203 val_mse=0.0003095 val_psnr_db=37.8386 lr=0.000193 seconds=19.33 best_epoch=44
+2026-09-20 17:13:12,219 INFO model=lpd epoch=045/060 train_mse=0.0002197 val_mse=0.0003084 val_psnr_db=37.8798 lr=0.000174 seconds=19.32 best_epoch=45
+2026-09-20 17:13:31,572 INFO model=lpd epoch=046/060 train_mse=0.0002181 val_mse=0.0003073 val_psnr_db=37.8587 lr=0.000155 seconds=19.31 best_epoch=46
+2026-09-20 17:13:50,932 INFO model=lpd epoch=047/060 train_mse=0.0002171 val_mse=0.0003058 val_psnr_db=37.9227 lr=0.000137 seconds=19.32 best_epoch=47
+2026-09-20 17:14:10,300 INFO model=lpd epoch=048/060 train_mse=0.0002166 val_mse=0.0003042 val_psnr_db=37.9678 lr=0.00012 seconds=19.33 best_epoch=48
+2026-09-20 17:14:29,656 INFO model=lpd epoch=049/060 train_mse=0.0002160 val_mse=0.0003044 val_psnr_db=37.9552 lr=0.000105 seconds=19.33 best_epoch=48
+2026-09-20 17:14:49,017 INFO model=lpd epoch=050/060 train_mse=0.0002152 val_mse=0.0003031 val_psnr_db=37.9928 lr=8.99e-05 seconds=19.32 best_epoch=50
+2026-09-20 17:15:08,372 INFO model=lpd epoch=051/060 train_mse=0.0002149 val_mse=0.0003027 val_psnr_db=38.0080 lr=7.63e-05 seconds=19.31 best_epoch=51
+2026-09-20 17:15:27,730 INFO model=lpd epoch=052/060 train_mse=0.0002145 val_mse=0.0003027 val_psnr_db=37.9586 lr=6.4e-05 seconds=19.32 best_epoch=52
+2026-09-20 17:15:47,089 INFO model=lpd epoch=053/060 train_mse=0.0002142 val_mse=0.0003023 val_psnr_db=37.9918 lr=5.28e-05 seconds=19.32 best_epoch=53
+2026-09-20 17:16:06,438 INFO model=lpd epoch=054/060 train_mse=0.0002141 val_mse=0.0003014 val_psnr_db=38.0091 lr=4.29e-05 seconds=19.31 best_epoch=54
+2026-09-20 17:16:25,791 INFO model=lpd epoch=055/060 train_mse=0.0002137 val_mse=0.0003014 val_psnr_db=38.0163 lr=3.42e-05 seconds=19.31 best_epoch=55
+2026-09-20 17:16:45,134 INFO model=lpd epoch=056/060 train_mse=0.0002134 val_mse=0.0003019 val_psnr_db=37.9832 lr=2.69e-05 seconds=19.31 best_epoch=55
+2026-09-20 17:17:04,500 INFO model=lpd epoch=057/060 train_mse=0.0002131 val_mse=0.0003010 val_psnr_db=38.0231 lr=2.08e-05 seconds=19.32 best_epoch=57
+2026-09-20 17:17:23,867 INFO model=lpd epoch=058/060 train_mse=0.0002130 val_mse=0.0003008 val_psnr_db=38.0374 lr=1.61e-05 seconds=19.32 best_epoch=58
+2026-09-20 17:17:43,223 INFO model=lpd epoch=059/060 train_mse=0.0002129 val_mse=0.0003009 val_psnr_db=38.0208 lr=1.27e-05 seconds=19.32 best_epoch=58
+2026-09-20 17:18:02,576 INFO model=lpd epoch=060/060 train_mse=0.0002128 val_mse=0.0003008 val_psnr_db=38.0264 lr=1.07e-05 seconds=19.31 best_epoch=60
+2026-09-20 17:18:02,621 INFO model=lpd training_complete seconds=1161.19 best_epoch=60 peak_memory_bytes=9078700032
+2026-09-20 17:18:02,631 INFO model=iradonmap parameters=23973409 epochs=60 lr=0.0001 device=cuda supervised=True selected_on=image MSE against the clean image
+2026-09-20 17:18:02,743 INFO model=iradonmap initial_gradient_norm=0.00037076409
+2026-09-20 17:18:07,793 INFO model=iradonmap epoch=001/060 train_mse=0.0032035 val_mse=0.0032354 val_psnr_db=24.9630 lr=0.0001 seconds=4.81 best_epoch=1
+2026-09-20 17:18:14,010 INFO model=iradonmap epoch=002/060 train_mse=0.0029625 val_mse=0.0031091 val_psnr_db=25.1372 lr=9.99e-05 seconds=4.79 best_epoch=2
+2026-09-20 17:18:20,241 INFO model=iradonmap epoch=003/060 train_mse=0.0027726 val_mse=0.0029419 val_psnr_db=25.3798 lr=9.97e-05 seconds=4.78 best_epoch=3
+2026-09-20 17:18:26,451 INFO model=iradonmap epoch=004/060 train_mse=0.0024487 val_mse=0.0024425 val_psnr_db=26.1971 lr=9.94e-05 seconds=4.79 best_epoch=4
+2026-09-20 17:18:32,642 INFO model=iradonmap epoch=005/060 train_mse=0.0017659 val_mse=0.0016163 val_psnr_db=28.0438 lr=9.89e-05 seconds=4.78 best_epoch=5
+2026-09-20 17:18:38,839 INFO model=iradonmap epoch=006/060 train_mse=0.0011223 val_mse=0.0010545 val_psnr_db=30.0490 lr=9.83e-05 seconds=4.78 best_epoch=6
+2026-09-20 17:18:45,079 INFO model=iradonmap epoch=007/060 train_mse=0.0007141 val_mse=0.0007327 val_psnr_db=31.8819 lr=9.76e-05 seconds=4.78 best_epoch=7
+2026-09-20 17:18:51,312 INFO model=iradonmap epoch=008/060 train_mse=0.0005186 val_mse=0.0006003 val_psnr_db=32.9713 lr=9.67e-05 seconds=4.78 best_epoch=8
+2026-09-20 17:18:57,521 INFO model=iradonmap epoch=009/060 train_mse=0.0004343 val_mse=0.0005442 val_psnr_db=33.5058 lr=9.57e-05 seconds=4.78 best_epoch=9
+2026-09-20 17:19:03,768 INFO model=iradonmap epoch=010/060 train_mse=0.0003886 val_mse=0.0004971 val_psnr_db=34.0388 lr=9.46e-05 seconds=4.78 best_epoch=10
+2026-09-20 17:19:09,975 INFO model=iradonmap epoch=011/060 train_mse=0.0003516 val_mse=0.0004643 val_psnr_db=34.4606 lr=9.34e-05 seconds=4.78 best_epoch=11
+2026-09-20 17:19:16,267 INFO model=iradonmap epoch=012/060 train_mse=0.0003219 val_mse=0.0004338 val_psnr_db=34.8663 lr=9.2e-05 seconds=4.78 best_epoch=12
+2026-09-20 17:19:22,693 INFO model=iradonmap epoch=013/060 train_mse=0.0002934 val_mse=0.0004054 val_psnr_db=35.2789 lr=9.05e-05 seconds=4.80 best_epoch=13
+2026-09-20 17:19:29,109 INFO model=iradonmap epoch=014/060 train_mse=0.0002703 val_mse=0.0003847 val_psnr_db=35.6235 lr=8.9e-05 seconds=4.78 best_epoch=14
+2026-09-20 17:19:35,490 INFO model=iradonmap epoch=015/060 train_mse=0.0002545 val_mse=0.0003737 val_psnr_db=35.8134 lr=8.73e-05 seconds=4.78 best_epoch=15
+2026-09-20 17:19:41,995 INFO model=iradonmap epoch=016/060 train_mse=0.0002414 val_mse=0.0003587 val_psnr_db=36.0851 lr=8.55e-05 seconds=4.81 best_epoch=16
+2026-09-20 17:19:48,488 INFO model=iradonmap epoch=017/060 train_mse=0.0002310 val_mse=0.0003473 val_psnr_db=36.3264 lr=8.36e-05 seconds=4.80 best_epoch=17
+2026-09-20 17:19:54,871 INFO model=iradonmap epoch=018/060 train_mse=0.0002209 val_mse=0.0003385 val_psnr_db=36.4966 lr=8.17e-05 seconds=4.78 best_epoch=18
+2026-09-20 17:20:01,342 INFO model=iradonmap epoch=019/060 train_mse=0.0002123 val_mse=0.0003328 val_psnr_db=36.5809 lr=7.96e-05 seconds=4.82 best_epoch=19
+2026-09-20 17:20:07,856 INFO model=iradonmap epoch=020/060 train_mse=0.0002053 val_mse=0.0003240 val_psnr_db=36.7820 lr=7.75e-05 seconds=4.82 best_epoch=20
+2026-09-20 17:20:14,262 INFO model=iradonmap epoch=021/060 train_mse=0.0001991 val_mse=0.0003185 val_psnr_db=36.9116 lr=7.52e-05 seconds=4.81 best_epoch=21
+2026-09-20 17:20:20,778 INFO model=iradonmap epoch=022/060 train_mse=0.0001954 val_mse=0.0003177 val_psnr_db=36.9379 lr=7.3e-05 seconds=4.82 best_epoch=22
+2026-09-20 17:20:27,284 INFO model=iradonmap epoch=023/060 train_mse=0.0001911 val_mse=0.0003111 val_psnr_db=37.0570 lr=7.06e-05 seconds=4.81 best_epoch=23
+2026-09-20 17:20:33,693 INFO model=iradonmap epoch=024/060 train_mse=0.0001854 val_mse=0.0003095 val_psnr_db=37.1379 lr=6.82e-05 seconds=4.78 best_epoch=24
+2026-09-20 17:20:40,214 INFO model=iradonmap epoch=025/060 train_mse=0.0001816 val_mse=0.0003036 val_psnr_db=37.2751 lr=6.58e-05 seconds=4.81 best_epoch=25
+2026-09-20 17:20:46,676 INFO model=iradonmap epoch=026/060 train_mse=0.0001784 val_mse=0.0003007 val_psnr_db=37.3488 lr=6.33e-05 seconds=4.78 best_epoch=26
+2026-09-20 17:20:53,143 INFO model=iradonmap epoch=027/060 train_mse=0.0001749 val_mse=0.0002985 val_psnr_db=37.4101 lr=6.08e-05 seconds=4.79 best_epoch=27
+2026-09-20 17:20:59,616 INFO model=iradonmap epoch=028/060 train_mse=0.0001720 val_mse=0.0002969 val_psnr_db=37.4082 lr=5.82e-05 seconds=4.78 best_epoch=28
+2026-09-20 17:21:06,044 INFO model=iradonmap epoch=029/060 train_mse=0.0001708 val_mse=0.0002941 val_psnr_db=37.5175 lr=5.57e-05 seconds=4.82 best_epoch=29
+2026-09-20 17:21:12,513 INFO model=iradonmap epoch=030/060 train_mse=0.0001671 val_mse=0.0002925 val_psnr_db=37.5279 lr=5.31e-05 seconds=4.78 best_epoch=30
+2026-09-20 17:21:18,962 INFO model=iradonmap epoch=031/060 train_mse=0.0001646 val_mse=0.0002900 val_psnr_db=37.6024 lr=5.05e-05 seconds=4.78 best_epoch=31
+2026-09-20 17:21:25,462 INFO model=iradonmap epoch=032/060 train_mse=0.0001626 val_mse=0.0002883 val_psnr_db=37.6621 lr=4.79e-05 seconds=4.80 best_epoch=32
+2026-09-20 17:21:31,842 INFO model=iradonmap epoch=033/060 train_mse=0.0001607 val_mse=0.0002871 val_psnr_db=37.6529 lr=4.53e-05 seconds=4.78 best_epoch=33
+2026-09-20 17:21:38,325 INFO model=iradonmap epoch=034/060 train_mse=0.0001588 val_mse=0.0002851 val_psnr_db=37.7329 lr=4.28e-05 seconds=4.82 best_epoch=34
+2026-09-20 17:21:44,807 INFO model=iradonmap epoch=035/060 train_mse=0.0001572 val_mse=0.0002843 val_psnr_db=37.7351 lr=4.02e-05 seconds=4.81 best_epoch=35
+2026-09-20 17:21:51,233 INFO model=iradonmap epoch=036/060 train_mse=0.0001555 val_mse=0.0002827 val_psnr_db=37.8075 lr=3.77e-05 seconds=4.82 best_epoch=36
+2026-09-20 17:21:57,674 INFO model=iradonmap epoch=037/060 train_mse=0.0001541 val_mse=0.0002817 val_psnr_db=37.8130 lr=3.52e-05 seconds=4.78 best_epoch=37
+2026-09-20 17:22:04,043 INFO model=iradonmap epoch=038/060 train_mse=0.0001529 val_mse=0.0002805 val_psnr_db=37.8733 lr=3.28e-05 seconds=4.78 best_epoch=38
+2026-09-20 17:22:10,492 INFO model=iradonmap epoch=039/060 train_mse=0.0001515 val_mse=0.0002803 val_psnr_db=37.8211 lr=3.04e-05 seconds=4.78 best_epoch=39
+2026-09-20 17:22:16,894 INFO model=iradonmap epoch=040/060 train_mse=0.0001505 val_mse=0.0002791 val_psnr_db=37.8764 lr=2.8e-05 seconds=4.78 best_epoch=40
+2026-09-20 17:22:23,409 INFO model=iradonmap epoch=041/060 train_mse=0.0001495 val_mse=0.0002783 val_psnr_db=37.8930 lr=2.58e-05 seconds=4.81 best_epoch=41
+2026-09-20 17:22:29,882 INFO model=iradonmap epoch=042/060 train_mse=0.0001487 val_mse=0.0002777 val_psnr_db=37.9233 lr=2.35e-05 seconds=4.81 best_epoch=42
+2026-09-20 17:22:36,314 INFO model=iradonmap epoch=043/060 train_mse=0.0001477 val_mse=0.0002771 val_psnr_db=37.9320 lr=2.14e-05 seconds=4.81 best_epoch=43
+2026-09-20 17:22:42,789 INFO model=iradonmap epoch=044/060 train_mse=0.0001471 val_mse=0.0002767 val_psnr_db=37.9465 lr=1.93e-05 seconds=4.81 best_epoch=44
+2026-09-20 17:22:49,237 INFO model=iradonmap epoch=045/060 train_mse=0.0001465 val_mse=0.0002760 val_psnr_db=37.9607 lr=1.74e-05 seconds=4.81 best_epoch=45
+2026-09-20 17:22:55,711 INFO model=iradonmap epoch=046/060 train_mse=0.0001459 val_mse=0.0002759 val_psnr_db=37.9505 lr=1.55e-05 seconds=4.81 best_epoch=46
+2026-09-20 17:23:02,237 INFO model=iradonmap epoch=047/060 train_mse=0.0001453 val_mse=0.0002754 val_psnr_db=37.9825 lr=1.37e-05 seconds=4.80 best_epoch=47
+2026-09-20 17:23:08,693 INFO model=iradonmap epoch=048/060 train_mse=0.0001449 val_mse=0.0002753 val_psnr_db=37.9748 lr=1.2e-05 seconds=4.78 best_epoch=48
+2026-09-20 17:23:15,144 INFO model=iradonmap epoch=049/060 train_mse=0.0001445 val_mse=0.0002752 val_psnr_db=37.9709 lr=1.05e-05 seconds=4.77 best_epoch=49
+2026-09-20 17:23:21,526 INFO model=iradonmap epoch=050/060 train_mse=0.0001441 val_mse=0.0002747 val_psnr_db=37.9936 lr=8.99e-06 seconds=4.78 best_epoch=50
+2026-09-20 17:23:28,030 INFO model=iradonmap epoch=051/060 train_mse=0.0001438 val_mse=0.0002745 val_psnr_db=37.9996 lr=7.63e-06 seconds=4.80 best_epoch=51
+2026-09-20 17:23:34,545 INFO model=iradonmap epoch=052/060 train_mse=0.0001436 val_mse=0.0002743 val_psnr_db=37.9969 lr=6.4e-06 seconds=4.81 best_epoch=52
+2026-09-20 17:23:40,949 INFO model=iradonmap epoch=053/060 train_mse=0.0001435 val_mse=0.0002743 val_psnr_db=37.9971 lr=5.28e-06 seconds=4.81 best_epoch=53
+2026-09-20 17:23:47,430 INFO model=iradonmap epoch=054/060 train_mse=0.0001432 val_mse=0.0002741 val_psnr_db=38.0019 lr=4.29e-06 seconds=4.81 best_epoch=54
+2026-09-20 17:23:53,926 INFO model=iradonmap epoch=055/060 train_mse=0.0001431 val_mse=0.0002741 val_psnr_db=38.0031 lr=3.42e-06 seconds=4.81 best_epoch=55
+2026-09-20 17:23:59,906 INFO model=iradonmap epoch=056/060 train_mse=0.0001430 val_mse=0.0002741 val_psnr_db=37.9985 lr=2.69e-06 seconds=4.77 best_epoch=55
+2026-09-20 17:24:06,345 INFO model=iradonmap epoch=057/060 train_mse=0.0001428 val_mse=0.0002739 val_psnr_db=38.0066 lr=2.08e-06 seconds=4.77 best_epoch=57
+2026-09-20 17:24:12,728 INFO model=iradonmap epoch=058/060 train_mse=0.0001428 val_mse=0.0002739 val_psnr_db=38.0098 lr=1.61e-06 seconds=4.78 best_epoch=58
+2026-09-20 17:24:19,181 INFO model=iradonmap epoch=059/060 train_mse=0.0001427 val_mse=0.0002739 val_psnr_db=38.0072 lr=1.27e-06 seconds=4.77 best_epoch=59
+2026-09-20 17:24:25,631 INFO model=iradonmap epoch=060/060 train_mse=0.0001427 val_mse=0.0002738 val_psnr_db=38.0117 lr=1.07e-06 seconds=4.77 best_epoch=60
+2026-09-20 17:24:26,902 INFO model=iradonmap training_complete seconds=384.27 best_epoch=60 peak_memory_bytes=4141336064
+2026-09-20 17:24:26,903 INFO model=noise2inverse parameters=118305 epochs=60 lr=0.001 device=cuda supervised=False selected_on=held-out subset MSE
+2026-09-20 17:24:26,970 INFO model=noise2inverse initial_gradient_norm=0.00023869875
+2026-09-20 17:24:30,412 INFO model=noise2inverse epoch=001/060 train_mse=0.0163004 val_mse=0.0148053 val_psnr_db=25.9340 lr=0.001 seconds=3.50 best_epoch=1
+2026-09-20 17:24:33,924 INFO model=noise2inverse epoch=002/060 train_mse=0.0126307 val_mse=0.0120646 val_psnr_db=30.9852 lr=0.000999 seconds=3.50 best_epoch=2
+2026-09-20 17:24:37,445 INFO model=noise2inverse epoch=003/060 train_mse=0.0111192 val_mse=0.0114346 val_psnr_db=32.3681 lr=0.000997 seconds=3.51 best_epoch=3
+2026-09-20 17:24:40,961 INFO model=noise2inverse epoch=004/060 train_mse=0.0107973 val_mse=0.0112542 val_psnr_db=32.9448 lr=0.000994 seconds=3.50 best_epoch=4
+2026-09-20 17:24:44,476 INFO model=noise2inverse epoch=005/060 train_mse=0.0106798 val_mse=0.0111432 val_psnr_db=33.5921 lr=0.000989 seconds=3.50 best_epoch=5
+2026-09-20 17:24:47,987 INFO model=noise2inverse epoch=006/060 train_mse=0.0106098 val_mse=0.0111106 val_psnr_db=33.9087 lr=0.000983 seconds=3.50 best_epoch=6
+2026-09-20 17:24:51,504 INFO model=noise2inverse epoch=007/060 train_mse=0.0105375 val_mse=0.0110363 val_psnr_db=33.2741 lr=0.000976 seconds=3.50 best_epoch=7
+2026-09-20 17:24:55,022 INFO model=noise2inverse epoch=008/060 train_mse=0.0105453 val_mse=0.0110149 val_psnr_db=33.6209 lr=0.000967 seconds=3.50 best_epoch=8
+2026-09-20 17:24:58,538 INFO model=noise2inverse epoch=009/060 train_mse=0.0104806 val_mse=0.0109638 val_psnr_db=33.9074 lr=0.000957 seconds=3.50 best_epoch=9
+2026-09-20 17:25:02,052 INFO model=noise2inverse epoch=010/060 train_mse=0.0104278 val_mse=0.0109779 val_psnr_db=33.2876 lr=0.000946 seconds=3.50 best_epoch=9
+2026-09-20 17:25:05,572 INFO model=noise2inverse epoch=011/060 train_mse=0.0104029 val_mse=0.0109292 val_psnr_db=34.2784 lr=0.000934 seconds=3.51 best_epoch=11
+2026-09-20 17:25:09,093 INFO model=noise2inverse epoch=012/060 train_mse=0.0103960 val_mse=0.0108968 val_psnr_db=34.0094 lr=0.00092 seconds=3.51 best_epoch=12
+2026-09-20 17:25:12,614 INFO model=noise2inverse epoch=013/060 train_mse=0.0103807 val_mse=0.0108881 val_psnr_db=34.0173 lr=0.000905 seconds=3.51 best_epoch=13
+2026-09-20 17:25:16,133 INFO model=noise2inverse epoch=014/060 train_mse=0.0103522 val_mse=0.0108970 val_psnr_db=33.6734 lr=0.00089 seconds=3.51 best_epoch=13
+2026-09-20 17:25:19,656 INFO model=noise2inverse epoch=015/060 train_mse=0.0103514 val_mse=0.0108679 val_psnr_db=34.5229 lr=0.000873 seconds=3.51 best_epoch=15
+2026-09-20 17:25:23,184 INFO model=noise2inverse epoch=016/060 train_mse=0.0103340 val_mse=0.0108524 val_psnr_db=34.4830 lr=0.000855 seconds=3.51 best_epoch=16
+2026-09-20 17:25:26,714 INFO model=noise2inverse epoch=017/060 train_mse=0.0103332 val_mse=0.0108435 val_psnr_db=34.3030 lr=0.000836 seconds=3.52 best_epoch=17
+2026-09-20 17:25:30,235 INFO model=noise2inverse epoch=018/060 train_mse=0.0103118 val_mse=0.0108602 val_psnr_db=34.4659 lr=0.000817 seconds=3.51 best_epoch=17
+2026-09-20 17:25:33,758 INFO model=noise2inverse epoch=019/060 train_mse=0.0103112 val_mse=0.0108191 val_psnr_db=33.8780 lr=0.000796 seconds=3.51 best_epoch=19
+2026-09-20 17:25:37,277 INFO model=noise2inverse epoch=020/060 train_mse=0.0102884 val_mse=0.0108779 val_psnr_db=33.6785 lr=0.000775 seconds=3.51 best_epoch=19
+2026-09-20 17:25:40,803 INFO model=noise2inverse epoch=021/060 train_mse=0.0102695 val_mse=0.0108386 val_psnr_db=34.6199 lr=0.000753 seconds=3.52 best_epoch=19
+2026-09-20 17:25:44,327 INFO model=noise2inverse epoch=022/060 train_mse=0.0102894 val_mse=0.0107950 val_psnr_db=34.5014 lr=0.00073 seconds=3.51 best_epoch=22
+2026-09-20 17:25:47,859 INFO model=noise2inverse epoch=023/060 train_mse=0.0102593 val_mse=0.0107844 val_psnr_db=34.0278 lr=0.000706 seconds=3.52 best_epoch=23
+2026-09-20 17:25:51,391 INFO model=noise2inverse epoch=024/060 train_mse=0.0102445 val_mse=0.0107954 val_psnr_db=34.1133 lr=0.000682 seconds=3.52 best_epoch=23
+2026-09-20 17:25:54,935 INFO model=noise2inverse epoch=025/060 train_mse=0.0102524 val_mse=0.0107750 val_psnr_db=34.1849 lr=0.000658 seconds=3.53 best_epoch=25
+2026-09-20 17:25:58,465 INFO model=noise2inverse epoch=026/060 train_mse=0.0102550 val_mse=0.0107823 val_psnr_db=34.3259 lr=0.000633 seconds=3.52 best_epoch=25
+2026-09-20 17:26:02,006 INFO model=noise2inverse epoch=027/060 train_mse=0.0102429 val_mse=0.0107823 val_psnr_db=34.2248 lr=0.000608 seconds=3.53 best_epoch=25
+2026-09-20 17:26:05,543 INFO model=noise2inverse epoch=028/060 train_mse=0.0102404 val_mse=0.0107979 val_psnr_db=35.0183 lr=0.000582 seconds=3.53 best_epoch=25
+2026-09-20 17:26:09,084 INFO model=noise2inverse epoch=029/060 train_mse=0.0102502 val_mse=0.0107709 val_psnr_db=33.9209 lr=0.000557 seconds=3.53 best_epoch=29
+2026-09-20 17:26:12,625 INFO model=noise2inverse epoch=030/060 train_mse=0.0102255 val_mse=0.0107582 val_psnr_db=34.4746 lr=0.000531 seconds=3.53 best_epoch=30
+2026-09-20 17:26:16,160 INFO model=noise2inverse epoch=031/060 train_mse=0.0102342 val_mse=0.0107746 val_psnr_db=34.0220 lr=0.000505 seconds=3.53 best_epoch=30
+2026-09-20 17:26:19,702 INFO model=noise2inverse epoch=032/060 train_mse=0.0102483 val_mse=0.0107641 val_psnr_db=34.3873 lr=0.000479 seconds=3.53 best_epoch=30
+2026-09-20 17:26:23,241 INFO model=noise2inverse epoch=033/060 train_mse=0.0102042 val_mse=0.0107431 val_psnr_db=34.1204 lr=0.000453 seconds=3.52 best_epoch=33
+2026-09-20 17:26:26,775 INFO model=noise2inverse epoch=034/060 train_mse=0.0102509 val_mse=0.0107452 val_psnr_db=34.3260 lr=0.000428 seconds=3.52 best_epoch=33
+2026-09-20 17:26:30,368 INFO model=noise2inverse epoch=035/060 train_mse=0.0101981 val_mse=0.0107402 val_psnr_db=34.3533 lr=0.000402 seconds=3.58 best_epoch=35
+2026-09-20 17:26:33,906 INFO model=noise2inverse epoch=036/060 train_mse=0.0102059 val_mse=0.0107315 val_psnr_db=34.3296 lr=0.000377 seconds=3.52 best_epoch=36
+2026-09-20 17:26:37,441 INFO model=noise2inverse epoch=037/060 train_mse=0.0102119 val_mse=0.0107340 val_psnr_db=34.2155 lr=0.000352 seconds=3.52 best_epoch=36
+2026-09-20 17:26:40,975 INFO model=noise2inverse epoch=038/060 train_mse=0.0102054 val_mse=0.0107293 val_psnr_db=34.4388 lr=0.000328 seconds=3.52 best_epoch=38
+2026-09-20 17:26:44,512 INFO model=noise2inverse epoch=039/060 train_mse=0.0101779 val_mse=0.0107328 val_psnr_db=34.2332 lr=0.000304 seconds=3.53 best_epoch=38
+2026-09-20 17:26:48,044 INFO model=noise2inverse epoch=040/060 train_mse=0.0102125 val_mse=0.0107246 val_psnr_db=34.4004 lr=0.00028 seconds=3.52 best_epoch=40
+2026-09-20 17:26:51,581 INFO model=noise2inverse epoch=041/060 train_mse=0.0102193 val_mse=0.0107272 val_psnr_db=34.5129 lr=0.000258 seconds=3.53 best_epoch=40
+2026-09-20 17:26:55,115 INFO model=noise2inverse epoch=042/060 train_mse=0.0101791 val_mse=0.0107268 val_psnr_db=34.7534 lr=0.000235 seconds=3.52 best_epoch=40
+2026-09-20 17:26:58,662 INFO model=noise2inverse epoch=043/060 train_mse=0.0101836 val_mse=0.0107201 val_psnr_db=34.4955 lr=0.000214 seconds=3.53 best_epoch=43
+2026-09-20 17:27:02,203 INFO model=noise2inverse epoch=044/060 train_mse=0.0101746 val_mse=0.0107191 val_psnr_db=34.4000 lr=0.000193 seconds=3.53 best_epoch=44
+2026-09-20 17:27:05,732 INFO model=noise2inverse epoch=045/060 train_mse=0.0101926 val_mse=0.0107197 val_psnr_db=34.5132 lr=0.000174 seconds=3.52 best_epoch=44
+2026-09-20 17:27:09,276 INFO model=noise2inverse epoch=046/060 train_mse=0.0102090 val_mse=0.0107157 val_psnr_db=34.3451 lr=0.000155 seconds=3.53 best_epoch=46
+2026-09-20 17:27:12,812 INFO model=noise2inverse epoch=047/060 train_mse=0.0101664 val_mse=0.0107179 val_psnr_db=34.4418 lr=0.000137 seconds=3.53 best_epoch=46
+2026-09-20 17:27:16,353 INFO model=noise2inverse epoch=048/060 train_mse=0.0101744 val_mse=0.0107153 val_psnr_db=34.4077 lr=0.00012 seconds=3.53 best_epoch=48
+2026-09-20 17:27:19,894 INFO model=noise2inverse epoch=049/060 train_mse=0.0101930 val_mse=0.0107146 val_psnr_db=34.6274 lr=0.000105 seconds=3.52 best_epoch=49
+2026-09-20 17:27:23,431 INFO model=noise2inverse epoch=050/060 train_mse=0.0101800 val_mse=0.0107095 val_psnr_db=34.4567 lr=8.99e-05 seconds=3.52 best_epoch=50
+2026-09-20 17:27:26,973 INFO model=noise2inverse epoch=051/060 train_mse=0.0101606 val_mse=0.0107099 val_psnr_db=34.4836 lr=7.63e-05 seconds=3.53 best_epoch=50
+2026-09-20 17:27:30,513 INFO model=noise2inverse epoch=052/060 train_mse=0.0102046 val_mse=0.0107090 val_psnr_db=34.2809 lr=6.4e-05 seconds=3.53 best_epoch=52
+2026-09-20 17:27:34,057 INFO model=noise2inverse epoch=053/060 train_mse=0.0101609 val_mse=0.0107086 val_psnr_db=34.5061 lr=5.28e-05 seconds=3.53 best_epoch=53
+2026-09-20 17:27:37,592 INFO model=noise2inverse epoch=054/060 train_mse=0.0101837 val_mse=0.0107082 val_psnr_db=34.4204 lr=4.29e-05 seconds=3.52 best_epoch=54
+2026-09-20 17:27:41,130 INFO model=noise2inverse epoch=055/060 train_mse=0.0101819 val_mse=0.0107069 val_psnr_db=34.4517 lr=3.42e-05 seconds=3.52 best_epoch=55
+2026-09-20 17:27:44,661 INFO model=noise2inverse epoch=056/060 train_mse=0.0101545 val_mse=0.0107074 val_psnr_db=34.4714 lr=2.69e-05 seconds=3.52 best_epoch=55
+2026-09-20 17:27:48,199 INFO model=noise2inverse epoch=057/060 train_mse=0.0101689 val_mse=0.0107067 val_psnr_db=34.4935 lr=2.08e-05 seconds=3.52 best_epoch=57
+2026-09-20 17:27:51,740 INFO model=noise2inverse epoch=058/060 train_mse=0.0101484 val_mse=0.0107066 val_psnr_db=34.5212 lr=1.61e-05 seconds=3.52 best_epoch=58
+2026-09-20 17:27:55,278 INFO model=noise2inverse epoch=059/060 train_mse=0.0101492 val_mse=0.0107065 val_psnr_db=34.5382 lr=1.27e-05 seconds=3.52 best_epoch=59
+2026-09-20 17:27:58,825 INFO model=noise2inverse epoch=060/060 train_mse=0.0101657 val_mse=0.0107065 val_psnr_db=34.5326 lr=1.07e-05 seconds=3.53 best_epoch=60
+2026-09-20 17:27:58,839 INFO model=noise2inverse training_complete seconds=211.94 best_epoch=60 peak_memory_bytes=2623178240
+2026-09-20 17:27:58,840 INFO model=proj2proj parameters=118305 epochs=60 lr=0.001 device=cuda supervised=False selected_on=masked projection MSE
+2026-09-20 17:27:58,905 INFO model=proj2proj initial_gradient_norm=1.2885644e-05
+2026-09-20 17:28:02,302 INFO model=proj2proj epoch=001/060 train_mse=0.0000374 val_mse=0.0000392 val_psnr_db=24.8136 lr=0.001 seconds=3.46 best_epoch=1
+2026-09-20 17:28:05,765 INFO model=proj2proj epoch=002/060 train_mse=0.0000372 val_mse=0.0000392 val_psnr_db=24.8138 lr=0.000999 seconds=3.45 best_epoch=2
+2026-09-20 17:28:09,232 INFO model=proj2proj epoch=003/060 train_mse=0.0000371 val_mse=0.0000392 val_psnr_db=24.8149 lr=0.000997 seconds=3.45 best_epoch=3
+2026-09-20 17:28:12,697 INFO model=proj2proj epoch=004/060 train_mse=0.0000370 val_mse=0.0000391 val_psnr_db=24.8231 lr=0.000994 seconds=3.45 best_epoch=4
+2026-09-20 17:28:16,159 INFO model=proj2proj epoch=005/060 train_mse=0.0000366 val_mse=0.0000372 val_psnr_db=25.2107 lr=0.000989 seconds=3.45 best_epoch=5
+2026-09-20 17:28:19,621 INFO model=proj2proj epoch=006/060 train_mse=0.0000316 val_mse=0.0000302 val_psnr_db=26.4243 lr=0.000983 seconds=3.45 best_epoch=6
+2026-09-20 17:28:23,087 INFO model=proj2proj epoch=007/060 train_mse=0.0000271 val_mse=0.0000263 val_psnr_db=27.7507 lr=0.000976 seconds=3.45 best_epoch=7
+2026-09-20 17:28:26,551 INFO model=proj2proj epoch=008/060 train_mse=0.0000239 val_mse=0.0000243 val_psnr_db=28.8311 lr=0.000967 seconds=3.45 best_epoch=8
+2026-09-20 17:28:30,015 INFO model=proj2proj epoch=009/060 train_mse=0.0000226 val_mse=0.0000229 val_psnr_db=29.4471 lr=0.000957 seconds=3.45 best_epoch=9
+2026-09-20 17:28:33,476 INFO model=proj2proj epoch=010/060 train_mse=0.0000211 val_mse=0.0000215 val_psnr_db=30.4503 lr=0.000946 seconds=3.45 best_epoch=10
+2026-09-20 17:28:36,939 INFO model=proj2proj epoch=011/060 train_mse=0.0000198 val_mse=0.0000197 val_psnr_db=31.7651 lr=0.000934 seconds=3.45 best_epoch=11
+2026-09-20 17:28:40,403 INFO model=proj2proj epoch=012/060 train_mse=0.0000190 val_mse=0.0000189 val_psnr_db=32.2496 lr=0.00092 seconds=3.45 best_epoch=12
+2026-09-20 17:28:43,865 INFO model=proj2proj epoch=013/060 train_mse=0.0000176 val_mse=0.0000182 val_psnr_db=32.9492 lr=0.000905 seconds=3.45 best_epoch=13
+2026-09-20 17:28:47,331 INFO model=proj2proj epoch=014/060 train_mse=0.0000169 val_mse=0.0000172 val_psnr_db=34.1549 lr=0.00089 seconds=3.45 best_epoch=14
+2026-09-20 17:28:50,797 INFO model=proj2proj epoch=015/060 train_mse=0.0000161 val_mse=0.0000166 val_psnr_db=34.9047 lr=0.000873 seconds=3.45 best_epoch=15
+2026-09-20 17:28:54,258 INFO model=proj2proj epoch=016/060 train_mse=0.0000158 val_mse=0.0000162 val_psnr_db=35.4872 lr=0.000855 seconds=3.45 best_epoch=16
+2026-09-20 17:28:57,724 INFO model=proj2proj epoch=017/060 train_mse=0.0000155 val_mse=0.0000160 val_psnr_db=35.7879 lr=0.000836 seconds=3.45 best_epoch=17
+2026-09-20 17:29:01,186 INFO model=proj2proj epoch=018/060 train_mse=0.0000153 val_mse=0.0000159 val_psnr_db=35.9789 lr=0.000817 seconds=3.45 best_epoch=18
+2026-09-20 17:29:04,650 INFO model=proj2proj epoch=019/060 train_mse=0.0000152 val_mse=0.0000158 val_psnr_db=36.0995 lr=0.000796 seconds=3.45 best_epoch=19
+2026-09-20 17:29:08,117 INFO model=proj2proj epoch=020/060 train_mse=0.0000150 val_mse=0.0000156 val_psnr_db=36.2347 lr=0.000775 seconds=3.45 best_epoch=20
+2026-09-20 17:29:11,578 INFO model=proj2proj epoch=021/060 train_mse=0.0000150 val_mse=0.0000155 val_psnr_db=36.4645 lr=0.000753 seconds=3.45 best_epoch=21
+2026-09-20 17:29:15,045 INFO model=proj2proj epoch=022/060 train_mse=0.0000149 val_mse=0.0000155 val_psnr_db=36.5253 lr=0.00073 seconds=3.45 best_epoch=22
+2026-09-20 17:29:18,507 INFO model=proj2proj epoch=023/060 train_mse=0.0000148 val_mse=0.0000154 val_psnr_db=36.6301 lr=0.000706 seconds=3.45 best_epoch=23
+2026-09-20 17:29:21,973 INFO model=proj2proj epoch=024/060 train_mse=0.0000148 val_mse=0.0000154 val_psnr_db=36.6093 lr=0.000682 seconds=3.45 best_epoch=24
+2026-09-20 17:29:25,432 INFO model=proj2proj epoch=025/060 train_mse=0.0000147 val_mse=0.0000155 val_psnr_db=36.7945 lr=0.000658 seconds=3.45 best_epoch=24
+2026-09-20 17:29:28,901 INFO model=proj2proj epoch=026/060 train_mse=0.0000148 val_mse=0.0000153 val_psnr_db=36.8224 lr=0.000633 seconds=3.45 best_epoch=26
+2026-09-20 17:29:32,360 INFO model=proj2proj epoch=027/060 train_mse=0.0000147 val_mse=0.0000153 val_psnr_db=36.9564 lr=0.000608 seconds=3.45 best_epoch=26
+2026-09-20 17:29:35,821 INFO model=proj2proj epoch=028/060 train_mse=0.0000146 val_mse=0.0000153 val_psnr_db=36.9761 lr=0.000582 seconds=3.45 best_epoch=28
+2026-09-20 17:29:39,285 INFO model=proj2proj epoch=029/060 train_mse=0.0000146 val_mse=0.0000152 val_psnr_db=37.0093 lr=0.000557 seconds=3.45 best_epoch=29
+2026-09-20 17:29:42,744 INFO model=proj2proj epoch=030/060 train_mse=0.0000146 val_mse=0.0000152 val_psnr_db=37.0012 lr=0.000531 seconds=3.45 best_epoch=29
+2026-09-20 17:29:46,209 INFO model=proj2proj epoch=031/060 train_mse=0.0000146 val_mse=0.0000151 val_psnr_db=37.1599 lr=0.000505 seconds=3.45 best_epoch=31
+2026-09-20 17:29:49,665 INFO model=proj2proj epoch=032/060 train_mse=0.0000145 val_mse=0.0000151 val_psnr_db=37.2465 lr=0.000479 seconds=3.45 best_epoch=31
+2026-09-20 17:29:53,123 INFO model=proj2proj epoch=033/060 train_mse=0.0000146 val_mse=0.0000151 val_psnr_db=37.1996 lr=0.000453 seconds=3.45 best_epoch=31
+2026-09-20 17:29:56,586 INFO model=proj2proj epoch=034/060 train_mse=0.0000145 val_mse=0.0000151 val_psnr_db=37.2382 lr=0.000428 seconds=3.45 best_epoch=34
+2026-09-20 17:30:00,048 INFO model=proj2proj epoch=035/060 train_mse=0.0000145 val_mse=0.0000150 val_psnr_db=37.3136 lr=0.000402 seconds=3.45 best_epoch=35
+2026-09-20 17:30:03,509 INFO model=proj2proj epoch=036/060 train_mse=0.0000145 val_mse=0.0000150 val_psnr_db=37.3171 lr=0.000377 seconds=3.45 best_epoch=36
+2026-09-20 17:30:06,967 INFO model=proj2proj epoch=037/060 train_mse=0.0000145 val_mse=0.0000150 val_psnr_db=37.3689 lr=0.000352 seconds=3.45 best_epoch=36
+2026-09-20 17:30:10,429 INFO model=proj2proj epoch=038/060 train_mse=0.0000145 val_mse=0.0000150 val_psnr_db=37.4309 lr=0.000328 seconds=3.45 best_epoch=38
+2026-09-20 17:30:13,888 INFO model=proj2proj epoch=039/060 train_mse=0.0000145 val_mse=0.0000150 val_psnr_db=37.5202 lr=0.000304 seconds=3.44 best_epoch=39
+2026-09-20 17:30:17,349 INFO model=proj2proj epoch=040/060 train_mse=0.0000144 val_mse=0.0000150 val_psnr_db=37.5290 lr=0.00028 seconds=3.45 best_epoch=40
+2026-09-20 17:30:20,806 INFO model=proj2proj epoch=041/060 train_mse=0.0000145 val_mse=0.0000150 val_psnr_db=37.5237 lr=0.000258 seconds=3.45 best_epoch=40
+2026-09-20 17:30:24,271 INFO model=proj2proj epoch=042/060 train_mse=0.0000144 val_mse=0.0000150 val_psnr_db=37.5085 lr=0.000235 seconds=3.45 best_epoch=42
+2026-09-20 17:30:27,730 INFO model=proj2proj epoch=043/060 train_mse=0.0000144 val_mse=0.0000149 val_psnr_db=37.5991 lr=0.000214 seconds=3.44 best_epoch=43
+2026-09-20 17:30:31,183 INFO model=proj2proj epoch=044/060 train_mse=0.0000144 val_mse=0.0000149 val_psnr_db=37.5650 lr=0.000193 seconds=3.44 best_epoch=43
+2026-09-20 17:30:34,640 INFO model=proj2proj epoch=045/060 train_mse=0.0000144 val_mse=0.0000149 val_psnr_db=37.5748 lr=0.000174 seconds=3.45 best_epoch=43
+2026-09-20 17:30:38,103 INFO model=proj2proj epoch=046/060 train_mse=0.0000144 val_mse=0.0000149 val_psnr_db=37.5743 lr=0.000155 seconds=3.45 best_epoch=46
+2026-09-20 17:30:41,562 INFO model=proj2proj epoch=047/060 train_mse=0.0000144 val_mse=0.0000149 val_psnr_db=37.6243 lr=0.000137 seconds=3.45 best_epoch=47
+2026-09-20 17:30:45,023 INFO model=proj2proj epoch=048/060 train_mse=0.0000144 val_mse=0.0000149 val_psnr_db=37.6180 lr=0.00012 seconds=3.45 best_epoch=48
+2026-09-20 17:30:48,484 INFO model=proj2proj epoch=049/060 train_mse=0.0000144 val_mse=0.0000149 val_psnr_db=37.6514 lr=0.000105 seconds=3.45 best_epoch=49
+2026-09-20 17:30:51,942 INFO model=proj2proj epoch=050/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6794 lr=8.99e-05 seconds=3.45 best_epoch=49
+2026-09-20 17:30:55,402 INFO model=proj2proj epoch=051/060 train_mse=0.0000144 val_mse=0.0000149 val_psnr_db=37.6512 lr=7.63e-05 seconds=3.45 best_epoch=51
+2026-09-20 17:30:58,856 INFO model=proj2proj epoch=052/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6330 lr=6.4e-05 seconds=3.44 best_epoch=51
+2026-09-20 17:31:02,313 INFO model=proj2proj epoch=053/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6693 lr=5.28e-05 seconds=3.44 best_epoch=53
+2026-09-20 17:31:05,775 INFO model=proj2proj epoch=054/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6851 lr=4.29e-05 seconds=3.45 best_epoch=54
+2026-09-20 17:31:09,231 INFO model=proj2proj epoch=055/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6798 lr=3.42e-05 seconds=3.45 best_epoch=54
+2026-09-20 17:31:12,693 INFO model=proj2proj epoch=056/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6956 lr=2.69e-05 seconds=3.45 best_epoch=56
+2026-09-20 17:31:16,155 INFO model=proj2proj epoch=057/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6932 lr=2.08e-05 seconds=3.45 best_epoch=57
+2026-09-20 17:31:19,611 INFO model=proj2proj epoch=058/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6963 lr=1.61e-05 seconds=3.45 best_epoch=57
+2026-09-20 17:31:23,075 INFO model=proj2proj epoch=059/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6976 lr=1.27e-05 seconds=3.45 best_epoch=59
+2026-09-20 17:31:26,534 INFO model=proj2proj epoch=060/060 train_mse=0.0000143 val_mse=0.0000149 val_psnr_db=37.6986 lr=1.07e-05 seconds=3.44 best_epoch=60
+2026-09-20 17:31:26,547 INFO model=proj2proj training_complete seconds=207.71 best_epoch=60 peak_memory_bytes=2617854976
+2026-09-20 17:31:28,833 INFO classical sart_subsets=90 sirt_iterations=300 sart_sweeps=20 red_iterations=100
+2026-09-20 17:31:34,823 INFO classical method=sirt setting=default best_val_iterations=90 val_psnr_db=20.0569
+2026-09-20 17:31:36,309 INFO classical method=sirt selected iterations=90 setting=default val_psnr_db=20.0569 seconds=7.48
+2026-09-20 17:31:46,114 INFO classical method=bm3d setting=0.01 best_val_stages=1 val_psnr_db=13.0158
+2026-09-20 17:31:55,901 INFO classical method=bm3d setting=0.02 best_val_stages=1 val_psnr_db=13.3517
+2026-09-20 17:32:05,683 INFO classical method=bm3d setting=0.05 best_val_stages=1 val_psnr_db=19.3087
+2026-09-20 17:32:15,465 INFO classical method=bm3d setting=0.1 best_val_stages=1 val_psnr_db=24.2328
+2026-09-20 17:32:25,245 INFO classical method=bm3d setting=0.2 best_val_stages=1 val_psnr_db=23.7522
+2026-09-20 17:32:35,045 INFO classical method=bm3d selected stages=1 setting=0.1 val_psnr_db=24.2328 seconds=58.74
+2026-09-20 17:32:48,933 INFO classical method=sart setting=1 best_val_subset updates=90 val_psnr_db=19.6594
+2026-09-20 17:33:02,795 INFO classical method=sart setting=0.3 best_val_subset updates=270 val_psnr_db=20.1524
+2026-09-20 17:33:16,714 INFO classical method=sart setting=0.1 best_val_subset updates=890 val_psnr_db=20.0946
+2026-09-20 17:33:30,561 INFO classical method=sart setting=0.03 best_val_subset updates=1800 val_psnr_db=19.7834
+2026-09-20 17:33:31,782 INFO classical method=sart selected subset updates=270 setting=0.3 val_psnr_db=20.1524 seconds=56.74
+2026-09-20 17:33:48,317 INFO classical method=red setting=0.1 best_val_iterations=34 val_psnr_db=24.6850
+2026-09-20 17:34:04,874 INFO classical method=red setting=0.3 best_val_iterations=12 val_psnr_db=24.6280
+2026-09-20 17:34:21,434 INFO classical method=red setting=1 best_val_iterations=5 val_psnr_db=24.7954
+2026-09-20 17:34:37,971 INFO classical method=red setting=3 best_val_iterations=3 val_psnr_db=25.1816
+2026-09-20 17:34:54,533 INFO classical method=red setting=10 best_val_iterations=2 val_psnr_db=25.5681
+2026-09-20 17:34:54,921 INFO classical method=red selected iterations=2 setting=10 val_psnr_db=25.5681 seconds=83.14
+2026-09-20 17:34:57,014 INFO TEST method=fbp mean_psnr_db=25.0320 roi_psnr_db=23.9644 window_psnr_db=12.4508 std_psnr_db=0.5127 mse=0.0031635 seconds=0.02
+2026-09-20 17:34:57,014 INFO TEST method=sirt mean_psnr_db=35.1888 roi_psnr_db=34.1212 window_psnr_db=19.9942 std_psnr_db=2.1990 mse=0.0003614 seconds=7.48
+2026-09-20 17:34:57,014 INFO TEST method=sart mean_psnr_db=35.4160 roi_psnr_db=34.3484 window_psnr_db=20.0910 std_psnr_db=2.2502 mse=0.0003466 seconds=56.74
+2026-09-20 17:34:57,014 INFO TEST method=bm3d mean_psnr_db=39.3830 roi_psnr_db=38.3154 window_psnr_db=24.4315 std_psnr_db=3.3087 mse=0.0001840 seconds=58.74
+2026-09-20 17:34:57,014 INFO TEST method=fbp-unet mean_psnr_db=41.4878 roi_psnr_db=40.4202 window_psnr_db=25.9516 std_psnr_db=3.7980 mse=0.0001353 seconds=175.41
+2026-09-20 17:34:57,014 INFO TEST method=red mean_psnr_db=41.0553 roi_psnr_db=39.9877 window_psnr_db=25.6504 std_psnr_db=3.7056 mse=0.0001438 seconds=83.14
+2026-09-20 17:34:57,014 INFO TEST method=iradonmap mean_psnr_db=38.9679 roi_psnr_db=37.9003 window_psnr_db=23.5425 std_psnr_db=3.0976 mse=0.0001912 seconds=384.27
+2026-09-20 17:34:57,014 INFO TEST method=noise2inverse mean_psnr_db=35.4581 roi_psnr_db=34.3905 window_psnr_db=20.9627 std_psnr_db=2.2654 mse=0.0003438 seconds=211.94
+2026-09-20 17:34:57,015 INFO TEST method=proj2proj mean_psnr_db=38.6078 roi_psnr_db=37.5402 window_psnr_db=23.4102 std_psnr_db=2.9338 mse=0.0001990 seconds=207.71
+2026-09-20 17:34:57,015 INFO TEST method=lpd mean_psnr_db=39.0195 roi_psnr_db=37.9519 window_psnr_db=23.5762 std_psnr_db=3.2899 mse=0.0001988 seconds=1161.19
+2026-09-20 17:34:57,252 INFO TEST reference=noiseless-fbp mean_psnr_db=37.1245 roi_psnr_db=36.0569 window_psnr_db=24.3682
+2026-09-20 17:35:05,120 INFO complete outputs=/home/ozan/torchtomo/examples/ellipses/results-ctw-cuda
