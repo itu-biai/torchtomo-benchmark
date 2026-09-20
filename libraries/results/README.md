@@ -181,39 +181,53 @@ Closing it means writing that kernel, which is the thing torchtomo exists not to
 do. If you need LEAP's speed, `libraries/leap_projector.py` is a drop-in
 `ParallelBeam` and `--projector leap` routes the whole benchmark through it.
 
-## What it costs the benchmark: ten methods on each backend
+## What it cost the benchmark: ten methods on each backend
 
-`training/train.py --projector leap` swaps the kernels and changes
-nothing else, so the same ten methods, schedules and seeds run on LEAP's
-operators. Real CT, 512 px, 90 angles, 100k photons, in-window PSNR:
+`training/train.py --projector leap` swaps the kernels and changes nothing else,
+so the same ten methods, schedules and seeds run on LEAP's operators. Real CT,
+512 px, 90 angles, 100k photons, in-window PSNR, before and after torchtomo 0.3
+replaced the sampled ramp with the Ram-Lak kernel:
 
-| Method | torchtomo | LEAP | Difference |
-| --- | ---: | ---: | ---: |
-| FBP | 12.59 | 12.25 | -0.34 |
-| SIRT | 19.98 | 19.96 | -0.02 |
-| SART | 20.08 | 20.03 | -0.05 |
-| iRadonMAP | 23.17 | 23.20 | +0.02 |
-| FBP + U-Net | 25.47 | 25.89 | +0.42 |
-| LPD | 22.52 | 23.47 | +0.94 |
-| RED | 24.08 | 25.57 | +1.49 |
-| Noise2Inverse | 18.47 | 20.86 | +2.39 |
-| FBP + BM3D | 19.54 | 24.66 | +5.12 |
-| Proj2Proj | 13.29 | 23.19 | +9.90 |
-| noiseless FBP reference | 19.73 | 24.04 | +4.30 |
+| Method | torchtomo, old ramp | torchtomo 0.3 | LEAP | 0.3 - LEAP |
+| --- | ---: | ---: | ---: | ---: |
+| FBP | 12.60 | 12.45 | 12.25 | +0.20 |
+| SIRT | 19.99 | 19.99 | 19.96 | +0.03 |
+| SART | 20.09 | 20.09 | 20.03 | +0.06 |
+| iRadonMAP | 23.33 | 23.54 | 23.20 | +0.34 |
+| FBP + U-Net | 25.67 | 25.95 | 25.89 | +0.06 |
+| LPD | 24.31 | 23.58 | 23.47 | +0.11 |
+| RED | 24.37 | 25.65 | 25.57 | +0.08 |
+| Noise2Inverse | 18.66 | 20.96 | 20.86 | +0.10 |
+| FBP + BM3D | 19.90 | 24.43 | 24.66 | -0.23 |
+| Proj2Proj | 12.73 | 23.41 | 23.19 | +0.22 |
+| noiseless FBP reference | 20.09 | 24.37 | 24.04 | +0.33 |
 
-Ellipse phantoms at 512 px show the same ordering, with Proj2Proj gaining 12.95 dB
-over the circle.
+The old column is `results-ctw-cuda` as it was recorded before the fix; the new
+one is the same run repeated on 0.3, same 100k photons, so the two differ in the
+filter alone. Ellipse phantoms at 512 px moved the same way: Proj2Proj 22.49 to
+36.68 dB over the circle, from 12.95 dB behind LEAP to 0.66.
 
-The pattern follows the operators rather than the methods. SIRT, SART and
-iRadonMAP match within 0.05 dB: they never call `fbp()`, using only the matched
-`forward()` and `adjoint()` pair, which the two libraries agree on. Everything
-that routes through `fbp()` improves, and the method that improves most is the one
-whose training loss round-trips through both: Proj2Proj perturbs a sinogram,
-reconstructs it, denoises, forward projects the result, and compares with the
-measurements. On torchtomo it has to absorb the 10% round-trip inconsistency
-before it can denoise anything, from a masked loss that sees one sixteenth of the
-entries. That is a hypothesis consistent with every row in the table, not a proven
-mechanism, but the SIRT and SART rows make it hard to explain any other way.
+The reading that produced the fix was that the gap followed the operators rather
+than the methods. SIRT, SART and iRadonMAP matched within 0.05 dB because they
+never call `fbp()`, using only the matched `forward()` and `adjoint()` pair the
+two libraries agree on, while everything routed through `fbp()` trailed, most of
+all the one method whose training loss round-trips through both. Proj2Proj
+perturbs a sinogram, reconstructs it, denoises, forward projects the result and
+compares with the measurements, so it had to absorb a 10% round-trip
+inconsistency before it could denoise anything, from a masked loss that sees one
+sixteenth of the entries.
+
+Removing that inconsistency removed the gap, which is as close to a proof of the
+mechanism as this benchmark can give: the same ten methods on the same data, one
+filter bin apart. What is left is BM3D at 0.23 dB and, in fan beam, Proj2Proj at
+1.03 dB, the only rows where LEAP is still ahead by more than a tenth.
+
+Fan beam had less to gain throughout, because a detector 1.5x wider than the
+image leaves less of the projection mean in the DC bin: on CT its noiseless
+reference moves 20.55 to 20.71 dB where parallel beam moves 20.09 to 24.37.
+`training/results-512-fan-leap` and `training/results-ctw-fan-leap` are LEAP's
+fan-beam runs, recorded alongside these.
+
 
 ## The FBP baseline is the one untrained method whose hyperparameter is never searched
 
@@ -248,6 +262,11 @@ This is worth fixing before the table is published, for two reasons. The
 comparison currently flatters every method that post-processes an FBP image,
 because it hands them the worst available starting point, and it understates the
 analytic baseline the learned methods are being measured against.
+
+The filter rows above were measured on the sampled ramp. torchtomo 0.3's ramp
+already recovers most of what the ramp row was losing here, 12.60 to 12.45 dB in
+window on noisy CT but 20.09 to 24.37 dB on the noiseless reference, so the
+spread between filters is worth remeasuring before the search is added.
 
 ## Reproducing
 

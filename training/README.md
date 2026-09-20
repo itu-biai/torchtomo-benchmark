@@ -24,6 +24,18 @@ It needs only torchtomo, PyTorch, and Matplotlib, and no experiment tracking
 service. Python `logging` writes progress to the console and
 `results/training.log`.
 
+## Recorded runs and torchtomo 0.3
+
+The tables below under "Recorded 512 x 512 run", "LPD capacity check" and the
+real CT section were measured before torchtomo 0.3 changed the FBP ramp filter
+(itu-biai/torchtomo fad0119), so their FBP row, and every method that
+reconstructs through `fbp()`, is lower than 0.3 gives. The directories rerun on
+0.3 are `results-512-cuda`, `results-512-fan-cuda`, `results-ctw-cuda` and
+`results-ctw-fan-cuda`; on real CT the noiseless FBP reference moves 20.09 to
+24.37 dB in window and Proj2Proj 12.73 to 23.41. The comparison against LEAP,
+with those numbers, is in
+[`libraries/results/README.md`](../libraries/results/README.md).
+
 ## Run
 
 From the repository root, with torchtomo installed:
