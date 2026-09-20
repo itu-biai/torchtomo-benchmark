@@ -2,14 +2,15 @@
 
 Benchmarks for [torchtomo](https://github.com/itu-biai/torchtomo): how it compares
 with other CT projectors, and how reconstruction methods built on it compare with
-each other, with every recorded result. torchtomo's own accuracy and speed checks
-stay in torchtomo's `benchmark/`.
+each other, with every recorded result. Everything that needs a library torchtomo
+does not depend on is here; torchtomo's own speed and self-consistency checks,
+which run on torch alone, stay in its `benchmark/`.
 
 | Folder | What it holds |
 | --- | --- |
 | [`libraries/`](libraries/README.md) | torchtomo against LEAP, torch-radon, and scikit-image: operator agreement, reconstruction quality, speed, and GPU memory. The recorded comparison is in `libraries/results/`. |
 | [`training/`](training/README.md) | One pipeline that scores ten methods on ellipse phantoms or real CT slices: FBP, SIRT, SART, FBP+BM3D, RED, FBP+U-Net, iRadonMAP, Noise2Inverse, Proj2Proj, and Learned Primal-Dual. Recorded runs are in `training/results*/`. |
-| `tests/` | Operator agreement with LEAP and torch-radon, and checks on the training code. |
+| `tests/` | Operator agreement with LEAP, torch-radon, and scikit-image, and checks on the training code. |
 
 ## Setup
 

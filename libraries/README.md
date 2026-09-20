@@ -1,20 +1,24 @@
 # Library comparisons
 
-torchtomo against LEAP and torch-radon, and against scikit-image for speed.
-LEAP and torch-radon are optional: every script and test here skips what is
-not installed.
+torchtomo against LEAP, torch-radon, and scikit-image. LEAP and torch-radon are
+optional: every script and test here skips what is not installed.
 
 | File | What it does |
 | --- | --- |
 | `compare_libraries.py` | torchtomo against LEAP and torch-radon: PSNR, SSIM, speed, GPU memory, and a figure |
 | `speed_table.py` | forward, adjoint, and FBP in milliseconds for every torchtomo backend, LEAP, and torch-radon, in one process |
 | `throughput.py` | slices per second for torchtomo, scikit-image, and torch-radon |
+| `accuracy_vs_skimage.py` | reconstruction quality on analytic phantoms, against scikit-image |
+| `fbp_consistency.py` | whether a library's FBP inverts its own forward projector: gain, residual, bias |
+| `visual_comparison.py` | torchtomo and scikit-image reconstructions side by side at 512 px |
+| `visualize.py` | parallel- and fan-beam reconstructions with their PSNR and SSIM |
 | `leap_projector.py` | `LeapParallelBeam` and `LeapFanBeam`, drop-ins for torchtomo's projectors backed by LEAP's kernels |
 | `results/` | the recorded comparison: `README.md`, `library-comparison.json`, and its figures |
 
-The operator agreement tests are `tests/test_leap_consistency.py` and
-`tests/test_torchradon_consistency.py`. `training/leap_compare.py` scores LEAP's
-own FBP, SIRT, and SART on the data a training run wrote.
+The operator agreement tests are `tests/test_leap_consistency.py`,
+`tests/test_torchradon_consistency.py`, and `tests/test_skimage_consistency.py`.
+`training/leap_compare.py` scores LEAP's own FBP, SIRT, and SART on the data a
+training run wrote.
 
 ## Speed, one process
 
