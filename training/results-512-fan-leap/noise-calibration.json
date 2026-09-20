@@ -1,0 +1,54 @@
+{
+  "split": "train",
+  "trials": [
+    {
+      "photons": 10.0,
+      "train_fbp_psnr_db": -16.331226348876953
+    },
+    {
+      "photons": 100000000.0,
+      "train_fbp_psnr_db": 30.352100372314453
+    },
+    {
+      "photons": 31622.776601683792,
+      "train_fbp_psnr_db": 19.37704849243164
+    },
+    {
+      "photons": 1778279.410038923,
+      "train_fbp_psnr_db": 29.521066665649414
+    },
+    {
+      "photons": 237137.37056616554,
+      "train_fbp_psnr_db": 26.267423629760742
+    },
+    {
+      "photons": 86596.43233600653,
+      "train_fbp_psnr_db": 23.16044044494629
+    },
+    {
+      "photons": 52329.91146814947,
+      "train_fbp_psnr_db": 21.334806442260742
+    },
+    {
+      "photons": 67317.03824144982,
+      "train_fbp_psnr_db": 22.26953887939453
+    },
+    {
+      "photons": 76350.60803383346,
+      "train_fbp_psnr_db": 22.718608856201172
+    },
+    {
+      "photons": 81312.3008063037,
+      "train_fbp_psnr_db": 22.943361282348633
+    },
+    {
+      "photons": 83912.78302415006,
+      "train_fbp_psnr_db": 23.052143096923828
+    },
+    {
+      "photons": 82602.30901587306,
+      "train_fbp_psnr_db": 22.997549057006836
+    }
+  ],
+  "selected_photons": 82602.30901587306
+}

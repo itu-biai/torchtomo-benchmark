@@ -52,6 +52,7 @@ All at 512 x 512 with 90 angles except the first. The tables and figures are in
 | `results-512-cuda` | ellipses | parallel | torchtomo, `backend="cuda"` | all ten |
 | `results-512-fan` | ellipses | fan | torchtomo | all ten |
 | `results-512-fan-cuda` | ellipses | fan | torchtomo, `backend="cuda"` | all ten |
+| `results-512-fan-leap` | ellipses | fan | LEAP | all ten |
 | `results-ctw-six-methods` | CT slices | parallel | torchtomo | FBP, SIRT, SART, U-Net, RED, LPD |
 | `results-ctw` | CT slices | parallel | torchtomo | all ten |
 | `results-ctw-leap` | CT slices | parallel | LEAP | all ten |
