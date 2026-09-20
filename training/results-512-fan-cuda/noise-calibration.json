@@ -1,5 +1,46 @@
 {
   "split": "train",
-  "trials": [],
+  "trials": [
+    {
+      "photons": 10.0,
+      "train_fbp_psnr_db": -16.227642059326172
+    },
+    {
+      "photons": 100000000.0,
+      "train_fbp_psnr_db": 30.414594650268555
+    },
+    {
+      "photons": 31622.776601683792,
+      "train_fbp_psnr_db": 19.466062545776367
+    },
+    {
+      "photons": 1778279.410038923,
+      "train_fbp_psnr_db": 29.591188430786133
+    },
+    {
+      "photons": 237137.37056616554,
+      "train_fbp_psnr_db": 26.346708297729492
+    },
+    {
+      "photons": 86596.43233600653,
+      "train_fbp_psnr_db": 23.24898338317871
+    },
+    {
+      "photons": 52329.91146814947,
+      "train_fbp_psnr_db": 21.42511749267578
+    },
+    {
+      "photons": 67317.03824144982,
+      "train_fbp_psnr_db": 22.357751846313477
+    },
+    {
+      "photons": 76350.60803383346,
+      "train_fbp_psnr_db": 22.80950355529785
+    },
+    {
+      "photons": 81312.3008063037,
+      "train_fbp_psnr_db": 23.02914047241211
+    }
+  ],
   "selected_photons": 81312.3008063037
 }
