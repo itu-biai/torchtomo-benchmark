@@ -51,14 +51,16 @@ released yet.
 
 | Size, views, bins | Thies et al. backprojection | torchtomo forward | torchtomo adjoint | torchtomo backproject |
 | --- | --- | --- | --- | --- |
-| 256, 360, 384 | 63.4 ms, 19 MiB | 4.3 ms, 46 MiB | 5.5 ms, 46 MiB | 91.7 ms, 3154 MiB |
-| 512, 360, 768 | 250 ms, 23 MiB | 5.4 ms, 76 MiB | 6.8 ms, 76 MiB | 365 ms, 9020 MiB |
-| 512, 720, 768 | 287 ms, 27 MiB | 9.6 ms, 133 MiB | 12.8 ms, 133 MiB | out of memory |
+| 256, 360, 384 | 62.4 ms, 19 MiB | 4.4 ms, 46 MiB | 6.2 ms, 46 MiB | 2.8 ms, 19 MiB |
+| 512, 360, 768 | 246 ms, 23 MiB | 5.3 ms, 76 MiB | 6.7 ms, 76 MiB | 4.0 ms, 24 MiB |
+| 512, 720, 768 | 275 ms, 27 MiB | 9.5 ms, 133 MiB | 12.6 ms, 133 MiB | 7.2 ms, 25 MiB |
 
-torchtomo's forward and adjoint carry the geometry gradient on its CUDA kernels
-and are 14 to 47 times faster. Its FBP backprojection differentiates the geometry
-on the PyTorch path, which keeps every sampling grid for the backward: slower
-than Thies et al.'s kernel and 100 to 400 times the memory.
+torchtomo carries the geometry gradient on its CUDA kernels for all three: the
+forward and adjoint are 14 to 46 times faster than Thies et al.'s backprojector,
+and its own FBP backprojection 22 to 62 times, in the same memory. Before
+torchtomo#5 that backprojection differentiated the geometry on the PyTorch path,
+which keeps every sampling grid for the backward: 92 and 365 ms in 3.2 and 9.0 GB
+at the first two sizes, and out of memory at the third.
 
 ```bash
 git clone https://github.com/mareikethies/geometry_gradients_CT ~/geometry_gradients_CT

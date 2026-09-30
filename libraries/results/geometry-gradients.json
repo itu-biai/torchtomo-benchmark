@@ -6,7 +6,7 @@
    "views": 360,
    "bins": 384,
    "method": "Thies et al. backprojection",
-   "milliseconds": 63.38607252109796,
+   "milliseconds": 62.38278397358954,
    "peak_mib": 18.90283203125
   },
   {
@@ -14,7 +14,7 @@
    "views": 360,
    "bins": 384,
    "method": "torchtomo forward",
-   "milliseconds": 4.3020415178034455,
+   "milliseconds": 4.420791985467076,
    "peak_mib": 46.1689453125
   },
   {
@@ -22,7 +22,7 @@
    "views": 360,
    "bins": 384,
    "method": "torchtomo adjoint",
-   "milliseconds": 5.477169994264841,
+   "milliseconds": 6.210963008925319,
    "peak_mib": 46.1689453125
   },
   {
@@ -30,15 +30,15 @@
    "views": 360,
    "bins": 384,
    "method": "torchtomo backproject",
-   "milliseconds": 91.72634402057156,
-   "peak_mib": 3153.548828125
+   "milliseconds": 2.786922501400113,
+   "peak_mib": 18.556640625
   },
   {
    "size": 512,
    "views": 360,
    "bins": 768,
    "method": "Thies et al. backprojection",
-   "milliseconds": 250.3596589958761,
+   "milliseconds": 246.3665195100475,
    "peak_mib": 23.10302734375
   },
   {
@@ -46,7 +46,7 @@
    "views": 360,
    "bins": 768,
    "method": "torchtomo forward",
-   "milliseconds": 5.4308149847202,
+   "milliseconds": 5.333272507414222,
    "peak_mib": 76.41357421875
   },
   {
@@ -54,7 +54,7 @@
    "views": 360,
    "bins": 768,
    "method": "torchtomo adjoint",
-   "milliseconds": 6.787525460822508,
+   "milliseconds": 6.688691501040012,
    "peak_mib": 76.41357421875
   },
   {
@@ -62,15 +62,15 @@
    "views": 360,
    "bins": 768,
    "method": "torchtomo backproject",
-   "milliseconds": 364.5666709926445,
-   "peak_mib": 9020.36083984375
+   "milliseconds": 3.9735794998705387,
+   "peak_mib": 24.33544921875
   },
   {
    "size": 512,
    "views": 720,
    "bins": 768,
    "method": "Thies et al. backprojection",
-   "milliseconds": 286.6756275179796,
+   "milliseconds": 274.9445984954946,
    "peak_mib": 26.77099609375
   },
   {
@@ -78,7 +78,7 @@
    "views": 720,
    "bins": 768,
    "method": "torchtomo forward",
-   "milliseconds": 9.59734051139094,
+   "milliseconds": 9.527278016321361,
    "peak_mib": 133.46240234375
   },
   {
@@ -86,7 +86,7 @@
    "views": 720,
    "bins": 768,
    "method": "torchtomo adjoint",
-   "milliseconds": 12.754712486639619,
+   "milliseconds": 12.550257000839338,
    "peak_mib": 133.46240234375
   },
   {
@@ -94,8 +94,8 @@
    "views": 720,
    "bins": 768,
    "method": "torchtomo backproject",
-   "milliseconds": null,
-   "peak_mib": null
+   "milliseconds": 7.224919012514874,
+   "peak_mib": 25.41455078125
   }
  ]
 }
