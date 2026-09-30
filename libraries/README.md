@@ -14,7 +14,7 @@ optional: every script and test here skips what is not installed.
 | `visualize.py` | parallel- and fan-beam reconstructions with their PSNR and SSIM |
 | `compare_geometry_gradients.py` | the cost of a geometry gradient against Thies et al.'s differentiable backprojector; writes `results/geometry-gradients.json` |
 | `leap_projector.py` | `LeapParallelBeam` and `LeapFanBeam`, drop-ins for torchtomo's projectors backed by LEAP's kernels |
-| `results/` | the recorded comparison: `README.md`, `library-comparison.json`, and its figures |
+| `results/` | the recorded comparison: `README.md`, `library-comparison.json` and its figures, and the same in fan beam in `results/fan/` |
 
 The operator agreement tests are `tests/test_leap_consistency.py`,
 `tests/test_torchradon_consistency.py`, and `tests/test_skimage_consistency.py`.
@@ -24,7 +24,7 @@ training run wrote.
 ## Speed, one process
 
 512 x 512, batch 4, RTX 2080 Ti, milliseconds for forward / adjoint / FBP,
-from `speed_table.py`:
+from `speed_table.py`, remeasured on 2026-09-30 within timing noise of these:
 
 | Geometry, angles | torchtomo `torch` | torchtomo `cuda` | torchtomo `cuda`, approximate | LEAP | torch-radon |
 | --- | --- | --- | --- | --- | --- |
@@ -140,7 +140,7 @@ where torchtomo integrates over a pixel of physical width.
 
 ```bash
 python libraries/compare_libraries.py            # writes libraries/results/
-python libraries/compare_libraries.py --geometry fan --output /tmp/fan-comparison
+python libraries/compare_libraries.py --geometry fan --output libraries/results/fan
 ```
 
 Each library projects the same phantom and reconstructs its own sinogram, so the
