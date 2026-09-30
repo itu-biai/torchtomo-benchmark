@@ -8,10 +8,10 @@ which run on torch alone, stay in its `benchmark/`.
 
 | Folder | What it holds |
 | --- | --- |
-| [`libraries/`](libraries/README.md) | torchtomo against LEAP, torch-radon, and scikit-image: operator agreement, reconstruction quality, speed, and GPU memory. The recorded comparison is in `libraries/results/`. |
+| [`libraries/`](libraries/README.md) | torchtomo against LEAP, torch-radon, ASTRA, TIGRE, and scikit-image: operator agreement, reconstruction quality, speed, and GPU memory. The recorded comparison is in `libraries/results/`. |
 | [`training/`](training/README.md) | One pipeline that scores ten methods on ellipse phantoms or real CT slices: FBP, SIRT, SART, FBP+BM3D, RED, FBP+U-Net, iRadonMAP, Noise2Inverse, Proj2Proj, and Learned Primal-Dual. Recorded runs are in `training/results*/`. |
 | [`geometry/`](geometry/README.md) | What differentiating the scan geometry buys: the centre of rotation of measured scans (HTC 2022, a walnut) against Vo's method and phase correlation, and per-view motion and angle errors against projection matching. Needs torchtomo's `main`, ahead of the release. |
-| `tests/` | Operator agreement with LEAP, torch-radon, and scikit-image, and checks on the training code. |
+| `tests/` | Operator agreement with LEAP, torch-radon, ASTRA, TIGRE, and scikit-image, and checks on the training code. |
 
 ## Setup
 
@@ -25,9 +25,9 @@ make test
 ```
 
 The recorded runs use features that are not released yet, such as
-`backend="cuda"`, so install torchtomo from a checkout. LEAP and torch-radon are
-optional; [`libraries/README.md`](libraries/README.md) has LEAP's build steps.
-Tests and scripts that need either one skip when it is missing.
+`backend="cuda"`, so install torchtomo from a checkout. LEAP, torch-radon, ASTRA,
+and TIGRE are optional; [`libraries/README.md`](libraries/README.md) has the
+build steps. Tests and scripts that need one skip when it is missing.
 
 Everything runs from the repository root:
 
