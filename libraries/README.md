@@ -17,7 +17,7 @@ scikit-image are optional: every script and test here skips what is not installe
 | `astra_projector.py` | `AstraParallelBeam` and `AstraFanBeam`, the same for ASTRA, on the torch tensors in place through DLPack |
 | `tigre_projector.py` | `TigreParallelBeam` and `TigreFanBeam`, the same for TIGRE |
 | `matched_pair.py` | the autograd the drop-ins share: each library's forward and backprojection as each other's gradient |
-| `results/` | the recorded comparison: `README.md`, `library-comparison.json` and its figures, and the same in fan beam in `results/fan/` |
+| `results/` | the recorded comparison: `README.md`, `speed-table.json`, and `library-comparison.json` with its figures per geometry in `results/parallel/` and `results/fan/` |
 
 The operator agreement tests are `tests/test_leap_consistency.py`,
 `tests/test_torchradon_consistency.py`, `tests/test_astra_tigre_consistency.py`,
@@ -207,8 +207,8 @@ no fitted scale.
 ## Running the whole comparison
 
 ```bash
-python libraries/compare_libraries.py            # writes libraries/results/
-python libraries/compare_libraries.py --geometry fan --output libraries/results/fan
+python libraries/compare_libraries.py                  # writes libraries/results/parallel/
+python libraries/compare_libraries.py --geometry fan   # writes libraries/results/fan/
 ```
 
 Each library projects the same phantom and reconstructs its own sinogram, so the

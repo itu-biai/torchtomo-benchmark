@@ -9,9 +9,11 @@ scale each one works in cancels and nothing is corrected by a fitted factor. All
 of them get the same angle list, the same phantom, and the same inscribed circle
 to be scored over.
 
-Raw numbers are in `library-comparison.json`. `library-comparison.png` shows the
-reconstructions and their error maps, `library-summary.png` the four dimensions
-side by side.
+Each geometry has its own folder, `parallel/` and `fan/`, holding the same three
+files: `library-comparison.json` with the raw numbers, `library-comparison.png`
+with the reconstructions and their error maps, and `library-summary.png` with the
+four dimensions side by side. `speed-table.json` covers both geometries, from
+`speed_table.py`.
 
 ## The operators agree
 
@@ -65,7 +67,7 @@ The ramp was built analytically as `freq.abs()`, so the DC bin of the padded
 transform was exactly zero and the mean of every projection was discarded. The
 reconstruction then sat a constant -0.0172 below the phantom, where LEAP's and
 torch-radon's biases were zero to five decimal places: the error maps in the
-`library-comparison.png` of that time show torchtomo's interior uniformly blue and
+`parallel/library-comparison.png` of that time show torchtomo's interior uniformly blue and
 the other two white.
 
 torch-radon and skimage instead build Kak and Slaney's kernel (Chapter 3,
@@ -197,8 +199,8 @@ difference before and after the call is zero.
 
 ## Fan beam
 
-`python libraries/compare_libraries.py --geometry fan --output libraries/results/fan`
-records the same comparison in fan beam, in `fan/`. Quality, Shepp-Logan, PSNR in
+`python libraries/compare_libraries.py --geometry fan` records the same comparison
+in fan beam, in `fan/`. Quality, Shepp-Logan, PSNR in
 dB and SSIM:
 
 | Geometry | torchtomo | torchtomo-cuda | LEAP | torch-radon | ASTRA | TIGRE |
@@ -349,6 +351,6 @@ python libraries/compare_libraries.py --sections quality figure summary
 # speed and memory, which need the card to themselves
 python libraries/compare_libraries.py --sections performance
 
-# the same in fan beam
-python libraries/compare_libraries.py --geometry fan --output libraries/results/fan
+# the same in fan beam, into fan/ rather than parallel/
+python libraries/compare_libraries.py --geometry fan
 ```

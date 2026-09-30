@@ -9,6 +9,8 @@ so the scale each one works in cancels and the quality figures are comparable
 without any fitted correction. All of them are given the same angle list, the same
 phantom, and the same inscribed circle to be scored over.
 
+    python libraries/compare_libraries.py                   # libraries/results/parallel
+    python libraries/compare_libraries.py --geometry fan    # libraries/results/fan
     python libraries/compare_libraries.py --output /tmp/cmp
 
 Speed and memory are only meaningful on an idle card; --sections lets the quality
@@ -517,7 +519,7 @@ def save_summary_figure(results, path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results")
+    parser.add_argument("--output", type=Path, help="default: libraries/results/<geometry>")
     parser.add_argument("--sizes", type=int, nargs="+", default=[256, 512])
     parser.add_argument("--angles", type=int, nargs="+", default=[90, 180, 360])
     parser.add_argument("--batches", type=int, nargs="+", default=[1, 4])
@@ -533,6 +535,8 @@ def main():
     if not torch.cuda.is_available():
         raise RuntimeError("this comparison needs CUDA: the other libraries are CUDA only")
     device = torch.device("cuda")
+    if args.output is None:
+        args.output = Path(__file__).parent / "results" / args.geometry
     args.output.mkdir(parents=True, exist_ok=True)
     names = [backend.name for backend in available_backends(args.geometry)]
     print(f"libraries: {', '.join(names)}")
