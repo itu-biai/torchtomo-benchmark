@@ -4,7 +4,7 @@
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 # The scripts import their neighbours by module name, as they do when run directly.
-pythonpath = ["libraries", "training"]
+pythonpath = ["libraries", "training", "geometry"]
 
 [tool.ruff]
 line-length = 120

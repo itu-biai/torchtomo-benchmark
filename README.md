@@ -10,6 +10,7 @@ which run on torch alone, stay in its `benchmark/`.
 | --- | --- |
 | [`libraries/`](libraries/README.md) | torchtomo against LEAP, torch-radon, and scikit-image: operator agreement, reconstruction quality, speed, and GPU memory. The recorded comparison is in `libraries/results/`. |
 | [`training/`](training/README.md) | One pipeline that scores ten methods on ellipse phantoms or real CT slices: FBP, SIRT, SART, FBP+BM3D, RED, FBP+U-Net, iRadonMAP, Noise2Inverse, Proj2Proj, and Learned Primal-Dual. Recorded runs are in `training/results*/`. |
+| [`geometry/`](geometry/README.md) | What differentiating the scan geometry buys: the centre of rotation of measured scans (HTC 2022, a walnut) against Vo's method and phase correlation, and per-view motion and angle errors against projection matching. Needs torchtomo's `main`, ahead of the release. |
 | `tests/` | Operator agreement with LEAP, torch-radon, and scikit-image, and checks on the training code. |
 
 ## Setup
@@ -36,6 +37,7 @@ python training/train.py --image-size 512 --angles 90 --batch-size 5 --device cu
     --backend cuda --output training/results-512-cuda
 python libraries/compare_libraries.py
 python libraries/speed_table.py
+python geometry/calibrate_real.py
 ```
 
 ## Recorded runs

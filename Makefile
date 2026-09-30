@@ -21,11 +21,11 @@ install: ## Install requirements (install torchtomo from a checkout first, see r
 
 .PHONY: format
 format: ## Format the scripts and tests
-	$(RUFF) format libraries training tests
+	$(RUFF) format libraries training geometry tests
 
 .PHONY: lint
 lint: ## Lint the scripts and tests
-	$(RUFF) check libraries training tests
+	$(RUFF) check libraries training geometry tests
 
 .PHONY: test
 test: ## Run tests; LEAP and torch-radon tests skip when those are missing
@@ -38,6 +38,15 @@ speed: ## Time every torchtomo backend, LEAP, and torch-radon in one process
 .PHONY: compare
 compare: ## Quality, speed, and memory against LEAP and torch-radon, into libraries/results
 	$(PYTHON) libraries/compare_libraries.py
+
+.PHONY: calibrate
+calibrate: ## Centre of rotation on HTC 2022 and the FIPS walnut, into geometry/results
+	$(PYTHON) geometry/calibrate_real.py
+	$(PYTHON) geometry/figures.py
+
+.PHONY: motion
+motion: ## Per-view motion and angle errors against projection matching, into geometry/results
+	$(PYTHON) geometry/correct_motion.py
 
 .PHONY: check
 check: format lint test ## Run format, lint, and test

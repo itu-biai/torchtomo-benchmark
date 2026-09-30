@@ -12,6 +12,7 @@ optional: every script and test here skips what is not installed.
 | `fbp_consistency.py` | whether a library's FBP inverts its own forward projector: gain, residual, bias |
 | `visual_comparison.py` | torchtomo and scikit-image reconstructions side by side at 512 px |
 | `visualize.py` | parallel- and fan-beam reconstructions with their PSNR and SSIM |
+| `compare_geometry_gradients.py` | the cost of a geometry gradient against Thies et al.'s differentiable backprojector; writes `results/geometry-gradients.json` |
 | `leap_projector.py` | `LeapParallelBeam` and `LeapFanBeam`, drop-ins for torchtomo's projectors backed by LEAP's kernels |
 | `results/` | the recorded comparison: `README.md`, `library-comparison.json`, and its figures |
 
@@ -37,6 +38,36 @@ weights are fast but not exact, and its adjoint is a pixel-driven backprojection
 rather than the transpose of its forward. torchtomo's `approximate=True` makes the
 same trade; its default `cuda` backend keeps the forward and adjoint an exact
 transpose pair.
+
+## Geometry gradients, against Thies et al.
+
+[geometry_gradients_CT](https://github.com/mareikethies/geometry_gradients_CT)
+(Thies et al., Phys. Med. Biol. 2023) differentiates a numba CUDA fan-beam
+backprojector with respect to each view's projection matrix. It has no forward
+projector. `compare_geometry_gradients.py` times one operation plus the gradient
+of a scalar loss with respect to a per-view lateral translation, batch of one,
+median of 10, RTX 2080 Ti; torchtomo's pose table is on its `main`, not
+released yet.
+
+| Size, views, bins | Thies et al. backprojection | torchtomo forward | torchtomo adjoint | torchtomo backproject |
+| --- | --- | --- | --- | --- |
+| 256, 360, 384 | 63.4 ms, 19 MiB | 4.3 ms, 46 MiB | 5.5 ms, 46 MiB | 91.7 ms, 3154 MiB |
+| 512, 360, 768 | 250 ms, 23 MiB | 5.4 ms, 76 MiB | 6.8 ms, 76 MiB | 365 ms, 9020 MiB |
+| 512, 720, 768 | 287 ms, 27 MiB | 9.6 ms, 133 MiB | 12.8 ms, 133 MiB | out of memory |
+
+torchtomo's forward and adjoint carry the geometry gradient on its CUDA kernels
+and are 14 to 47 times faster. Its FBP backprojection differentiates the geometry
+on the PyTorch path, which keeps every sampling grid for the backward: slower
+than Thies et al.'s kernel and 100 to 400 times the memory.
+
+```bash
+git clone https://github.com/mareikethies/geometry_gradients_CT ~/geometry_gradients_CT
+pip install "numba-cuda[cu13]"   # [cu12] on a CUDA 12 driver
+python libraries/compare_geometry_gradients.py --thies ~/geometry_gradients_CT
+```
+
+numba-cuda 0.30 still imports `np.row_stack`, which NumPy 2.4 removed; the
+script puts the alias back.
 
 ## LEAP
 

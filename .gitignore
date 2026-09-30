@@ -15,3 +15,7 @@ __pycache__/
 *.swp
 
 # Training checkpoints, datasets, and CT slices: see training/.gitignore
+
+# Measured sinograms fetched from Zenodo, and reconstructions
+geometry/data/
+geometry/results/*.npz
