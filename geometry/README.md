@@ -63,8 +63,10 @@ method to move its estimate by `d`. The worst error over the four:
 The grid is limited by its 0.02 bin step and Vo by its 0.25. Phase correlation
 registers the 0 and 180 degree projections, which are mirror images only in
 parallel beam, so on these fan-beam scans it is outside its assumptions rather
-than a fair competitor. The gradient takes 0.6 to 4 s per scan and the grid 0.2
-to 0.7 s: for one scalar, the no-gradient kernel path makes a grid cheap.
+than a fair competitor. The gradient takes 0.09 to 0.23 s per scan in under 200
+MiB, the grid 0.23 to 0.69 s. Before torchtomo#5 put the FBP backprojection's
+geometry gradient on the CUDA kernels, the gradient took 0.6 to 4 s and up to
+7.6 GB, and the grid was the faster of the two.
 
 ![FBP before and after calibration](results/fbp_before_after.png)
 
@@ -88,17 +90,17 @@ HTC organisers' five reconstructions) and three seeds each; the means:
 | --- | --- | --- | --- | --- | --- |
 | shifts | none | 1.573 px | | 19.14 dB | |
 | shifts | projection matching | 0.037 px | | 25.78 dB | 0.1 s |
-| shifts | gradient, shifts | 0.030 px | | 25.81 dB | 5.1 s |
+| shifts | gradient, shifts | 0.030 px | | 25.81 dB | 0.5 s |
 | shifts | oracle | 0 | | 25.83 dB | |
 | shifts and angles | none | 1.573 px | 0.303 deg | 19.14 dB | |
 | shifts and angles | projection matching | 0.041 px | 0.303 deg | 25.56 dB | 0.1 s |
-| shifts and angles | gradient, shifts | 0.036 px | 0.303 deg | 25.58 dB | 5.2 s |
-| shifts and angles | gradient, shifts and angles | 0.033 px | 0.157 deg | 25.62 dB | 5.5 s |
+| shifts and angles | gradient, shifts | 0.038 px | 0.303 deg | 25.58 dB | 0.5 s |
+| shifts and angles | gradient, shifts and angles | 0.033 px | 0.158 deg | 25.61 dB | 0.7 s |
 | shifts and angles | oracle | 0 | 0 | 25.66 dB | |
 
 Errors leave out what no method can see from the sinogram: a rigid translation of
 the object and a constant angle offset. Projection matching (reconstruct,
-reproject, register each view by cross-correlation, 100 rounds) is fifty times
+reproject, register each view by cross-correlation, 100 rounds) is five times
 faster and models shifts only; the gradient takes the angles too and halves their
 error, the one thing here matching cannot do. Angles are only halved because a
 consistent set of wrong angles still reprojects consistently.
