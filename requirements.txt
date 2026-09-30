@@ -15,9 +15,10 @@ scipy
 # geometry/: Vo's method and phase correlation, the centre-of-rotation baselines.
 algotom
 
-# Optional, for libraries/: torch-radon (pip install torch-radon) and LEAP, which
-# is built from source. libraries/README.md has the build steps; everything that
-# needs either one skips when it is missing.
+# Optional, for libraries/: torch-radon (pip install torch-radon), ASTRA
+# (pip install astra-toolbox), and LEAP and TIGRE, which are built from source.
+# libraries/README.md has the build steps; everything that needs one of them
+# skips when it is missing.
 #
 # Optional, for libraries/compare_geometry_gradients.py: numba-cuda and a clone of
 # github.com/mareikethies/geometry_gradients_CT, passed as --thies.

@@ -1,0 +1,48 @@
+diff --git a/Common/CUDA/Siddon_projection.cu b/Common/CUDA/Siddon_projection.cu
+index 2a025f8..8777bd6 100644
+--- a/Common/CUDA/Siddon_projection.cu
++++ b/Common/CUDA/Siddon_projection.cu
+@@ -612,6 +612,7 @@ void CreateTexture(const GpuIds& gpuids,const float* imagedata,Geometry geo,cuda
+         copyParams.extent   = extent;
+         copyParams.kind     = cudaMemcpyHostToDevice;
+         cudaMemcpy3DAsync(&copyParams);
++        cudaDeviceSynchronize(); // the kernels run on other streams
+     }
+     for (unsigned int dev = 0; dev < num_devices; dev++){
+         cudaSetDevice(gpuids[dev]);
+diff --git a/Common/CUDA/Siddon_projection_parallel.cu b/Common/CUDA/Siddon_projection_parallel.cu
+index abd648b..f1e6021 100644
+--- a/Common/CUDA/Siddon_projection_parallel.cu
++++ b/Common/CUDA/Siddon_projection_parallel.cu
+@@ -497,6 +497,7 @@ void CreateTextureParallel(float* image,Geometry geo,cudaArray** d_cuArrTex, cud
+         copyParams.extent   = extent;
+         copyParams.kind     = cudaMemcpyHostToDevice;
+         cudaMemcpy3DAsync(&copyParams,stream[1]);
++        cudaDeviceSynchronize(); // the kernels run on other streams
+     
+ 
+     //Array creation End
+diff --git a/Common/CUDA/ray_interpolated_projection.cu b/Common/CUDA/ray_interpolated_projection.cu
+index e71c5b5..8427c7b 100644
+--- a/Common/CUDA/ray_interpolated_projection.cu
++++ b/Common/CUDA/ray_interpolated_projection.cu
+@@ -574,6 +574,7 @@ void CreateTextureInterp(const GpuIds& gpuids,const float* imagedata,Geometry ge
+         copyParams.extent   = extent;
+         copyParams.kind     = cudaMemcpyHostToDevice;
+         cudaMemcpy3DAsync(&copyParams);
++        cudaDeviceSynchronize(); // the kernels run on other streams
+         //cudaCheckErrors("Texture memory data copy fail");
+         //Array creation End
+     }
+diff --git a/Common/CUDA/ray_interpolated_projection_parallel.cu b/Common/CUDA/ray_interpolated_projection_parallel.cu
+index 4aad5d6..a325ea1 100644
+--- a/Common/CUDA/ray_interpolated_projection_parallel.cu
++++ b/Common/CUDA/ray_interpolated_projection_parallel.cu
+@@ -428,6 +428,7 @@ void CreateTextureParallelInterp(float* image,Geometry geo,cudaArray** d_cuArrTe
+     copyParams.extent   = extent;
+     copyParams.kind     = cudaMemcpyHostToDevice;
+     cudaMemcpy3DAsync(&copyParams,stream[1]);
++    cudaDeviceSynchronize(); // the kernels run on other streams
+     
+     
+     //Array creation End

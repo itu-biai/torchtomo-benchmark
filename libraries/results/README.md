@@ -1,49 +1,60 @@
-# torchtomo against LEAP and torch-radon
+# torchtomo against LEAP, torch-radon, ASTRA and TIGRE
 
 Measured on one RTX 2080 Ti, torch 2.4.0+cu121, with
-`libraries/compare_libraries.py`, on torchtomo `main` at `803d18c` and this
-repository at `8fca595`, 2026-09-30. Each library projects the same phantom and
-reconstructs its own sinogram, so the scale each one works in cancels and nothing
-is corrected by a fitted factor. All three get the same angle list, the same
-phantom, and the same inscribed circle to be scored over.
+`libraries/compare_libraries.py`, on torchtomo `main` at `f0da637`, 2026-09-30.
+ASTRA is the `astra-toolbox` 2.5.0 wheel; TIGRE is 3.1.3 at `6b0951a`, built with
+`libraries/patches/tigre-texture-copy-sync.patch` (why in `libraries/README.md`).
+Each library projects the same phantom and reconstructs its own sinogram, so the
+scale each one works in cancels and nothing is corrected by a fitted factor. All
+of them get the same angle list, the same phantom, and the same inscribed circle
+to be scored over.
 
-Raw numbers are in `library-comparison.json`. `library-comparison.png` shows the
-reconstructions and their error maps, `library-summary.png` the four dimensions
-side by side.
+Each geometry has its own folder, `parallel/` and `fan/`, holding the same three
+files: `library-comparison.json` with the raw numbers, `library-comparison.png`
+with the reconstructions and their error maps, and `library-summary.png` with the
+four dimensions side by side. `speed-table.json` covers both geometries, from
+`speed_table.py`.
 
 ## The operators agree
 
-Sinograms match to between 0.05% and 0.2% in relative L2 across every size, angle
+Sinograms match to between 0.05% and 0.3% in relative L2 across every size, angle
 count and phantom tested. The scale each library needs to reach torchtomo's is
 exact and explainable:
 
-| Library | Scale to torchtomo | Why |
-| --- | --- | --- |
-| LEAP | 1.000000 | same convention once the arc is negated |
-| torch-radon | `2 / size` exactly | it sums pixel values where torchtomo integrates over a pixel width |
+| Library | Scale to torchtomo | Relative L2, 256 / 512 px | Why |
+| --- | --- | --- | --- |
+| LEAP | 1.00000 | 0.20% / 0.10% | same convention once the arc is negated |
+| torch-radon | `2 / size` exactly | 0.09% at 512 px | it sums pixel values where torchtomo integrates over a pixel width |
+| ASTRA | 0.99996 | 0.30% / 0.15% | same once the arc is negated |
+| TIGRE | 1.00000 | 0.12% / 0.07% | same once the arc is negated, started a quarter turn on, and the detector read the other way |
 
 This is a stronger check than the library had before: the torch-radon comparison
-could only match up to a fitted ratio, while LEAP confirms the absolute scale.
+could only match up to a fitted ratio, while LEAP, ASTRA and TIGRE are three
+independent CUDA implementations that each confirm the absolute scale. TIGRE is
+the closest of the four.
 
 ## Reconstruction quality, Shepp-Logan
 
 PSNR in dB and SSIM, over the visible circle. Measured with the Ram-Lak ramp that
 landed in 0.3; the row below the table is what the same runs gave before it.
 
-| Geometry | torchtomo | torchtomo-cuda | LEAP | torch-radon |
-| --- | --- | --- | --- | --- |
-| 256 px, 90 angles | 25.59 / 0.648 | 25.59 / 0.648 | 25.55 / 0.618 | 25.59 / 0.648 |
-| 256 px, 180 angles | 27.07 / 0.850 | 27.07 / 0.850 | 27.33 / 0.819 | 27.07 / 0.850 |
-| 256 px, 360 angles | 27.46 / 0.937 | 27.46 / 0.937 | 27.89 / 0.923 | 27.46 / 0.937 |
-| 512 px, 90 angles | 24.48 / 0.534 | 24.48 / 0.534 | 24.20 / 0.511 | 24.48 / 0.534 |
-| 512 px, 180 angles | 28.48 / 0.745 | 28.48 / 0.745 | 28.39 / 0.714 | 28.48 / 0.745 |
-| 512 px, 360 angles | 30.08 / 0.909 | 30.08 / 0.909 | 30.35 / 0.886 | 30.08 / 0.909 |
+| Geometry | torchtomo | torchtomo-cuda | LEAP | torch-radon | ASTRA | TIGRE |
+| --- | --- | --- | --- | --- | --- | --- |
+| 256 px, 90 angles | 25.59 / 0.648 | 25.59 / 0.648 | 25.55 / 0.618 | 25.59 / 0.648 | 25.55 / 0.618 | 25.60 / 0.650 |
+| 256 px, 180 angles | 27.07 / 0.850 | 27.07 / 0.850 | 27.33 / 0.819 | 27.07 / 0.850 | 27.35 / 0.820 | 27.08 / 0.852 |
+| 256 px, 360 angles | 27.46 / 0.937 | 27.46 / 0.937 | 27.89 / 0.923 | 27.46 / 0.937 | 27.91 / 0.924 | 27.47 / 0.939 |
+| 512 px, 90 angles | 24.48 / 0.534 | 24.48 / 0.534 | 24.20 / 0.511 | 24.48 / 0.534 | 24.23 / 0.511 | 24.49 / 0.535 |
+| 512 px, 180 angles | 28.48 / 0.745 | 28.48 / 0.745 | 28.39 / 0.714 | 28.48 / 0.745 | 28.42 / 0.714 | 28.49 / 0.747 |
+| 512 px, 360 angles | 30.08 / 0.909 | 30.08 / 0.909 | 30.35 / 0.886 | 30.08 / 0.909 | 30.37 / 0.887 | 30.09 / 0.910 |
 
-torchtomo and torch-radon now agree to two decimals in both metrics, which is what
-two libraries applying the same discrete ramp to the same measurements should do.
-Against LEAP it leads on SSIM in every row and on PSNR at 90 views, and trails by
-0.26 to 0.43 dB at 180 and 360 views. The `cuda` backend reproduces the PyTorch
-path to the same two decimals; its own kernels are the only difference.
+The six split into two families by filter. torchtomo, torch-radon and TIGRE all
+build Kak and Slaney's spatial ramp kernel and transform it (TIGRE's `ramp_flat`),
+and agree to within 0.01 dB and 0.002 of SSIM. LEAP and ASTRA agree with each other
+to within 0.03 dB and 0.001. Between the families, torchtomo leads on SSIM in every
+row and on PSNR at 90 views and at 512 px with 180, and trails by 0.26 to 0.45 dB
+in the other three rows.
+The `cuda` backend reproduces the PyTorch path to the same two decimals; its own
+kernels are the only difference.
 
 Before the ramp fix the same table read 24.27 / 0.539 at 256 px and 90 views up to
 28.78 / 0.682 at 512 px and 360 views, last in every row and by 0.2 of SSIM at the
@@ -56,7 +67,7 @@ The ramp was built analytically as `freq.abs()`, so the DC bin of the padded
 transform was exactly zero and the mean of every projection was discarded. The
 reconstruction then sat a constant -0.0172 below the phantom, where LEAP's and
 torch-radon's biases were zero to five decimal places: the error maps in the
-`library-comparison.png` of that time show torchtomo's interior uniformly blue and
+`parallel/library-comparison.png` of that time show torchtomo's interior uniformly blue and
 the other two white.
 
 torch-radon and skimage instead build Kak and Slaney's kernel (Chapter 3,
@@ -104,27 +115,28 @@ residual 0.0263 -> 0.0049, bias -0.00446 -> -0.00010 at 512 px and 360 views.
 Milliseconds per call and peak memory PyTorch allocated, 512 px, Shepp-Logan,
 remeasured on 2026-09-30. `torchtomo` is the PyTorch path (`backend="torch"`),
 `torchtomo-cuda` the runtime-compiled kernels (`backend="cuda"`, the default
-where they load). Batch 4:
+where they load). ASTRA and TIGRE show time only; the GPU memory section says why.
+Batch 4:
 
-| Operation | Angles | torchtomo | torchtomo-cuda | LEAP | torch-radon |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| forward | 90 | 3.27 ms, 139 MB | 0.58 ms, 5 MB | 1.10 ms, 6 MB | 0.23 ms, 1 MB |
-| forward | 360 | 17.85 ms, 175 MB | 2.20 ms, 7 MB | 2.62 ms, 11 MB | 0.68 ms, 3 MB |
-| backproject | 90 | 8.18 ms, 80 MB | 0.48 ms, 5 MB | 0.60 ms, 8 MB | 0.16 ms, 4 MB |
-| backproject | 360 | 37.55 ms, 109 MB | 1.99 ms, 7 MB | 1.64 ms, 8 MB | 0.63 ms, 4 MB |
-| fbp | 90 | 3.10 ms, 173 MB | 0.23 ms, 7 MB | 3.41 ms, 8 MB | 0.22 ms, 10 MB |
-| fbp | 360 | 14.30 ms, 175 MB | 0.63 ms, 30 MB | 7.63 ms, 11 MB | 0.88 ms, 44 MB |
+| Operation | Angles | torchtomo | torchtomo-cuda | LEAP | torch-radon | ASTRA | TIGRE |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| forward | 90 | 3.27 ms, 139 MB | 0.58 ms, 5 MB | 1.11 ms, 6 MB | 0.23 ms, 1 MB | 1.67 ms | 4.39 ms |
+| forward | 360 | 17.88 ms, 175 MB | 2.20 ms, 7 MB | 2.63 ms, 11 MB | 0.67 ms, 3 MB | 2.92 ms | 9.65 ms |
+| backproject | 90 | 8.20 ms, 80 MB | 0.48 ms, 5 MB | 0.61 ms, 8 MB | 0.16 ms, 4 MB | 1.58 ms | 4.39 ms |
+| backproject | 360 | 37.28 ms, 109 MB | 1.98 ms, 7 MB | 1.63 ms, 8 MB | 0.63 ms, 4 MB | 3.40 ms | 7.40 ms |
+| fbp | 90 | 3.09 ms, 173 MB | 0.23 ms, 7 MB | 3.44 ms, 8 MB | 0.22 ms, 10 MB | 4.10 ms | 10.80 ms |
+| fbp | 360 | 14.31 ms, 175 MB | 0.64 ms, 30 MB | 7.52 ms, 11 MB | 0.88 ms, 44 MB | 6.72 ms | 21.97 ms |
 
 Batch 1:
 
-| Operation | Angles | torchtomo | torchtomo-cuda | LEAP | torch-radon |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| forward | 90 | 0.91 ms | 0.31 ms | 0.55 ms | 0.06 ms |
-| forward | 360 | 8.17 ms | 1.17 ms | 0.91 ms | 0.20 ms |
-| backproject | 90 | 2.71 ms | 0.46 ms | 0.39 ms | 0.05 ms |
-| backproject | 360 | 15.74 ms | 1.90 ms | 0.86 ms | 0.16 ms |
-| fbp | 90 | 1.77 ms | 0.21 ms | 2.87 ms | 0.18 ms |
-| fbp | 360 | 8.56 ms | 0.28 ms | 5.14 ms | 0.22 ms |
+| Operation | Angles | torchtomo | torchtomo-cuda | LEAP | torch-radon | ASTRA | TIGRE |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| forward | 90 | 0.91 ms | 0.31 ms | 0.55 ms | 0.06 ms | 1.25 ms | 2.37 ms |
+| forward | 360 | 8.16 ms | 1.17 ms | 0.91 ms | 0.20 ms | 1.61 ms | 6.22 ms |
+| backproject | 90 | 2.73 ms | 0.46 ms | 0.40 ms | 0.05 ms | 1.10 ms | 1.83 ms |
+| backproject | 360 | 15.55 ms | 1.89 ms | 0.85 ms | 0.16 ms | 1.45 ms | 3.43 ms |
+| fbp | 90 | 1.76 ms | 0.21 ms | 2.88 ms | 0.18 ms | 1.09 ms | 4.29 ms |
+| fbp | 360 | 8.55 ms | 0.28 ms | 5.07 ms | 0.22 ms | 1.75 ms | 12.16 ms |
 
 On its kernels torchtomo is ahead of LEAP on the forward projection at batch 4
 (1.2x at 360 views, 1.9x at 90) and at batch 1 with 90 views, and on FBP
@@ -134,6 +146,18 @@ batch 1 with 360 views (1.3x). LEAP carries a fixed cost of a few
 milliseconds per FBP call, part of it the copy `libraries/leap_projector.py` makes
 before handing the sinogram over, which is why its FBP trails even at batch 1.
 
+ASTRA runs on the torch tensors in place, through its batched 3D projector, so
+its rows are its kernels and nothing else. torchtomo's kernels are ahead of it on
+the forward (1.3x to 4.0x), on the adjoint in three of four rows (1.7x to 3.3x at
+batch 4, 2.4x at batch 1 with 90 views), and on FBP by 5x to 18x. ASTRA is ahead
+on the adjoint at batch 1 with 360 views, 1.45 against 1.89 ms. Its FBP is the
+`FBP_CUDA` algorithm, one image at a time.
+
+TIGRE is the slowest of the CUDA libraries, 2x to 47x behind torchtomo's kernels.
+Part of that is its interface rather than its kernels: every call takes NumPy
+arrays, so a TIGRE row includes copying the batch to the card and the result
+back, and it allocates its working buffers afresh each call.
+
 torch-radon is the fastest projector, 2.5x to 12x ahead of torchtomo's kernels
 on forward and adjoint. It samples through the GPU's texture units, whose 8-bit
 interpolation weights are fast but not exact, and its adjoint is a pixel-driven
@@ -142,8 +166,8 @@ backprojection rather than the transpose of its forward. torchtomo's
 ms against 0.67 / 0.62 at 360 views, batch 4, in `libraries/README.md`); its
 default keeps the forward and adjoint an exact transpose pair, which is what an
 unrolled method such as Learned Primal-Dual trains through. On FBP the two are
-within 0.06 ms of each other, torchtomo ahead at batch 4 with 360 views (0.63
-against 0.88 ms) and torch-radon at batch 1.
+within 0.06 ms of each other except at batch 4 with 360 views, where torchtomo is
+ahead, 0.64 against 0.88 ms; torch-radon is ahead at batch 1.
 
 The PyTorch path runs on any device and in float64, and is 3x to 31x slower than
 the kernels. Every comparison of it with LEAP or torch-radon in earlier versions
@@ -167,41 +191,55 @@ LEAP allocates outside PyTorch's caching allocator, so `max_memory_allocated`
 cannot see all of it. Both a torch-level and a driver-level figure are recorded in
 the JSON, and they agree closely here.
 
+ASTRA and TIGRE are left out of this table because neither figure measures them.
+Both allocate their textures and working buffers with `cudaMalloc` inside the call
+and free them before it returns, so the torch-level peak shows only the tensors
+the adapter hands them (5 to 13 MB, recorded in the JSON) and the driver-level
+difference before and after the call is zero.
+
 ## Fan beam
 
-`python libraries/compare_libraries.py --geometry fan --output libraries/results/fan`
-records the same comparison in fan beam, in `fan/`. Quality, Shepp-Logan, PSNR in
+`python libraries/compare_libraries.py --geometry fan` records the same comparison
+in fan beam, in `fan/`. Quality, Shepp-Logan, PSNR in
 dB and SSIM:
 
-| Geometry | torchtomo | torchtomo-cuda | LEAP | torch-radon |
-| --- | ---: | ---: | ---: | ---: |
-| 256 px, 90 angles | 22.51 / 0.543 | 22.51 / 0.543 | 22.46 / 0.523 | 22.86 / 0.552 |
-| 256 px, 180 angles | 26.47 / 0.740 | 26.47 / 0.740 | 26.84 / 0.717 | 26.49 / 0.752 |
-| 256 px, 360 angles | 27.44 / 0.889 | 27.44 / 0.889 | 28.00 / 0.872 | 27.26 / 0.893 |
-| 512 px, 90 angles | 20.89 / 0.483 | 20.89 / 0.483 | 20.77 / 0.465 | 21.34 / 0.491 |
-| 512 px, 180 angles | 26.25 / 0.624 | 26.25 / 0.624 | 26.22 / 0.604 | 26.48 / 0.635 |
-| 512 px, 360 angles | 29.38 / 0.812 | 29.38 / 0.812 | 29.61 / 0.794 | 29.26 / 0.823 |
+| Geometry | torchtomo | torchtomo-cuda | LEAP | torch-radon | ASTRA | TIGRE |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 256 px, 90 angles | 22.51 / 0.543 | 22.51 / 0.543 | 22.46 / 0.523 | 22.86 / 0.552 | 22.37 / 0.520 | 22.52 / 0.543 |
+| 256 px, 180 angles | 26.47 / 0.740 | 26.47 / 0.740 | 26.84 / 0.717 | 26.49 / 0.752 | 26.76 / 0.709 | 26.61 / 0.740 |
+| 256 px, 360 angles | 27.44 / 0.889 | 27.44 / 0.889 | 28.00 / 0.872 | 27.26 / 0.893 | 27.97 / 0.865 | 27.55 / 0.890 |
+| 512 px, 90 angles | 20.89 / 0.483 | 20.89 / 0.483 | 20.77 / 0.465 | 21.34 / 0.491 | 20.70 / 0.463 | 20.90 / 0.485 |
+| 512 px, 180 angles | 26.25 / 0.624 | 26.25 / 0.624 | 26.22 / 0.604 | 26.48 / 0.635 | 26.11 / 0.600 | 26.28 / 0.625 |
+| 512 px, 360 angles | 29.38 / 0.812 | 29.38 / 0.812 | 29.61 / 0.794 | 29.26 / 0.823 | 29.51 / 0.786 | 29.39 / 0.813 |
 
-LEAP's fan-beam sinograms agree with torchtomo's to 0.6% at 512 px and 360
-views, with a fitted scale of 1.0003. torch-radon's are 35% apart after scaling:
-its fan geometry is parametrised differently and `compare_libraries.py` does not
-map it onto torchtomo's, so its fan row compares reconstructions of what each
-library was asked for, not the same scan.
+LEAP's, ASTRA's and TIGRE's fan-beam sinograms each agree with torchtomo's to
+0.6% at 512 px and 1.1% at 256 px, at every view count, with a fitted scale
+between 1.0003 and 1.0007. Three independent implementations landing at the same
+distance suggests it is torchtomo's fan discretisation rather than a disagreement
+about the geometry; the three were not compared with each other. torch-radon's are 35% apart after scaling: its fan geometry is
+parametrised differently and `compare_libraries.py` does not map it onto
+torchtomo's, so its fan row compares reconstructions of what each library was
+asked for, not the same scan.
 
 Speed and memory, 512 px, batch 4:
 
-| Operation | Angles | torchtomo | torchtomo-cuda | LEAP | torch-radon |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| forward | 90 | 4.04 ms, 131 MB | 0.72 ms, 5 MB | 1.91 ms, 9 MB | 0.42 ms, 1 MB |
-| forward | 360 | 16.06 ms, 134 MB | 2.71 ms, 9 MB | 4.89 ms, 13 MB | 1.43 ms, 4 MB |
-| backproject | 90 | 12.80 ms, 44 MB | 0.73 ms, 6 MB | 1.10 ms, 9 MB | 0.21 ms, 4 MB |
-| backproject | 360 | 50.77 ms, 44 MB | 2.99 ms, 13 MB | 3.51 ms, 9 MB | 0.81 ms, 4 MB |
-| fbp | 90 | 3.76 ms, 146 MB | 0.30 ms, 17 MB | 5.97 ms, 13 MB | 0.31 ms, 22 MB |
-| fbp | 360 | 14.90 ms, 152 MB | 1.09 ms, 63 MB | 17.51 ms, 13 MB | 1.30 ms, 83 MB |
+| Operation | Angles | torchtomo | torchtomo-cuda | LEAP | torch-radon | ASTRA | TIGRE |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| forward | 90 | 4.03 ms, 131 MB | 0.72 ms, 5 MB | 1.91 ms, 9 MB | 0.42 ms, 1 MB | 2.27 ms | 21.77 ms |
+| forward | 360 | 16.06 ms, 134 MB | 2.74 ms, 9 MB | 4.91 ms, 13 MB | 1.43 ms, 4 MB | 3.75 ms | 55.63 ms |
+| backproject | 90 | 12.96 ms, 44 MB | 0.73 ms, 6 MB | 1.10 ms, 9 MB | 0.21 ms, 4 MB | 3.58 ms | 10.33 ms |
+| backproject | 360 | 51.78 ms, 44 MB | 3.00 ms, 13 MB | 3.52 ms, 9 MB | 0.81 ms, 4 MB | 12.31 ms | 18.17 ms |
+| fbp | 90 | 3.76 ms, 146 MB | 0.30 ms, 17 MB | 5.98 ms, 13 MB | 0.31 ms, 22 MB | 6.19 ms | 37.46 ms |
+| fbp | 360 | 14.90 ms, 151 MB | 1.10 ms, 63 MB | 18.09 ms, 13 MB | 1.30 ms, 83 MB | 16.05 ms | 79.72 ms |
 
 In fan beam torchtomo's kernels are ahead of LEAP on every operation, 1.8x to
 2.7x on the forward, 1.2x to 1.5x on the adjoint and 16x to 20x on FBP, and ahead
-of torch-radon on FBP at 360 views.
+of torch-radon on FBP at 360 views. They are ahead of ASTRA at batch 4 on every
+operation too, 1.4x to 3.2x on the forward, 4.1x to 4.9x on the adjoint and 15x to
+21x on FBP; ASTRA has no batched fan projector, so the adapter calls its 2D one
+per image. At batch 1 with 360 views ASTRA's forward is the faster, 1.01 against
+1.35 ms (`fan/library-comparison.json`). TIGRE runs fan beam as a one-row cone,
+one image per call with the copies each call makes, and is 6x to 125x behind.
 
 ## History: when this comparison ran on the PyTorch path
 
@@ -312,4 +350,7 @@ python libraries/compare_libraries.py --sections quality figure summary
 
 # speed and memory, which need the card to themselves
 python libraries/compare_libraries.py --sections performance
+
+# the same in fan beam, into fan/ rather than parallel/
+python libraries/compare_libraries.py --geometry fan
 ```

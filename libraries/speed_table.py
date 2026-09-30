@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""torchtomo's backends, LEAP, and torch-radon timed in one process.
+"""torchtomo's backends, LEAP, torch-radon, ASTRA and TIGRE timed in one process.
 
 Forward, adjoint, and FBP in milliseconds per call on the same batch. Running
 every projector in one process on a card that was just spun up keeps clock
@@ -8,9 +8,13 @@ columns also come from torchtomo's benchmark/benchmark_speed.py.
 
     python libraries/speed_table.py --json libraries/results/speed-table.json
 
-Held memory is reported for torchtomo only: LEAP and torch-radon allocate
+Held memory is reported for torchtomo only: the other libraries allocate
 outside PyTorch's caching allocator, where torch.cuda.memory_allocated cannot
 see them.
+
+ASTRA works on the torch tensors in place through DLPack. TIGRE takes NumPy
+arrays, so its rows include the copies to the card and back that every TIGRE
+call makes.
 """
 
 import argparse
@@ -21,10 +25,14 @@ from pathlib import Path
 
 import torch
 from compare_libraries import (
+    AstraFanBeam,
+    AstraParallelBeam,
     LeapFanBeam,
     LeapParallelBeam,
     Radon,
     RadonFanbeam,
+    TigreFanBeam,
+    TigreParallelBeam,
     TorchRadonBackend,
     TorchRadonFanBackend,
     angle_tensor,
@@ -97,6 +105,16 @@ def projectors(geometry, size, n_angles):
         rows.append(("LEAP", False, lambda: leap_class(img_size=size, n_angles=n_angles).cuda()))
     if (Radon if geometry == "parallel" else RadonFanbeam) is not None:
         rows.append(("torch-radon", False, lambda: TorchRadonOperators(geometry, size, n_angles)))
+    for name, adapter in (("ASTRA", (AstraParallelBeam, AstraFanBeam)), ("TIGRE", (TigreParallelBeam, TigreFanBeam))):
+        adapter_class = adapter[0] if geometry == "parallel" else adapter[1]
+        if adapter_class is not None:
+            rows.append(
+                (
+                    name,
+                    False,
+                    lambda adapter_class=adapter_class: adapter_class(img_size=size, n_angles=n_angles).cuda(),
+                )
+            )
     return rows
 
 
@@ -157,7 +175,7 @@ def main():
     parser.add_argument("--json", type=Path, help="also write the rows to this file")
     args = parser.parse_args()
     if not torch.cuda.is_available():
-        raise RuntimeError("this comparison needs CUDA: LEAP and torch-radon are CUDA only")
+        raise RuntimeError("this comparison needs CUDA: the other libraries are CUDA only")
 
     print(f"device: {torch.cuda.get_device_name(0)}, torch {torch.__version__}, batch {args.batch_size}")
     print("| geometry | size | angles | projector | forward ms | adjoint ms | FBP ms | held MB |")

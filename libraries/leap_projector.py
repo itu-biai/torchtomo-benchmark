@@ -15,34 +15,9 @@ this module unless it is asked for by name.
 import numpy as np
 import torch
 from leapctype import tomographicModels
+from matched_pair import _Backproject, _Project
 
 from torchtomo import FanBeam, ParallelBeam
-
-
-class _Project(torch.autograd.Function):
-    """A x, with LEAP's backprojection as the gradient: the two are a matched pair."""
-
-    @staticmethod
-    def forward(ctx, image, projector):
-        ctx.projector = projector
-        return projector.project_raw(image)
-
-    @staticmethod
-    def backward(ctx, gradient):
-        return ctx.projector.backproject_raw(gradient.contiguous()), None
-
-
-class _Backproject(torch.autograd.Function):
-    """A^T y, with LEAP's forward projection as the gradient."""
-
-    @staticmethod
-    def forward(ctx, sinogram, projector):
-        ctx.projector = projector
-        return projector.backproject_raw(sinogram)
-
-    @staticmethod
-    def backward(ctx, gradient):
-        return ctx.projector.project_raw(gradient.contiguous()), None
 
 
 class LeapParallelBeam(ParallelBeam):

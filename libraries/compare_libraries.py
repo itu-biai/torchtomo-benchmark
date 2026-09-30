@@ -1,4 +1,4 @@
-"""Compare torchtomo, LEAP, and torch-radon on the same parallel- or fan-beam problem.
+"""Compare torchtomo, LEAP, torch-radon, ASTRA and TIGRE on the same parallel- or fan-beam problem.
 
 Four dimensions: reconstruction quality (PSNR and SSIM against the phantom),
 agreement between the libraries' sinograms, speed, and GPU memory footprint.
@@ -6,9 +6,11 @@ A figure of the reconstructions and their error maps is written alongside.
 
 Each library projects the phantom and reconstructs it with its own conventions,
 so the scale each one works in cancels and the quality figures are comparable
-without any fitted correction. All three are given the same angle list, the same
+without any fitted correction. All of them are given the same angle list, the same
 phantom, and the same inscribed circle to be scored over.
 
+    python libraries/compare_libraries.py                   # libraries/results/parallel
+    python libraries/compare_libraries.py --geometry fan    # libraries/results/fan
     python libraries/compare_libraries.py --output /tmp/cmp
 
 Speed and memory are only meaningful on an idle card; --sections lets the quality
@@ -45,6 +47,18 @@ try:
 except ImportError:
     LeapParallelBeam = None
     LeapFanBeam = None
+
+try:
+    from astra_projector import AstraFanBeam, AstraParallelBeam
+except ImportError:
+    AstraParallelBeam = None
+    AstraFanBeam = None
+
+try:
+    from tigre_projector import TigreFanBeam, TigreParallelBeam
+except ImportError:
+    TigreParallelBeam = None
+    TigreFanBeam = None
 
 try:
     from skimage.metrics import structural_similarity
@@ -93,11 +107,13 @@ class TorchtomoCudaBackend(TorchtomoBackend):
         self.projector = ParallelBeam(img_size=size, n_angles=len(angles), angles=angles, backend="cuda").to(device)
 
 
-class LeapBackend:
-    name = "leap"
+class AdapterBackend:
+    """A library behind one of the drop-in ParallelBeam or FanBeam subclasses."""
+
+    projector_class = None
 
     def __init__(self, size, angles, device):
-        self.projector = LeapParallelBeam(img_size=size, n_angles=len(angles), angles=angles).to(device)
+        self.projector = self.projector_class(img_size=size, n_angles=len(angles), angles=angles).to(device)
 
     def forward(self, image):
         return self.projector.forward(image)
@@ -107,6 +123,21 @@ class LeapBackend:
 
     def fbp(self, sinogram):
         return self.projector.fbp(sinogram)
+
+
+class LeapBackend(AdapterBackend):
+    name = "leap"
+    projector_class = LeapParallelBeam
+
+
+class AstraBackend(AdapterBackend):
+    name = "astra"
+    projector_class = AstraParallelBeam
+
+
+class TigreBackend(AdapterBackend):
+    name = "tigre"
+    projector_class = TigreParallelBeam
 
 
 class TorchRadonBackend:
@@ -168,20 +199,19 @@ class TorchtomoCudaFanBackend(TorchtomoFanBackend):
         self.projector = FanBeam(img_size=size, n_angles=len(angles), angles=angles, backend="cuda").to(device)
 
 
-class LeapFanBackend:
+class LeapFanBackend(AdapterBackend):
     name = "leap"
+    projector_class = LeapFanBeam
 
-    def __init__(self, size, angles, device):
-        self.projector = LeapFanBeam(img_size=size, n_angles=len(angles), angles=angles).to(device)
 
-    def forward(self, image):
-        return self.projector.forward(image)
+class AstraFanBackend(AdapterBackend):
+    name = "astra"
+    projector_class = AstraFanBeam
 
-    def backproject(self, sinogram):
-        return self.projector.backward(sinogram)
 
-    def fbp(self, sinogram):
-        return self.projector.fbp(sinogram)
+class TigreFanBackend(AdapterBackend):
+    name = "tigre"
+    projector_class = TigreFanBeam
 
 
 class TorchRadonFanBackend:
@@ -217,22 +247,24 @@ class TorchRadonFanBackend:
 def available_backends(geometry="parallel"):
     cuda_kernels = torch.cuda.is_available() and runtime_available()
     if geometry == "fan":
-        backends = [TorchtomoFanBackend]
-        if cuda_kernels:
-            backends.append(TorchtomoCudaFanBackend)
-        if LeapFanBeam is not None:
-            backends.append(LeapFanBackend)
-        if RadonFanbeam is not None:
-            backends.append(TorchRadonFanBackend)
-        return backends
-    backends = [TorchtomoBackend]
-    if cuda_kernels:
-        backends.append(TorchtomoCudaBackend)
-    if LeapParallelBeam is not None:
-        backends.append(LeapBackend)
-    if Radon is not None:
-        backends.append(TorchRadonBackend)
-    return backends
+        candidates = [
+            (TorchtomoFanBackend, True),
+            (TorchtomoCudaFanBackend, cuda_kernels),
+            (LeapFanBackend, LeapFanBeam is not None),
+            (TorchRadonFanBackend, RadonFanbeam is not None),
+            (AstraFanBackend, AstraFanBeam is not None),
+            (TigreFanBackend, TigreFanBeam is not None),
+        ]
+    else:
+        candidates = [
+            (TorchtomoBackend, True),
+            (TorchtomoCudaBackend, cuda_kernels),
+            (LeapBackend, LeapParallelBeam is not None),
+            (TorchRadonBackend, Radon is not None),
+            (AstraBackend, AstraParallelBeam is not None),
+            (TigreBackend, TigreParallelBeam is not None),
+        ]
+    return [backend for backend, available in candidates if available]
 
 
 def angle_tensor(n_angles, device, geometry):
@@ -319,7 +351,8 @@ def measure_speed_and_memory(args, device, results):
     """Time each operator and record what it costs the card.
 
     LEAP allocates outside PyTorch's caching allocator, so torch's own counters
-    cannot see it. The driver figure is the one that covers all three libraries.
+    cannot see it; nor do ASTRA's and TIGRE's own buffers. The driver figure is the
+    one that covers every library.
     """
     for size in args.sizes:
         for n_angles in args.angles:
@@ -418,7 +451,18 @@ def save_figure(args, device, path):
     print(f"  figure written to {path}")
 
 
-COLORS = {"torchtomo": "#4C72B0", "leap": "#DD8452", "torch-radon": "#55A868"}
+COLORS = {
+    "torchtomo": "#4C72B0",
+    "torchtomo-cuda": "#8172B3",
+    "leap": "#DD8452",
+    "torch-radon": "#55A868",
+    "astra": "#C44E52",
+    "tigre": "#937860",
+}
+
+# They allocate and free their buffers inside each call, where neither the torch
+# peak nor the driver difference before and after the call can see them.
+MEMORY_UNMEASURED = {"astra", "tigre"}
 
 
 def save_summary_figure(results, path):
@@ -431,7 +475,7 @@ def save_summary_figure(results, path):
     libraries = results["libraries"]
     figure, axes = plt.subplots(2, 2, figsize=(14, 9))
 
-    def grouped(axis, rows, key, label, configs, formatter):
+    def grouped(axis, rows, key, label, configs, formatter, libraries=libraries):
         width = 0.8 / len(libraries)
         positions = np.arange(len(configs))
         for index, library in enumerate(libraries):
@@ -462,11 +506,12 @@ def save_summary_figure(results, path):
     grouped(axes[1, 0], performance, "images_per_second", "images per second", operations, lambda r: r["operation"])
     axes[1, 0].set_yscale("log")
     axes[1, 0].set_title("Throughput, 512 px, 360 angles, batch 4")
-    grouped(axes[1, 1], performance, "torch_peak_mb", "peak MB", operations, lambda r: r["operation"])
+    measured = [library for library in libraries if library not in MEMORY_UNMEASURED]
+    grouped(axes[1, 1], performance, "torch_peak_mb", "peak MB", operations, lambda r: r["operation"], measured)
     axes[1, 1].set_yscale("log")
     axes[1, 1].set_title("GPU memory for one call, 512 px, 360 angles, batch 4")
 
-    figure.suptitle(f"torchtomo against LEAP and torch-radon, {results['device']}", fontsize=13)
+    figure.suptitle(f"torchtomo against other CT libraries, {results['device']}", fontsize=13)
     figure.tight_layout()
     figure.savefig(path, dpi=110)
     print(f"  summary figure written to {path}")
@@ -474,7 +519,7 @@ def save_summary_figure(results, path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results")
+    parser.add_argument("--output", type=Path, help="default: libraries/results/<geometry>")
     parser.add_argument("--sizes", type=int, nargs="+", default=[256, 512])
     parser.add_argument("--angles", type=int, nargs="+", default=[90, 180, 360])
     parser.add_argument("--batches", type=int, nargs="+", default=[1, 4])
@@ -488,8 +533,10 @@ def main():
     args = parser.parse_args()
 
     if not torch.cuda.is_available():
-        raise RuntimeError("this comparison needs CUDA: torch-radon and LEAP are CUDA only")
+        raise RuntimeError("this comparison needs CUDA: the other libraries are CUDA only")
     device = torch.device("cuda")
+    if args.output is None:
+        args.output = Path(__file__).parent / "results" / args.geometry
     args.output.mkdir(parents=True, exist_ok=True)
     names = [backend.name for backend in available_backends(args.geometry)]
     print(f"libraries: {', '.join(names)}")

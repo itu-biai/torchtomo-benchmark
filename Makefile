@@ -32,12 +32,13 @@ test: ## Run tests; LEAP and torch-radon tests skip when those are missing
 	$(PYTEST)
 
 .PHONY: speed
-speed: ## Time every torchtomo backend, LEAP, and torch-radon in one process
+speed: ## Time every torchtomo backend and every other library in one process
 	$(PYTHON) libraries/speed_table.py
 
 .PHONY: compare
-compare: ## Quality, speed, and memory against LEAP and torch-radon, into libraries/results
+compare: ## Quality, speed, and memory against the other libraries, into libraries/results/{parallel,fan}
 	$(PYTHON) libraries/compare_libraries.py
+	$(PYTHON) libraries/compare_libraries.py --geometry fan
 
 .PHONY: calibrate
 calibrate: ## Centre of rotation on HTC 2022 and the FIPS walnut, into geometry/results
