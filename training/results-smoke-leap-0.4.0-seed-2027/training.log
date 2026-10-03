@@ -1,0 +1,61 @@
+2026-10-03 23:21:35,351 INFO run device=cuda torch=2.4.0+cu121 geometry=parallel image_size=32 angles=24 seed=2026
+2026-10-03 23:21:35,846 INFO clean train FBP psnr_db=32.7297 roi_psnr_db=31.3190 window_psnr_db=n/a
+2026-10-03 23:21:35,846 INFO photons fixed at 100000.000; calibration skipped
+2026-10-03 23:21:35,883 INFO dataset generated ellipses size=100 split=60/20/20 photons=100000.000 zero_count_fraction=0.00000000
+2026-10-03 23:21:35,883 INFO baseline split=train fbp_psnr_db=32.3345 fbp_window_psnr_db=n/a
+2026-10-03 23:21:35,883 INFO baseline split=val fbp_psnr_db=32.0461 fbp_window_psnr_db=n/a
+2026-10-03 23:21:35,954 INFO operator_norm=1.56106758
+2026-10-03 23:21:36,355 INFO model=fbp-unet parameters=7545 epochs=2 lr=0.001 device=cuda supervised=True selected_on=image MSE against the clean image
+2026-10-03 23:21:36,557 INFO model=fbp-unet initial_gradient_norm=0.00022335959
+2026-10-03 23:21:36,641 INFO model=fbp-unet epoch=001/002 train_mse=0.0006210 val_mse=0.0007098 val_psnr_db=32.0622 lr=0.001 seconds=0.28 best_epoch=1
+2026-10-03 23:21:36,703 INFO model=fbp-unet epoch=002/002 train_mse=0.0006175 val_mse=0.0007049 val_psnr_db=32.0952 lr=0.000505 seconds=0.05 best_epoch=2
+2026-10-03 23:21:36,712 INFO model=fbp-unet training_complete seconds=0.36 best_epoch=2 peak_memory_bytes=1808896
+2026-10-03 23:21:36,713 INFO model=lpd parameters=5764 epochs=2 lr=0.001 device=cuda supervised=True selected_on=image MSE against the clean image
+2026-10-03 23:21:36,734 INFO model=lpd initial_gradient_norm=0.26066449
+2026-10-03 23:21:36,734 INFO model=lpd first_dual_updates_gradient_norm=0.0010752443
+2026-10-03 23:21:36,735 INFO model=lpd first_primal_updates_gradient_norm=0.18062017
+2026-10-03 23:21:36,845 INFO model=lpd epoch=001/002 train_mse=0.0372846 val_mse=0.0327703 val_psnr_db=15.2395 lr=0.001 seconds=0.13 best_epoch=1
+2026-10-03 23:21:36,946 INFO model=lpd epoch=002/002 train_mse=0.0253271 val_mse=0.0241868 val_psnr_db=16.4166 lr=0.000505 seconds=0.09 best_epoch=2
+2026-10-03 23:21:36,955 INFO model=lpd training_complete seconds=0.24 best_epoch=2 peak_memory_bytes=3485696
+2026-10-03 23:21:36,957 INFO model=iradonmap parameters=33145 epochs=2 lr=0.0001 device=cuda supervised=True selected_on=image MSE against the clean image
+2026-10-03 23:21:36,990 INFO model=iradonmap initial_gradient_norm=0.0013003162
+2026-10-03 23:21:37,057 INFO model=iradonmap epoch=001/002 train_mse=0.0006211 val_mse=0.0007086 val_psnr_db=32.0800 lr=0.0001 seconds=0.10 best_epoch=1
+2026-10-03 23:21:37,133 INFO model=iradonmap epoch=002/002 train_mse=0.0006073 val_mse=0.0007053 val_psnr_db=32.1020 lr=5.05e-05 seconds=0.07 best_epoch=2
+2026-10-03 23:21:37,143 INFO model=iradonmap training_complete seconds=0.19 best_epoch=2 peak_memory_bytes=21035008
+2026-10-03 23:21:37,144 INFO model=noise2inverse parameters=7545 epochs=2 lr=0.001 device=cuda supervised=False selected_on=held-out subset MSE
+2026-10-03 23:21:37,152 INFO model=noise2inverse initial_gradient_norm=0.00041707631
+2026-10-03 23:21:37,269 INFO model=noise2inverse epoch=001/002 train_mse=0.0072679 val_mse=0.0080976 val_psnr_db=32.0461 lr=0.001 seconds=0.12 best_epoch=1
+2026-10-03 23:21:37,395 INFO model=noise2inverse epoch=002/002 train_mse=0.0072293 val_mse=0.0080974 val_psnr_db=32.0458 lr=0.000505 seconds=0.12 best_epoch=2
+2026-10-03 23:21:37,403 INFO model=noise2inverse training_complete seconds=0.26 best_epoch=2 peak_memory_bytes=19297280
+2026-10-03 23:21:37,404 INFO model=proj2proj parameters=7545 epochs=2 lr=0.001 device=cuda supervised=False selected_on=masked projection MSE
+2026-10-03 23:21:37,413 INFO model=proj2proj initial_gradient_norm=0.0037099286
+2026-10-03 23:21:37,521 INFO model=proj2proj epoch=001/002 train_mse=0.0002293 val_mse=0.0002605 val_psnr_db=32.0456 lr=0.001 seconds=0.12 best_epoch=1
+2026-10-03 23:21:37,631 INFO model=proj2proj epoch=002/002 train_mse=0.0002402 val_mse=0.0002587 val_psnr_db=32.0460 lr=0.000505 seconds=0.10 best_epoch=2
+2026-10-03 23:21:37,640 INFO model=proj2proj training_complete seconds=0.24 best_epoch=2 peak_memory_bytes=19364352
+2026-10-03 23:21:37,716 INFO classical sart_subsets=6 sirt_iterations=3 sart_sweeps=1 red_iterations=2
+2026-10-03 23:21:37,728 INFO classical method=fbp-tuned setting=ramp best_val_stages=1 val_psnr_db=30.6354
+2026-10-03 23:21:37,733 INFO classical method=fbp-tuned setting=leap-order-0 best_val_stages=1 val_psnr_db=26.1739
+2026-10-03 23:21:37,737 INFO classical method=fbp-tuned setting=leap-order-2 best_val_stages=1 val_psnr_db=29.9446
+2026-10-03 23:21:37,741 INFO classical method=fbp-tuned selected stages=1 setting=ramp val_psnr_db=30.6354 seconds=0.03
+2026-10-03 23:21:37,752 INFO classical method=sirt setting=default best_val_iterations=3 val_psnr_db=19.4337
+2026-10-03 23:21:37,760 INFO classical method=sirt selected iterations=3 setting=default val_psnr_db=19.4337 seconds=0.02
+2026-10-03 23:21:38,889 INFO classical method=bm3d setting=0.01 best_val_stages=1 val_psnr_db=30.7976
+2026-10-03 23:21:39,933 INFO classical method=bm3d setting=0.1 best_val_stages=1 val_psnr_db=26.2057
+2026-10-03 23:21:40,978 INFO classical method=bm3d selected stages=1 setting=0.01 val_psnr_db=30.7976 seconds=3.22
+2026-10-03 23:21:41,002 INFO classical method=sart setting=1.0 best_val_subset updates=6 val_psnr_db=22.4855
+2026-10-03 23:21:41,020 INFO classical method=sart selected subset updates=6 setting=1.0 val_psnr_db=22.4855 seconds=0.04
+2026-10-03 23:21:41,033 INFO classical method=red setting=0.1 best_val_iterations=2 val_psnr_db=31.1723
+2026-10-03 23:21:41,045 INFO classical method=red selected iterations=2 setting=0.1 val_psnr_db=31.1723 seconds=0.03
+2026-10-03 23:21:41,049 INFO TEST method=fbp mean_psnr_db=32.6541 roi_psnr_db=31.2434 window_psnr_db=n/a std_psnr_db=1.8801 mse=0.0006019 seconds=0.00
+2026-10-03 23:21:41,049 INFO TEST method=fbp-tuned mean_psnr_db=32.6541 roi_psnr_db=31.2434 window_psnr_db=n/a std_psnr_db=1.8801 mse=0.0006019 seconds=0.03
+2026-10-03 23:21:41,049 INFO TEST method=sirt mean_psnr_db=21.1580 roi_psnr_db=19.7473 window_psnr_db=n/a std_psnr_db=1.6792 mse=0.0083058 seconds=0.02
+2026-10-03 23:21:41,049 INFO TEST method=sart mean_psnr_db=24.2533 roi_psnr_db=22.8426 window_psnr_db=n/a std_psnr_db=1.7947 mse=0.0041173 seconds=0.04
+2026-10-03 23:21:41,049 INFO TEST method=bm3d mean_psnr_db=32.8279 roi_psnr_db=31.4172 window_psnr_db=n/a std_psnr_db=1.8906 mse=0.0005790 seconds=3.22
+2026-10-03 23:21:41,049 INFO TEST method=fbp-unet mean_psnr_db=32.7053 roi_psnr_db=31.2946 window_psnr_db=n/a std_psnr_db=1.8803 mse=0.0005949 seconds=0.36
+2026-10-03 23:21:41,049 INFO TEST method=red mean_psnr_db=33.1833 roi_psnr_db=31.7726 window_psnr_db=n/a std_psnr_db=1.8869 mse=0.0005333 seconds=0.03
+2026-10-03 23:21:41,049 INFO TEST method=iradonmap mean_psnr_db=32.7527 roi_psnr_db=31.3420 window_psnr_db=n/a std_psnr_db=1.8956 mse=0.0005889 seconds=0.19
+2026-10-03 23:21:41,049 INFO TEST method=noise2inverse mean_psnr_db=32.6538 roi_psnr_db=31.2431 window_psnr_db=n/a std_psnr_db=1.8801 mse=0.0006020 seconds=0.26
+2026-10-03 23:21:41,049 INFO TEST method=proj2proj mean_psnr_db=32.6539 roi_psnr_db=31.2432 window_psnr_db=n/a std_psnr_db=1.8799 mse=0.0006019 seconds=0.24
+2026-10-03 23:21:41,049 INFO TEST method=lpd mean_psnr_db=16.6902 roi_psnr_db=15.2795 window_psnr_db=n/a std_psnr_db=1.2485 mse=0.0224208 seconds=0.24
+2026-10-03 23:21:41,053 INFO TEST reference=noiseless-fbp mean_psnr_db=33.1038 roi_psnr_db=31.6931 window_psnr_db=n/a
+2026-10-03 23:21:45,768 INFO complete outputs=/home/ozan/projects/torchtomo-benchmark/training/results-smoke-leap-0.4.0-seed-2027

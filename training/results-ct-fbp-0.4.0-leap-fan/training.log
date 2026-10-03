@@ -1,0 +1,17 @@
+2026-10-03 23:20:34,091 INFO run device=cuda torch=2.4.0+cu121 geometry=fan image_size=512 angles=90 seed=2026
+2026-10-03 23:20:35,044 INFO loaded real CT slices scale=1.000000 from training/ct-subset
+2026-10-03 23:20:37,284 INFO clean train FBP psnr_db=32.3034 roi_psnr_db=31.2358 window_psnr_db=20.5237
+2026-10-03 23:20:37,285 INFO photons fixed at 100000.000; calibration skipped
+2026-10-03 23:20:39,591 INFO dataset /home/ozan/projects/torchtomo-benchmark/training/ct-subset size=300 split=200/50/50 photons=100000.000 zero_count_fraction=0.00000000
+2026-10-03 23:20:40,225 INFO baseline split=train fbp_psnr_db=23.9864 fbp_window_psnr_db=13.3844
+2026-10-03 23:20:40,306 INFO baseline split=val fbp_psnr_db=23.7965 fbp_window_psnr_db=13.2817
+2026-10-03 23:20:40,721 INFO operator_norm=0.78487599
+2026-10-03 23:20:40,838 INFO classical sart_subsets=0 sirt_iterations=200 sart_sweeps=20 red_iterations=100
+2026-10-03 23:20:40,973 INFO classical method=fbp-tuned setting=ramp best_val_stages=1 val_psnr_db=12.2141
+2026-10-03 23:20:41,082 INFO classical method=fbp-tuned setting=leap-order-0 best_val_stages=1 val_psnr_db=17.0440
+2026-10-03 23:20:41,178 INFO classical method=fbp-tuned setting=leap-order-2 best_val_stages=1 val_psnr_db=13.0865
+2026-10-03 23:20:41,272 INFO classical method=fbp-tuned selected stages=1 setting=leap-order-0 val_psnr_db=17.0440 seconds=0.43
+2026-10-03 23:20:41,688 INFO TEST method=fbp mean_psnr_db=24.0977 roi_psnr_db=23.0301 window_psnr_db=12.0784 std_psnr_db=0.5322 mse=0.0039252 seconds=0.10
+2026-10-03 23:20:41,688 INFO TEST method=fbp-tuned mean_psnr_db=30.8496 roi_psnr_db=29.7820 window_psnr_db=16.9886 std_psnr_db=1.3282 mse=0.0008704 seconds=0.43
+2026-10-03 23:20:41,977 INFO TEST reference=noiseless-fbp mean_psnr_db=32.8272 roi_psnr_db=31.7596 window_psnr_db=20.6306
+2026-10-03 23:20:45,384 INFO complete outputs=/home/ozan/projects/torchtomo-benchmark/training/results-ct-fbp-0.4.0-leap-fan

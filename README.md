@@ -9,8 +9,8 @@ which run on torch alone, stay in its `benchmark/`.
 | Folder | What it holds |
 | --- | --- |
 | [`libraries/`](libraries/README.md) | torchtomo against LEAP, torch-radon, ASTRA, TIGRE, and scikit-image: operator agreement, reconstruction quality, speed, and GPU memory. The recorded comparison is in `libraries/results/`. |
-| [`training/`](training/README.md) | One pipeline that scores ten methods on ellipse phantoms or real CT slices: FBP, SIRT, SART, FBP+BM3D, RED, FBP+U-Net, iRadonMAP, Noise2Inverse, Proj2Proj, and Learned Primal-Dual. Recorded runs are in `training/results*/`. |
-| [`geometry/`](geometry/README.md) | What differentiating the scan geometry buys: the centre of rotation of measured scans (HTC 2022, a walnut) against Vo's method and phase correlation, and per-view motion and angle errors against projection matching. Needs torchtomo's `main`, ahead of the release. |
+| [`training/`](training/README.md) | One pipeline that scores ten methods and a tuned FBP baseline on ellipse phantoms or real CT slices: FBP, SIRT, SART, FBP+BM3D, RED, FBP+U-Net, iRadonMAP, Noise2Inverse, Proj2Proj, and Learned Primal-Dual. Recorded runs are in `training/results*/`. |
+| [`geometry/`](geometry/README.md) | What differentiating the scan geometry buys: the centre of rotation of measured scans (HTC 2022, a walnut) against Vo's method and phase correlation, and per-view motion and angle errors against projection matching. Uses torchtomo 0.4.0. |
 | `tests/` | Operator agreement with LEAP, torch-radon, ASTRA, TIGRE, and scikit-image, and checks on the training code. |
 
 ## Setup
@@ -19,13 +19,13 @@ which run on torch alone, stay in its `benchmark/`.
 git clone git@github.com:itu-biai/torchtomo-benchmark.git
 cd torchtomo-benchmark
 python -m venv .venv
-.venv/bin/pip install -e /path/to/torchtomo    # or the release: pip install torchtomo
+.venv/bin/pip install -e ../torchtomo        # local 0.4.0 source; optional with the pinned release
 .venv/bin/pip install -r requirements.txt
 make test
 ```
 
-The recorded runs use features that are not released yet, such as
-`backend="cuda"`, so install torchtomo from a checkout. LEAP, torch-radon, ASTRA,
+The benchmarks use **torchtomo 0.4.0**, pinned in `requirements.txt`; CUDA kernels
+and geometry gradients are included in that release. LEAP, torch-radon, ASTRA,
 and TIGRE are optional; [`libraries/README.md`](libraries/README.md) has the
 build steps. Tests and scripts that need one skip when it is missing.
 
@@ -34,7 +34,7 @@ Everything runs from the repository root:
 ```bash
 python training/train.py --help
 python training/train.py --image-size 512 --angles 90 --batch-size 5 --device cuda \
-    --backend cuda --output training/results-512-cuda
+    --backend cuda --photons 100000 --output training/results-512-0.4.0
 python libraries/compare_libraries.py
 python libraries/speed_table.py
 python geometry/calibrate_real.py
@@ -42,7 +42,12 @@ python geometry/calibrate_real.py
 
 ## Recorded runs
 
-All at 512 x 512 with 90 angles except the first. The tables and figures are in
+Fresh 0.4.0 library measurements and corrected metrics are in
+[`libraries/results/0.4.0/`](libraries/results/0.4.0/README.md). The training
+directories below are historical; they have not been relabeled as 0.4.0 runs.
+New training runs add a validation-tuned FBP baseline and use a fixed photon dose.
+
+The historical runs below are at 512 x 512 with 90 angles except the first. The tables and figures are in
 [`training/README.md`](training/README.md).
 
 | Directory | Data | Geometry | Projector | Methods |

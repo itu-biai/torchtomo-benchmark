@@ -16,7 +16,7 @@ venv: ## Create virtual environment
 	$(PYTHON) -m venv $(VENV)
 
 .PHONY: install
-install: ## Install requirements (install torchtomo from a checkout first, see requirements.txt)
+install: ## Install requirements, including torchtomo 0.4.0
 	$(PIP) install -r requirements.txt
 
 .PHONY: format
@@ -36,7 +36,7 @@ speed: ## Time every torchtomo backend and every other library in one process
 	$(PYTHON) libraries/speed_table.py
 
 .PHONY: compare
-compare: ## Quality, speed, and memory against the other libraries, into libraries/results/{parallel,fan}
+compare: ## Quality, speed, and memory against the other libraries, into libraries/results/0.4.0/{parallel,fan}
 	$(PYTHON) libraries/compare_libraries.py
 	$(PYTHON) libraries/compare_libraries.py --geometry fan
 

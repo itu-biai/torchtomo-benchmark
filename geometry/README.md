@@ -6,9 +6,8 @@ errors against projection matching. The cost of the geometry gradient itself,
 against Thies et al.'s differentiable backprojector, is
 [`libraries/compare_geometry_gradients.py`](../libraries/compare_geometry_gradients.py).
 
-These need torchtomo's pose table (`projector.pose`, `learnable_geometry`), which
-is on torchtomo's `main` and not released yet, so install torchtomo from a
-checkout.
+These use torchtomo 0.4.0's pose table (`projector.pose`, `learnable_geometry`).
+Install the pinned release or the matching local checkout.
 
 | File | What it does |
 | --- | --- |

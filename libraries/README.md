@@ -25,6 +25,11 @@ and `tests/test_skimage_consistency.py`.
 `training/leap_compare.py` scores LEAP's own FBP, SIRT, and SART on the data a
 training run wrote.
 
+Current 0.4.0 measurements use circle PSNR and SSIM averaged over valid window
+centres inside the circle, explicit `torch`/`cuda` backends, and recorded software
+versions and source hashes. See [`results/0.4.0/README.md`](results/0.4.0/README.md).
+The tables below retain their original pre-release measurements.
+
 ## Speed, one process
 
 512 x 512, batch 4, RTX 2080 Ti, milliseconds for forward / adjoint / FBP,
@@ -55,8 +60,7 @@ batched fan-beam projector, so both run fan beam one image at a time.
 backprojector with respect to each view's projection matrix. It has no forward
 projector. `compare_geometry_gradients.py` times one operation plus the gradient
 of a scalar loss with respect to a per-view lateral translation, batch of one,
-median of 10, RTX 2080 Ti; torchtomo's pose table is on its `main`, not
-released yet.
+median of 10, RTX 2080 Ti; the recorded pose-table measurements predate the 0.4.0 release.
 
 | Size, views, bins | Thies et al. backprojection | torchtomo forward | torchtomo adjoint | torchtomo backproject |
 | --- | --- | --- | --- | --- |

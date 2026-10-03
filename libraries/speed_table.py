@@ -88,7 +88,7 @@ def projectors(geometry, size, n_angles):
     """(name, is torchtomo, constructor) for every projector that can run here."""
     cuda = torch.device("cuda")
     torchtomo_class = ParallelBeam if geometry == "parallel" else FanBeam
-    rows = [("torch", True, lambda: torchtomo_class(img_size=size, n_angles=n_angles).cuda())]
+    rows = [("torch", True, lambda: torchtomo_class(img_size=size, n_angles=n_angles, backend="torch").cuda())]
     if geometry == "parallel" and triton_kernels_available(cuda, torch.float32):
         rows.append(("triton", True, lambda: ParallelBeam(img_size=size, n_angles=n_angles, backend="triton").cuda()))
     if cuda_kernels_available(cuda, torch.float32):

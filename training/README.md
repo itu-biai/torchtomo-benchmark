@@ -3,7 +3,7 @@
 Generate 100 different ellipse phantoms, or load real CT slices with `--data-dir`,
 split them into training, validation, and test images, and compare:
 
-- **FBP:** TorchTomo's ramp-filtered backprojection, with no trainable parameters.
+- **FBP:** ramp-filtered backprojection, plus a separately validation-tuned filter baseline.
 - **SIRT** and **SART:** the classical algebraic methods, driven by TorchTomo's exact
   discrete adjoint and stopped early.
 - **FBP + BM3D:** collaborative filtering of the FBP image, implemented here in pure
@@ -24,12 +24,59 @@ It needs only torchtomo, PyTorch, and Matplotlib, and no experiment tracking
 service. Python `logging` writes progress to the console and
 `results/training.log`.
 
+## Current protocol: torchtomo 0.4.0
+
+New runs default to **100,000 photons per ray** and write to `results-0.4.0/`.
+Use the same `--photons`, `--seed`, data, geometry and schedule for backend comparisons.
+`--calibrate-dose --target-psnr 23` reproduces the older FBP-quality dose protocol;
+that changes dose with the backend and should not be used to isolate operator effects.
+
+Alongside ramp FBP, **FBP (validation-tuned)** searches ramp, Shepp-Logan, cosine,
+Hamming and Hann on validation only. LEAP searches its native orders 12, 0 and 2.
+The two backends' candidate filters are different families, recorded by name.
+Networks and BM3D keep their ramp inputs; the tuned analytic baseline is scored as
+`fbp-tuned`. Proj2Proj uses reflection at boundaries to remove target leakage,
+and its validation masks cover every row and column phase.
+
+`--seed` fixes the images, split and Poisson realization. Vary `--training-seed`
+to measure model variability while keeping those data fixed, for example:
+
+```bash
+for training_seed in 2026 2027 2028; do
+    python training/train.py --device cuda --backend cuda --image-size 512 \
+        --photons 100000 --seed 2026 --training-seed "$training_seed" \
+        --output "training/results-512-0.4.0-seed-$training_seed"
+done
+python training/summarize_repeats.py training/results-512-0.4.0-seed-*
+```
+
+Compare means and standard deviations **across training runs**, rather than using
+slice-to-slice variation as training uncertainty. CT slices from one patient are
+correlated; patient-level resampling is needed for uncertainty over patients.
+Configurations record the release, source hashes, image/window fingerprints, dose
+protocol and training seed. Each method's `seconds_scope` states whether its time
+covers inference, training, or validation search; these are different workloads.
+To run the filter search alone on the packed CT slices:
+
+```bash
+python training/train.py --device cuda --backend cuda --image-size 512 \
+    --data-dir training/ct-subset --models "" --classical-methods fbp-tuned \
+    --output training/results-ct-fbp-0.4.0-torchtomo-parallel
+```
+
+Historical checkpoints use the previous methodology and must be retrained in a
+new directory; resume and evaluate-only reject incompatible saved runs.
+
 ## Recorded runs and torchtomo 0.3
+
+Commands in the historical sections describe those original configurations.
+The current release, corrected masking and fixed-dose defaults produce new runs;
+use a new output directory when running them today.
 
 The tables below under "Recorded 512 x 512 run", "LPD capacity check" and the
 real CT section were measured before torchtomo 0.3 changed the FBP ramp filter
-(itu-biai/torchtomo fad0119), so their FBP row, and every method that
-reconstructs through `fbp()`, is lower than 0.3 gives. The directories rerun on
+(itu-biai/torchtomo fad0119), so FBP and every method that reconstructs through `fbp()` differ from the
+current pipeline. Improvements in noiseless FBP do not imply higher noisy FBP PSNR. The directories rerun on
 0.3 are `results-512-cuda`, `results-512-fan-cuda`, `results-ctw-cuda` and
 `results-ctw-fan-cuda`; on real CT the noiseless FBP reference moves 20.09 to
 24.37 dB in window and Proj2Proj 12.73 to 23.41. The comparison against LEAP,
@@ -374,10 +421,10 @@ y = -\log\left(\frac{\max(N, 1)}{I_0}\right).
 ```
 
 Only zero photon counts are floored. Negative post-log samples are retained.
-The incident photon count $I_0$ is calibrated on the **60 training images only**
-to give approximately 23 dB mean FBP PSNR. A fresh, fixed Poisson realization is
-then generated for all images and shared across the three methods. Calibration
-does not consult validation or test targets. This is a transmission Poisson
+The historical runs calibrated $I_0$ on the **60 training images only**
+to give approximately 23 dB mean FBP PSNR. Current runs fix $I_0$ at 100,000
+unless `--calibrate-dose` is requested. A fixed Poisson realization is generated
+on CPU and shared across all methods. Calibration never consults validation or test targets. This is a transmission Poisson
 model, rather than adding Poisson-distributed values to a sinogram. See the
 [LPD paper's transmission model](https://arxiv.org/html/1707.06474v3).
 

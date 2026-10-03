@@ -1,0 +1,19 @@
+2026-10-03 23:20:22,544 INFO run device=cuda torch=2.4.0+cu121 geometry=fan image_size=512 angles=90 seed=2026
+2026-10-03 23:20:23,514 INFO loaded real CT slices scale=1.000000 from training/ct-subset
+2026-10-03 23:20:25,262 INFO clean train FBP psnr_db=32.3445 roi_psnr_db=31.2769 window_psnr_db=20.5985
+2026-10-03 23:20:25,262 INFO photons fixed at 100000.000; calibration skipped
+2026-10-03 23:20:27,047 INFO dataset /home/ozan/projects/torchtomo-benchmark/training/ct-subset size=300 split=200/50/50 photons=100000.000 zero_count_fraction=0.00000000
+2026-10-03 23:20:27,681 INFO baseline split=train fbp_psnr_db=24.0757 fbp_window_psnr_db=13.4762
+2026-10-03 23:20:27,807 INFO baseline split=val fbp_psnr_db=23.8930 fbp_window_psnr_db=13.3792
+2026-10-03 23:20:28,207 INFO operator_norm=0.78507078
+2026-10-03 23:20:28,239 INFO classical sart_subsets=0 sirt_iterations=200 sart_sweeps=20 red_iterations=100
+2026-10-03 23:20:28,283 INFO classical method=fbp-tuned setting=ramp best_val_stages=1 val_psnr_db=12.3116
+2026-10-03 23:20:28,315 INFO classical method=fbp-tuned setting=shepp-logan best_val_stages=1 val_psnr_db=15.7208
+2026-10-03 23:20:28,348 INFO classical method=fbp-tuned setting=cosine best_val_stages=1 val_psnr_db=15.2025
+2026-10-03 23:20:28,380 INFO classical method=fbp-tuned setting=hamming best_val_stages=1 val_psnr_db=16.3821
+2026-10-03 23:20:28,411 INFO classical method=fbp-tuned setting=hann best_val_stages=1 val_psnr_db=16.7461
+2026-10-03 23:20:28,437 INFO classical method=fbp-tuned selected stages=1 setting=hann val_psnr_db=16.7461 seconds=0.20
+2026-10-03 23:20:28,841 INFO TEST method=fbp mean_psnr_db=24.1827 roi_psnr_db=23.1151 window_psnr_db=12.1703 std_psnr_db=0.5312 mse=0.0038490 seconds=0.02
+2026-10-03 23:20:28,842 INFO TEST method=fbp-tuned mean_psnr_db=30.4808 roi_psnr_db=29.4132 window_psnr_db=16.6699 std_psnr_db=1.2637 mse=0.0009422 seconds=0.20
+2026-10-03 23:20:29,066 INFO TEST reference=noiseless-fbp mean_psnr_db=32.8716 roi_psnr_db=31.8040 window_psnr_db=20.7076
+2026-10-03 23:20:32,481 INFO complete outputs=/home/ozan/projects/torchtomo-benchmark/training/results-ct-fbp-0.4.0-torchtomo-fan

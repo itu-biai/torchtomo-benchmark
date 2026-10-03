@@ -1,0 +1,151 @@
+{
+  "fbp-tuned": {
+    "unit": "stages",
+    "selected_steps": 1,
+    "selected_setting": "ramp",
+    "val_psnr_db": 30.435122680664062,
+    "searched_steps": 1,
+    "seconds": 0.020531837013550103,
+    "setting_name": "filter",
+    "curves": {
+      "ramp": [
+        {
+          "iteration": 1,
+          "psnr_db": 30.435122680664062
+        }
+      ],
+      "shepp-logan": [
+        {
+          "iteration": 1,
+          "psnr_db": 27.417251586914062
+        }
+      ],
+      "cosine": [
+        {
+          "iteration": 1,
+          "psnr_db": 27.954100036621092
+        }
+      ],
+      "hamming": [
+        {
+          "iteration": 1,
+          "psnr_db": 26.731556701660157
+        }
+      ],
+      "hann": [
+        {
+          "iteration": 1,
+          "psnr_db": 26.412416839599608
+        }
+      ]
+    }
+  },
+  "sirt": {
+    "unit": "iterations",
+    "selected_steps": 3,
+    "selected_setting": null,
+    "val_psnr_db": 19.3909912109375,
+    "searched_steps": 3,
+    "seconds": 0.01207391603384167,
+    "relaxation": 1.0,
+    "curves": {
+      "default": [
+        {
+          "iteration": 1,
+          "psnr_db": 16.503359222412108
+        },
+        {
+          "iteration": 2,
+          "psnr_db": 18.095493698120116
+        },
+        {
+          "iteration": 3,
+          "psnr_db": 19.3909912109375
+        }
+      ]
+    }
+  },
+  "bm3d": {
+    "unit": "stages",
+    "selected_steps": 1,
+    "selected_setting": 0.01,
+    "val_psnr_db": 30.443274688720702,
+    "searched_steps": 1,
+    "seconds": 3.2817714730044827,
+    "setting_name": "sigma",
+    "curves": {
+      "0.01": [
+        {
+          "iteration": 1,
+          "psnr_db": 30.443274688720702
+        }
+      ],
+      "0.1": [
+        {
+          "iteration": 1,
+          "psnr_db": 26.05877113342285
+        }
+      ]
+    }
+  },
+  "sart": {
+    "unit": "subset updates",
+    "selected_steps": 6,
+    "selected_setting": 1.0,
+    "val_psnr_db": 22.378016662597656,
+    "searched_steps": 6,
+    "seconds": 0.024800952058285475,
+    "subsets_per_sweep": 6,
+    "setting_name": "relaxation",
+    "curves": {
+      "1.0": [
+        {
+          "iteration": 1,
+          "psnr_db": 16.501337814331055
+        },
+        {
+          "iteration": 2,
+          "psnr_db": 17.98713493347168
+        },
+        {
+          "iteration": 3,
+          "psnr_db": 19.239035415649415
+        },
+        {
+          "iteration": 4,
+          "psnr_db": 20.403217315673828
+        },
+        {
+          "iteration": 5,
+          "psnr_db": 21.47763023376465
+        },
+        {
+          "iteration": 6,
+          "psnr_db": 22.378016662597656
+        }
+      ]
+    }
+  },
+  "red": {
+    "unit": "iterations",
+    "selected_steps": 2,
+    "selected_setting": 0.1,
+    "val_psnr_db": 30.920468139648438,
+    "searched_steps": 2,
+    "seconds": 0.020100067020393908,
+    "step": 1.0,
+    "setting_name": "prior weight",
+    "curves": {
+      "0.1": [
+        {
+          "iteration": 1,
+          "psnr_db": 30.74839859008789
+        },
+        {
+          "iteration": 2,
+          "psnr_db": 30.920468139648438
+        }
+      ]
+    }
+  }
+}

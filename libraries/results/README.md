@@ -1,5 +1,9 @@
 # torchtomo against LEAP, torch-radon, ASTRA and TIGRE
 
+Current released-version measurements are in
+[`0.4.0/README.md`](0.4.0/README.md). Everything below is the historical
+2026-09-30 snapshot; its SSIM averages over the square, including zeroed corners.
+
 Measured on one RTX 2080 Ti, torch 2.4.0+cu121, with
 `libraries/compare_libraries.py`, on torchtomo `main` at `f0da637`, 2026-09-30.
 ASTRA is the `astra-toolbox` 2.5.0 wheel; TIGRE is 3.1.3 at `6b0951a`, built with
@@ -35,7 +39,7 @@ the closest of the four.
 
 ## Reconstruction quality, Shepp-Logan
 
-PSNR in dB and SSIM, over the visible circle. Measured with the Ram-Lak ramp that
+PSNR in dB over the visible circle; historical SSIM over the masked square. Measured with the Ram-Lak ramp that
 landed in 0.3; the row below the table is what the same runs gave before it.
 
 | Geometry | torchtomo | torchtomo-cuda | LEAP | torch-radon | ASTRA | TIGRE |
@@ -58,10 +62,10 @@ kernels are the only difference.
 
 Before the ramp fix the same table read 24.27 / 0.539 at 256 px and 90 views up to
 28.78 / 0.682 at 512 px and 360 views, last in every row and by 0.2 of SSIM at the
-bottom of it. Both causes were in the FBP filter rather than in the projector, and
-both were the same one bin.
+bottom of it. The correction changed the finite FBP filter, including its DC response.
+These runs do not isolate the effect of changing only one frequency bin.
 
-## The DC bin was the whole story
+## The finite Ram-Lak kernel restores the DC response
 
 The ramp was built analytically as `freq.abs()`, so the DC bin of the padded
 transform was exactly zero and the mean of every projection was discarded. The
@@ -175,7 +179,8 @@ of this file measured that path; the kernels did not exist yet.
 
 ## GPU memory
 
-Peak for a single call, 512 px, 360 angles, batch 4, from the table above:
+Peak PyTorch allocations for a single call, 512 px, 360 angles, batch 4.
+External allocations are excluded; these are not total GPU peaks for other libraries:
 
 | Operation | torchtomo | torchtomo-cuda | LEAP | torch-radon |
 | --- | ---: | ---: | ---: | ---: |
@@ -183,13 +188,15 @@ Peak for a single call, 512 px, 360 angles, batch 4, from the table above:
 | backproject | 109.2 MB | 7.1 MB | 8.4 MB | 4.2 MB |
 | fbp | 174.9 MB | 29.5 MB | 10.9 MB | 43.7 MB |
 
-The kernels keep only per-view or per-ray tables on the device, so they sit with
-the two CUDA libraries. The PyTorch path holds sampling grids and is the one that
+The kernels keep only per-view or per-ray tables on the device. The table shows
+PyTorch-visible allocations, which do not establish total-memory parity with
+the other CUDA libraries. The PyTorch path holds sampling grids and is the one that
 needs hundreds of megabytes.
 
 LEAP allocates outside PyTorch's caching allocator, so `max_memory_allocated`
-cannot see all of it. Both a torch-level and a driver-level figure are recorded in
-the JSON, and they agree closely here.
+cannot see all of it. The driver-level before/after difference in the JSON is
+retained memory, not a peak; a zero difference does not show zero temporary memory.
+LEAP's total peak is therefore unmeasured too.
 
 ASTRA and TIGRE are left out of this table because neither figure measures them.
 Both allocate their textures and working buffers with `cudaMalloc` inside the call
@@ -277,12 +284,13 @@ replaced the sampled ramp with the Ram-Lak kernel:
 | noiseless FBP reference | 20.09 | 24.37 | 24.04 | +0.33 |
 
 The old column is `results-ctw-cuda` as it was recorded before the fix; the new
-one is the same run repeated on 0.3, same 100k photons, so the two differ in the
-filter alone. Ellipse phantoms at 512 px moved the same way: Proj2Proj 22.49 to
+one is the same run repeated on 0.3, same 100k photons, so dose is controlled for CT. Training variability still limits causal claims.
+Ellipse runs independently calibrated dose for each backend and filter, so their
+differences include changes in photon count. Ellipse phantoms at 512 px moved the same way: Proj2Proj 22.49 to
 36.68 dB over the circle, from 12.95 dB behind LEAP to 0.66.
 
 The reading that produced the fix was that the gap followed the operators rather
-than the methods. SIRT, SART and iRadonMAP matched within 0.05 dB because they
+than the methods. SIRT and SART matched closely because they
 never call `fbp()`, using only the matched `forward()` and `adjoint()` pair the
 two libraries agree on, while everything routed through `fbp()` trailed, most of
 all the one method whose training loss round-trips through both. Proj2Proj
@@ -291,9 +299,10 @@ compares with the measurements, so it had to absorb a 10% round-trip
 inconsistency before it could denoise anything, from a masked loss that sees one
 sixteenth of the entries.
 
-Removing that inconsistency removed the gap, which is as close to a proof of the
-mechanism as this benchmark can give: the same ten methods on the same data, one
-filter bin apart. What is left is BM3D at 0.23 dB and, in fan beam, Proj2Proj at
+The repeated runs support the filter as a major contributor to the gap.
+They do not isolate a single bin or remove variation from retraining, and the
+historical Proj2Proj mask retained part of boundary targets. Corrected 0.4.0
+training must be rerun before making a new ranking claim. What is left is BM3D at 0.23 dB and, in fan beam, Proj2Proj at
 1.03 dB, the only rows where LEAP is still ahead by more than a tenth.
 
 Fan beam had less to gain throughout, because a detector 1.5x wider than the

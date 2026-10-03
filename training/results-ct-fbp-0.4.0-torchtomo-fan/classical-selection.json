@@ -1,0 +1,43 @@
+{
+  "fbp-tuned": {
+    "unit": "stages",
+    "selected_steps": 1,
+    "selected_setting": "hann",
+    "val_psnr_db": 16.746107177734373,
+    "searched_steps": 1,
+    "seconds": 0.19780813995748758,
+    "setting_name": "filter",
+    "curves": {
+      "ramp": [
+        {
+          "iteration": 1,
+          "psnr_db": 12.311599960327149
+        }
+      ],
+      "shepp-logan": [
+        {
+          "iteration": 1,
+          "psnr_db": 15.720790557861328
+        }
+      ],
+      "cosine": [
+        {
+          "iteration": 1,
+          "psnr_db": 15.202471771240234
+        }
+      ],
+      "hamming": [
+        {
+          "iteration": 1,
+          "psnr_db": 16.38210433959961
+        }
+      ],
+      "hann": [
+        {
+          "iteration": 1,
+          "psnr_db": 16.746107177734373
+        }
+      ]
+    }
+  }
+}

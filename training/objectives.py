@@ -95,13 +95,17 @@ class Noise2Inverse:
 
 
 def neighbour_average(sinogram):
-    """Mean of the four edge neighbours, the value a masked entry is replaced by."""
-    padded = F.pad(sinogram, (1, 1, 1, 1), mode="replicate")
+    """Average adjacent entries; reflect padding never reuses the entry itself."""
+    padded = F.pad(sinogram, (1, 1, 1, 1), mode="reflect")
     return (padded[..., :-2, 1:-1] + padded[..., 2:, 1:-1] + padded[..., 1:-1, :-2] + padded[..., 1:-1, 2:]) / 4
 
 
 def perturb_projections(sinogram, index, grid):
     """Replace one position of every grid cell, the J-invariant mask of Noise2Self."""
+    if grid < 2 or min(sinogram.shape[-2:]) < grid:
+        raise ValueError("mask grid must be at least 2 and fit both sinogram dimensions")
+    if not 0 <= index < grid * grid:
+        raise ValueError("mask index outside the grid")
     row, column = divmod(index, grid)
     mask = torch.zeros_like(sinogram, dtype=torch.bool)
     mask[..., row::grid, column::grid] = True
@@ -124,9 +128,10 @@ class Proj2Proj:
         self.projector = projector
         self.sinograms = sinograms
         self.grid = grid
-        # Scoring every mask position each epoch would cost more than the epoch
-        # itself, so validation uses a fixed, evenly spread quarter of them.
-        self.validation_masks = list(range(0, grid * grid, max(1, grid * grid // 4)))
+        # A diagonal covers every row and column phase without scoring all masks.
+        if grid < 2 or min(projector.n_angles, projector.n_det) < grid:
+            raise ValueError("mask grid must be at least 2 and fit both sinogram dimensions")
+        self.validation_masks = [row * grid + row for row in range(grid)]
 
     def masked_loss(self, model, sinogram, index):
         perturbed, mask = perturb_projections(sinogram, index, self.grid)

@@ -8,6 +8,7 @@ From the repository root:
 """
 
 import argparse
+import hashlib
 import json
 import logging
 import os
@@ -32,6 +33,7 @@ from models import FBPUNet, IRadonMap, LearnedPrimalDual, estimate_operator_norm
 from objectives import Noise2Inverse, Proj2Proj, Supervised
 from torch.nn import functional as F
 
+import torchtomo
 from torchtomo import FanBeam, ParallelBeam
 
 LOGGER = logging.getLogger("ellipses")
@@ -65,16 +67,20 @@ def record_method_seconds(metrics, training, selection, fbp_seconds):
     for name, row in metrics.items():
         if name == "fbp":
             seconds = fbp_seconds
+            scope = "test reconstruction"
         elif name in training:
             seconds = training[name]["training_seconds"]
+            scope = "training and validation, including checkpoint IO"
         elif name in selection:
             seconds = selection[name]["seconds"]
+            scope = "validation search plus test reconstruction"
         else:
             raise KeyError(f"no seconds recorded for method {name!r}")
         seconds = float(seconds)
         if not (seconds > 0 and seconds != float("inf")):
             raise ValueError(f"{name} seconds must be a positive finite value, got {seconds}")
         row["seconds"] = seconds
+        row["seconds_scope"] = scope
 
 
 def save_checkpoint(path, payload):
@@ -142,6 +148,15 @@ def build_truth(args, projector, output):
     return truth, splits, source, windows
 
 
+def software_metadata():
+    libraries = str(Path(__file__).resolve().parents[1] / "libraries")
+    if libraries not in sys.path:
+        sys.path.insert(0, libraries)
+    from benchmark_metadata import benchmark_metadata
+
+    return benchmark_metadata()
+
+
 def _leap_projector():
     """libraries/leap_projector.py, found from this file so no PYTHONPATH is needed."""
     libraries = str(Path(__file__).resolve().parents[1] / "libraries")
@@ -179,8 +194,16 @@ def prepare_data(args, output):
     projector = build_projector(args)
     truth, splits, source, windows = build_truth(args, projector, output)
     sizes = {key: len(value) for key, value in splits.items()}
-    clean = apply_in_batches(projector.forward, truth, args.batch_size)
-    clean_fbp = apply_in_batches(projector.fbp, clean, args.batch_size)
+    projector.to(args.device)
+
+    def project_cpu(batch):
+        return projector.forward(batch.to(args.device)).cpu()
+
+    def fbp_cpu(batch):
+        return projector.fbp(batch.to(args.device)).cpu()
+
+    clean = apply_in_batches(project_cpu, truth, args.batch_size)
+    clean_fbp = apply_in_batches(fbp_cpu, clean, args.batch_size)
     # The dose-free limit of the analytic method, in every convention the table uses,
     # so it is never compared against a figure measured over a different region.
     ceiling = summarize(
@@ -208,9 +231,9 @@ def prepare_data(args, output):
             seed=args.seed + 2,
             windows=None if windows is None else windows[splits["train"]],
         )
-    # A fresh fixed realization is shared by all three methods, after calibration.
+    # Every method receives this same fixed noise realization.
     noisy, counts = poisson_sinogram(clean, photons, args.seed + 3)
-    fbp = apply_in_batches(projector.fbp, noisy, args.batch_size)
+    fbp = apply_in_batches(fbp_cpu, noisy, args.batch_size)
     data = {"truth": truth, "clean": clean, "noisy": noisy, "counts": counts, "fbp": fbp, "splits": splits}
     if windows is not None:
         data["windows"] = windows
@@ -453,7 +476,8 @@ def save_plots(output, data, reconstructions, metrics, supervision, tile=256):
         images = {name: F.avg_pool2d(tensor, factor) for name, tensor in images.items()}
     labels = {
         "gt": "Ground truth",
-        "fbp": "FBP",
+        "fbp": "FBP (ramp)",
+        "fbp-tuned": "FBP (validation-tuned)",
         "sirt": "SIRT",
         "sart": "SART",
         "bm3d": "FBP + BM3D",
@@ -545,7 +569,8 @@ def save_plots(output, data, reconstructions, metrics, supervision, tile=256):
     for ax in axes:
         ax.set_xlabel("Epoch")
         ax.grid(alpha=0.2)
-        ax.legend(fontsize=8)
+        if ax.get_legend_handles_labels()[0]:
+            ax.legend(fontsize=8)
     fig.savefig(output / "curves.png", dpi=150)
     plt.close(fig)
 
@@ -564,9 +589,15 @@ def save_selection_plot(output, selection, labels):
     for ax, (name, record) in zip(axes[0], selection.items()):
         if record["searched_steps"] == 1:
             # Nothing is iterated here, so the search runs over the setting itself.
-            settings = [float(setting) for setting in record["curves"]]
+            categorical = record.get("setting_name") == "filter"
+            settings = list(range(len(record["curves"]))) if categorical else [float(s) for s in record["curves"]]
             ax.plot(settings, [curve[0]["psnr_db"] for curve in record["curves"].values()], marker="o", linewidth=1.2)
-            ax.scatter(record["selected_setting"], record["val_psnr_db"], color="black", zorder=3)
+            selected = (
+                list(record["curves"]).index(record["selected_setting"]) if categorical else record["selected_setting"]
+            )
+            ax.scatter(selected, record["val_psnr_db"], color="black", zorder=3)
+            if categorical:
+                ax.set_xticks(settings, list(record["curves"]), rotation=30, ha="right")
             ax.set(xlabel=record.get("setting_name", "setting").capitalize())
             ax.set(ylabel="Validation PSNR (dB)", title=labels[name])
             ax.grid(alpha=0.2)
@@ -593,7 +624,7 @@ def save_selection_plot(output, selection, labels):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results")
+    parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results-0.4.0")
     parser.add_argument("--image-size", type=int, default=64)
     parser.add_argument("--angles", type=int, default=90)
     parser.add_argument("--unet-epochs", type=int, default=120)
@@ -601,13 +632,22 @@ def main():
     parser.add_argument("--batch-size", type=int, default=5)
     parser.add_argument("--learning-rate", type=float, default=1e-3)
     parser.add_argument("--target-psnr", type=float, default=23.0)
-    parser.add_argument(
+    dose = parser.add_mutually_exclusive_group()
+    dose.add_argument(
         "--photons",
         type=float,
-        default=None,
-        help="Fix the incident photon count instead of calibrating it to --target-psnr",
+        default=100_000.0,
+        help="Fixed incident photons per ray, shared across backend comparisons (default: 100000)",
     )
-    parser.add_argument("--seed", type=int, default=2026)
+    dose.add_argument(
+        "--calibrate-dose",
+        action="store_const",
+        dest="photons",
+        const=None,
+        help="Opt in to backend-dependent training FBP dose calibration",
+    )
+    parser.add_argument("--seed", type=int, default=2026, help="Dataset, split and noise seed")
+    parser.add_argument("--training-seed", type=int, help="Model and shuffle seed; defaults to --seed")
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument(
         "--micro-batch",
@@ -673,6 +713,11 @@ def main():
     parser.add_argument(
         "--evaluate-only", action="store_true", help="Reload saved data and best weights without retraining"
     )
+    parser.add_argument(
+        "--classical-methods",
+        default="fbp-tuned,sirt,sart,bm3d,red",
+        help="Comma separated classical methods; fbp-tuned runs only the analytic filter search",
+    )
     parser.add_argument("--sirt-iterations", type=int, default=200, help="Longest SIRT run offered to the search")
     parser.add_argument("--sirt-relaxation", type=float, default=1.0)
     parser.add_argument("--sart-sweeps", type=int, default=20, help="Longest SART run offered to the search")
@@ -693,44 +738,25 @@ def main():
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
-    setup_logging(output)
     evaluate_only = args.evaluate_only
     if evaluate_only and args.resume:
         parser.error("choose either --evaluate-only or --resume")
     if evaluate_only or args.resume:
         config = json.loads((output / "config.json").read_text())
-        # Keep the caller's device, threads, and output location.
-        for key in (
-            "image_size",
-            "angles",
-            "batch_size",
-            "seed",
-            "unet_epochs",
-            "lpd_epochs",
-            "learning_rate",
-            "target_psnr",
-            "data_dir",
-            "lpd_iterations",
-            "lpd_memory",
-            "lpd_width",
-            "unet_width",
-            "iradon_width",
-            "iradon_learning_rate",
-            "n2i_splits",
-            "p2p_grid",
-            "models",
-            "projector",
-            "geometry",
-            "src_dist",
-            "det_dist",
-            "n_det",
+        if (
+            config.get("methodology_revision") != 2
+            or config.get("torchtomo_version") != torchtomo.__version__
+            or config.get("software") != software_metadata()
         ):
-            if key in config:
-                setattr(args, key, config[key])
-            else:
-                # Result directories written before an option existed keep the current default.
-                config[key] = getattr(args, key)
-                LOGGER.warning("config.json has no %s; using %r", key, config[key])
+            parser.error("saved run uses different software or methodology; rerun in a new output directory")
+        # Restore the entire protocol, including classical searches and backend.
+        for key, value in config.items():
+            if key in vars(args) and key not in {"output", "device", "threads", "evaluate_only", "resume"}:
+                setattr(args, key, value)
+    if args.training_seed is None:
+        args.training_seed = args.seed
+    if args.photons is not None and (args.photons <= 0 or not torch.isfinite(torch.tensor(args.photons))):
+        parser.error("photons must be positive and finite")
     sizes = (
         args.image_size,
         args.angles,
@@ -751,6 +777,7 @@ def main():
         parser.error("LPD needs at least two memory channels; the forward operator reads the second one")
     if args.image_size < 8 or args.image_size % 4:
         parser.error("image size must be at least 8 and divisible by 4")
+    setup_logging(output)
     torch.set_num_threads(args.threads)
     torch.manual_seed(args.seed)
     LOGGER.info(
@@ -781,6 +808,16 @@ def main():
             "operator_norm": operator_norm,
             "noise_model": "Poisson(I0 * exp(-Ax)), then -log(max(counts, 1) / I0)",
             "metric": "mean per-image PSNR; full image; data_range=1; no prediction clipping",
+            "software": software_metadata(),
+            "truth_sha256": hashlib.sha256(data["truth"].contiguous().numpy().tobytes()).hexdigest(),
+            "windows_sha256": (
+                hashlib.sha256(data["windows"].contiguous().numpy().tobytes()).hexdigest()
+                if "windows" in data
+                else None
+            ),
+            "torchtomo_version": torchtomo.__version__,
+            "methodology_revision": 2,
+            "dose_protocol": "fixed" if args.photons is not None else "training FBP calibration",
             "torch_version": str(torch.__version__),
             "python_version": platform.python_version(),
             "cuda_device": torch.cuda.get_device_name() if args.device == "cuda" else None,
@@ -802,7 +839,7 @@ def main():
         geometry apart faster than the refinement network can make use of it.
         """
         offsets = {"fbp-unet": 4, "lpd": 5, "iradonmap": 7, "noise2inverse": 8, "proj2proj": 9}
-        torch.manual_seed(args.seed + offsets[name])
+        torch.manual_seed(args.training_seed + offsets[name])
         unet_of = lambda: FBPUNet(projector.circle_mask, width=config["unet_width"])  # noqa: E731
         if name == "fbp-unet":
             return unet_of(), Supervised(data["fbp"], data["truth"]), args.unet_epochs, args.learning_rate
@@ -834,7 +871,7 @@ def main():
             model.to(args.device)
         else:
             training[name] = train_model(
-                name, model, objective, data, args, output, epochs, args.seed + 6, learning_rate
+                name, model, objective, data, args, output, epochs, args.training_seed + 6, learning_rate
             )
             write_json(output / "training-summary.json", training)
 
@@ -853,6 +890,7 @@ def main():
     # Analytic, then untrained iterative, then learned, with RED beside the network it reuses.
     order = (
         "fbp",
+        "fbp-tuned",
         "sirt",
         "sart",
         "bm3d",

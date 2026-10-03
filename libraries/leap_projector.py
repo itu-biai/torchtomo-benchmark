@@ -27,6 +27,7 @@ class LeapParallelBeam(ParallelBeam):
     # what torchtomo's "ramp" filter is, so the two FBPs differ in kernel and not in
     # the filter they apply.
     RAM_LAK = 12
+    fbp_filters = ("ramp", "leap-order-0", "leap-order-2")
 
     def __init__(
         self,
@@ -120,20 +121,25 @@ class LeapParallelBeam(ParallelBeam):
 
     @torch.no_grad()
     def fbp(self, sinogram, filter_name="ramp"):
-        """LEAP's filtered backprojection. Its own ramp filter is the only one offered.
+        """LEAP FBP, with optional native filter orders for validation tuning.
 
         Nothing in the benchmark differentiates through a reconstruction, so this
         stays outside the graph rather than pretending to an adjoint it does not have.
         """
-        if filter_name != "ramp":
-            raise NotImplementedError(f"LEAP's FBP here offers the ramp filter only, not {filter_name!r}")
+        if filter_name not in self.fbp_filters:
+            raise NotImplementedError(f"unsupported LEAP filter: {filter_name!r}")
+        order = self.ramp_filter if filter_name == "ramp" else int(filter_name.rsplit("-", 1)[1])
         if sinogram.requires_grad:
             raise RuntimeError("LEAP's FBP is not differentiable here; use forward()/backward() for a matched pair")
         batch = sinogram.shape[0]
         device = self.compute_device(sinogram)
         model = self.leap_model(batch, device)
         volume = torch.zeros(batch, self.img_size, self.img_size, device=device)
-        model.FBP(sinogram[:, 0].to(device).permute(1, 0, 2).contiguous().clone(), volume)
+        model.set_rampFilter(order)
+        try:
+            model.FBP(sinogram[:, 0].to(device).permute(1, 0, 2).contiguous().clone(), volume)
+        finally:
+            model.set_rampFilter(self.ramp_filter)
         image = volume.unsqueeze(1).to(sinogram.device)
         return image * self.circle_mask.view(1, 1, self.img_size, self.img_size) if self.circle else image
 
@@ -146,6 +152,7 @@ class LeapFanBeam(FanBeam):
     """
 
     RAM_LAK = 12
+    fbp_filters = ("ramp", "leap-order-0", "leap-order-2")
 
     def __init__(
         self,
@@ -259,14 +266,19 @@ class LeapFanBeam(FanBeam):
 
     @torch.no_grad()
     def fbp(self, sinogram, filter_name="ramp"):
-        if filter_name != "ramp":
-            raise NotImplementedError(f"LEAP's FBP here offers the ramp filter only, not {filter_name!r}")
+        if filter_name not in self.fbp_filters:
+            raise NotImplementedError(f"unsupported LEAP filter: {filter_name!r}")
+        order = self.ramp_filter if filter_name == "ramp" else int(filter_name.rsplit("-", 1)[1])
         if sinogram.requires_grad:
             raise RuntimeError("LEAP's FBP is not differentiable here; use forward()/backward() for a matched pair")
         batch = sinogram.shape[0]
         device = self.compute_device(sinogram)
         model = self.leap_model(batch, device)
         volume = torch.zeros(batch, self.img_size, self.img_size, device=device)
-        model.FBP(sinogram[:, 0].to(device).permute(1, 0, 2).contiguous().clone(), volume)
+        model.set_rampFilter(order)
+        try:
+            model.FBP(sinogram[:, 0].to(device).permute(1, 0, 2).contiguous().clone(), volume)
+        finally:
+            model.set_rampFilter(self.ramp_filter)
         image = volume.flip(-2).unsqueeze(1).to(sinogram.device)
         return image * self.circle_mask.view(1, 1, self.img_size, self.img_size) if self.circle else image

@@ -191,8 +191,12 @@ def reconstruct_split(reconstruct, sinograms, device, batch_size, extra=()):
 
 def method_table(projector, unet, operator_norm, args):
     """Every method as (inputs, unit, settings, max steps, factory, extra record)."""
-    weights = projection_weights(projector)
-    blocks = angle_subsets(projector, args.sart_subsets or projector.n_angles)
+    requested = getattr(args, "classical_methods", "fbp-tuned,sirt,sart,bm3d,red").split(",")
+    unknown = set(requested) - {"fbp-tuned", "sirt", "sart", "bm3d", "red"}
+    if unknown:
+        raise ValueError(f"unknown classical methods: {sorted(unknown)}")
+    weights = projection_weights(projector) if "sirt" in requested else None
+    blocks = angle_subsets(projector, args.sart_subsets or projector.n_angles) if "sart" in requested else []
     LOGGER.info(
         "classical sart_subsets=%d sirt_iterations=%d sart_sweeps=%d red_iterations=%d",
         len(blocks),
@@ -200,6 +204,15 @@ def method_table(projector, unet, operator_norm, args):
         args.sart_sweeps,
         args.red_iterations,
     )
+
+    def fbp_factory(setting, steps):
+        def run(sinogram, extra, callback):
+            result = projector.fbp(sinogram, filter_name=setting)
+            if callback is not None:
+                callback(1, result)
+            return result
+
+        return run
 
     def sirt_factory(setting, steps):
         return lambda sinogram, extra, callback: sirt(
@@ -225,6 +238,14 @@ def method_table(projector, unet, operator_norm, args):
         )
 
     table = {
+        "fbp-tuned": (
+            ("noisy",),
+            "stages",
+            list(getattr(projector, "fbp_filters", ("ramp", "shepp-logan", "cosine", "hamming", "hann"))),
+            1,
+            fbp_factory,
+            {"setting_name": "filter"},
+        ),
         "sirt": (
             ("noisy",),
             "iterations",
@@ -260,7 +281,7 @@ def method_table(projector, unet, operator_norm, args):
             red_factory,
             {"step": args.red_step, "setting_name": "prior weight"},
         )
-    return table
+    return {name: spec for name, spec in table.items() if name in requested}
 
 
 def run_classical(projector, data, unet, operator_norm, args, region):
@@ -287,7 +308,7 @@ def run_classical(projector, data, unet, operator_norm, args, region):
                 args.batch_size,
                 extra=tuple(data[key][val_ids] for key in extra_keys),
             )
-            label = "default" if setting is None else f"{setting:g}"
+            label = "default" if setting is None else str(setting)
             curves[label] = curve
             top = max(curve, key=lambda row: row["psnr_db"])
             LOGGER.info(

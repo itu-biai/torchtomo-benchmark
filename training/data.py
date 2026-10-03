@@ -138,7 +138,7 @@ def calibrate_photons(projector, clean_train, truth_train, target=23.0, seed=202
 
     def evaluate(photons):
         noisy, _ = poisson_sinogram(clean_train, photons, seed)
-        reconstruction = apply_in_batches(projector.fbp, noisy)
+        reconstruction = apply_in_batches(lambda batch: projector.fbp(batch.to(projector.angles.device)).cpu(), noisy)
         if windows is None:
             score = psnr_per_image(reconstruction, truth_train).mean().item()
         else:

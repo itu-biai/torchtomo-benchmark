@@ -1,9 +1,5 @@
-# torchtomo itself. The results here were made with unreleased features such as
-# backend="cuda", so install a checkout while this repository runs ahead of the
-# release:
-#   pip install -e /path/to/torchtomo
-# pip then treats the line below as already satisfied.
-torchtomo
+# Released API used by the benchmarks; a local 0.4.0 checkout also satisfies this.
+torchtomo==0.4.0
 
 matplotlib
 numpy

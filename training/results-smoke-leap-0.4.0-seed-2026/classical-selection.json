@@ -1,0 +1,139 @@
+{
+  "fbp-tuned": {
+    "unit": "stages",
+    "selected_steps": 1,
+    "selected_setting": "ramp",
+    "val_psnr_db": 30.635438537597658,
+    "searched_steps": 1,
+    "seconds": 0.024996733060106635,
+    "setting_name": "filter",
+    "curves": {
+      "ramp": [
+        {
+          "iteration": 1,
+          "psnr_db": 30.635438537597658
+        }
+      ],
+      "leap-order-0": [
+        {
+          "iteration": 1,
+          "psnr_db": 26.173880767822265
+        }
+      ],
+      "leap-order-2": [
+        {
+          "iteration": 1,
+          "psnr_db": 29.944558715820314
+        }
+      ]
+    }
+  },
+  "sirt": {
+    "unit": "iterations",
+    "selected_steps": 3,
+    "selected_setting": null,
+    "val_psnr_db": 19.433730697631837,
+    "searched_steps": 3,
+    "seconds": 0.019482075003907084,
+    "relaxation": 1.0,
+    "curves": {
+      "default": [
+        {
+          "iteration": 1,
+          "psnr_db": 16.52185935974121
+        },
+        {
+          "iteration": 2,
+          "psnr_db": 18.121556091308594
+        },
+        {
+          "iteration": 3,
+          "psnr_db": 19.433730697631837
+        }
+      ]
+    }
+  },
+  "bm3d": {
+    "unit": "stages",
+    "selected_steps": 1,
+    "selected_setting": 0.01,
+    "val_psnr_db": 30.79763717651367,
+    "searched_steps": 1,
+    "seconds": 3.201747882994823,
+    "setting_name": "sigma",
+    "curves": {
+      "0.01": [
+        {
+          "iteration": 1,
+          "psnr_db": 30.79763717651367
+        }
+      ],
+      "0.1": [
+        {
+          "iteration": 1,
+          "psnr_db": 26.205718994140625
+        }
+      ]
+    }
+  },
+  "sart": {
+    "unit": "subset updates",
+    "selected_steps": 6,
+    "selected_setting": 1.0,
+    "val_psnr_db": 22.48554458618164,
+    "searched_steps": 6,
+    "seconds": 0.04189776594284922,
+    "subsets_per_sweep": 6,
+    "setting_name": "relaxation",
+    "curves": {
+      "1.0": [
+        {
+          "iteration": 1,
+          "psnr_db": 16.52959632873535
+        },
+        {
+          "iteration": 2,
+          "psnr_db": 18.024829864501953
+        },
+        {
+          "iteration": 3,
+          "psnr_db": 19.288560485839845
+        },
+        {
+          "iteration": 4,
+          "psnr_db": 20.469750213623048
+        },
+        {
+          "iteration": 5,
+          "psnr_db": 21.5664924621582
+        },
+        {
+          "iteration": 6,
+          "psnr_db": 22.48554458618164
+        }
+      ]
+    }
+  },
+  "red": {
+    "unit": "iterations",
+    "selected_steps": 2,
+    "selected_setting": 0.1,
+    "val_psnr_db": 31.160691833496095,
+    "searched_steps": 2,
+    "seconds": 0.025158192962408066,
+    "step": 1.0,
+    "setting_name": "prior weight",
+    "curves": {
+      "0.1": [
+        {
+          "iteration": 1,
+          "psnr_db": 30.991324615478515
+        },
+        {
+          "iteration": 2,
+          "psnr_db": 31.160691833496095
+        }
+      ]
+    }
+  }
+}

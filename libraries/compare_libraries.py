@@ -9,8 +9,8 @@ so the scale each one works in cancels and the quality figures are comparable
 without any fitted correction. All of them are given the same angle list, the same
 phantom, and the same inscribed circle to be scored over.
 
-    python libraries/compare_libraries.py                   # libraries/results/parallel
-    python libraries/compare_libraries.py --geometry fan    # libraries/results/fan
+    python libraries/compare_libraries.py                   # libraries/results/0.4.0/parallel
+    python libraries/compare_libraries.py --geometry fan    # libraries/results/0.4.0/fan
     python libraries/compare_libraries.py --output /tmp/cmp
 
 Speed and memory are only meaningful on an idle card; --sections lets the quality
@@ -20,10 +20,12 @@ work run while something else is using the GPU.
 import argparse
 import json
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
 import torch
+from benchmark_metadata import benchmark_metadata
 from torch.nn import functional as F
 
 from torchtomo import FanBeam, ParallelBeam, shepp_logan
@@ -75,14 +77,21 @@ def psnr(truth, image, mask, data_range=1.0):
 def ssim(truth, image, mask, data_range=1.0):
     reference = (truth * mask).squeeze().cpu().numpy()
     other = (image * mask).squeeze().cpu().numpy()
-    return float(structural_similarity(reference, other, data_range=data_range))
+    _, similarity = structural_similarity(reference, other, data_range=data_range, full=True)
+    region = mask.squeeze().cpu().numpy().astype(bool)
+    # Match skimage's valid-window convention and exclude the invisible corners.
+    region[:3] = region[-3:] = False
+    region[:, :3] = region[:, -3:] = False
+    if not region.any():
+        raise ValueError("SSIM needs at least one valid window centre inside the circle")
+    return float(similarity[region].mean())
 
 
 class TorchtomoBackend:
     name = "torchtomo"
 
     def __init__(self, size, angles, device):
-        self.projector = ParallelBeam(img_size=size, n_angles=len(angles), angles=angles).to(device)
+        self.projector = ParallelBeam(img_size=size, n_angles=len(angles), angles=angles, backend="torch").to(device)
 
     @property
     def angles(self):
@@ -178,7 +187,7 @@ class TorchtomoFanBackend:
     name = "torchtomo"
 
     def __init__(self, size, angles, device):
-        self.projector = FanBeam(img_size=size, n_angles=len(angles), angles=angles).to(device)
+        self.projector = FanBeam(img_size=size, n_angles=len(angles), angles=angles, backend="torch").to(device)
 
     def forward(self, image):
         return self.projector.forward(image)
@@ -222,7 +231,8 @@ class TorchRadonFanBackend:
         spacing = reference.det_width / reference.n_det
         self.radon = RadonFanbeam(
             size,
-            angles.detach().cpu().numpy(),
+            # torch-radon negates its input arc internally; fan orbit needs the opposite sign.
+            -angles.detach().cpu().numpy(),
             source_distance=reference.src_dist,
             det_distance=reference.det_dist,
             det_count=reference.n_det,
@@ -351,8 +361,8 @@ def measure_speed_and_memory(args, device, results):
     """Time each operator and record what it costs the card.
 
     LEAP allocates outside PyTorch's caching allocator, so torch's own counters
-    cannot see it; nor do ASTRA's and TIGRE's own buffers. The driver figure is the
-    one that covers every library.
+    cannot see it; nor do ASTRA's and TIGRE's own buffers. The driver
+    before/after difference measures retained allocations, not an external peak.
     """
     for size in args.sizes:
         for n_angles in args.angles:
@@ -380,6 +390,8 @@ def measure_speed_and_memory(args, device, results):
                         torch_peak = torch.cuda.max_memory_allocated() - before_torch
                         seconds = timed(function, warmup=args.warmup, runs=args.runs)
                         row = {
+                            "memory_scope": "torch allocator only; external temporary allocations unmeasured",
+                            "external_peak_measured": False,
                             "library": backend.name,
                             "operation": operation,
                             "size": size,
@@ -462,7 +474,7 @@ COLORS = {
 
 # They allocate and free their buffers inside each call, where neither the torch
 # peak nor the driver difference before and after the call can see them.
-MEMORY_UNMEASURED = {"astra", "tigre"}
+MEMORY_UNMEASURED = {"leap", "torch-radon", "astra", "tigre"}
 
 
 def save_summary_figure(results, path):
@@ -509,7 +521,7 @@ def save_summary_figure(results, path):
     measured = [library for library in libraries if library not in MEMORY_UNMEASURED]
     grouped(axes[1, 1], performance, "torch_peak_mb", "peak MB", operations, lambda r: r["operation"], measured)
     axes[1, 1].set_yscale("log")
-    axes[1, 1].set_title("GPU memory for one call, 512 px, 360 angles, batch 4")
+    axes[1, 1].set_title("PyTorch allocation peak, torchtomo only, 512 px, 360 angles, batch 4")
 
     figure.suptitle(f"torchtomo against other CT libraries, {results['device']}", fontsize=13)
     figure.tight_layout()
@@ -517,9 +529,19 @@ def save_summary_figure(results, path):
     print(f"  summary figure written to {path}")
 
 
+def compatible_results(results, existing, sections):
+    """Allow section merging only for the same environment, settings and metrics."""
+    identity = ("device", "torch", "geometry", "libraries", "metadata")
+    if existing and any(existing.get(key) != results[key] for key in identity):
+        if not {"quality", "performance"}.issubset(sections):
+            raise ValueError("existing metadata differs; use a new output directory or rerun all sections")
+        return {}
+    return existing
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, help="default: libraries/results/<geometry>")
+    parser.add_argument("--output", type=Path, help="default: libraries/results/0.4.0/<geometry>")
     parser.add_argument("--sizes", type=int, nargs="+", default=[256, 512])
     parser.add_argument("--angles", type=int, nargs="+", default=[90, 180, 360])
     parser.add_argument("--batches", type=int, nargs="+", default=[1, 4])
@@ -536,13 +558,20 @@ def main():
         raise RuntimeError("this comparison needs CUDA: the other libraries are CUDA only")
     device = torch.device("cuda")
     if args.output is None:
-        args.output = Path(__file__).parent / "results" / args.geometry
+        args.output = Path(__file__).parent / "results" / "0.4.0" / args.geometry
     args.output.mkdir(parents=True, exist_ok=True)
     names = [backend.name for backend in available_backends(args.geometry)]
     print(f"libraries: {', '.join(names)}")
     print(f"device: {torch.cuda.get_device_name(0)}")
 
     results = {
+        "metadata": {
+            **benchmark_metadata(),
+            "metric_revision": 2,
+            "psnr_region": "visible circle",
+            "ssim_region": "valid window centres inside visible circle",
+            "settings": {key: value for key, value in vars(args).items() if key not in {"output", "sections"}},
+        },
         "device": torch.cuda.get_device_name(0),
         "torch": str(torch.__version__),
         "geometry": args.geometry,
@@ -551,6 +580,9 @@ def main():
         "agreement": [],
         "performance": [],
     }
+    destination = args.output / "library-comparison.json"
+    existing = json.loads(destination.read_text()) if destination.exists() else {}
+    existing = compatible_results(results, existing, args.sections)
     if "quality" in args.sections:
         print("quality")
         measure_quality(args, device, results)
@@ -561,8 +593,11 @@ def main():
         print("figure")
         save_figure(args, device, args.output / "library-comparison.png")
 
-    destination = args.output / "library-comparison.json"
-    existing = json.loads(destination.read_text()) if destination.exists() else {}
+    stamps = dict(existing.get("section_recorded_at_utc", {}))
+    for section in ("quality", "performance"):
+        if section in args.sections:
+            stamps[section] = datetime.now(timezone.utc).isoformat()
+    results["section_recorded_at_utc"] = stamps
     for key, value in results.items():
         if isinstance(value, list) and not value and key in existing:
             results[key] = existing[key]
