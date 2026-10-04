@@ -32,9 +32,12 @@ def plot(frame: pd.DataFrame, path: Path) -> None:
             axis.scatter([x] * len(values), values, s=5, alpha=0.6, color=f"C{x}", linewidths=0)
             axis.hlines(values.mean(), x - 0.3, x + 0.3, color="black", linewidth=1)
         axis.set_xticks(range(len(ORDER)), [LABELS[m] for m in ORDER], fontsize=6)
-        axis.set_yscale("log")
+        if metric == "shift_rmse":
+            axis.set_yscale("log")
+        else:
+            axis.set_ylim(bottom=0)
         axis.set_ylabel(label, fontsize=7)
-        axis.tick_params(axis="y", labelsize=6)
+        axis.tick_params(axis="y", which="both", labelsize=6)
     psnr = block.groupby("method")["psnr"].mean()
     caption = "  ".join(f"{LABELS[m].replace(chr(10), ' ')}: {psnr[m]:.2f} dB" for m in ORDER)
     figure.suptitle(f"mean PSNR, {caption}", fontsize=5)

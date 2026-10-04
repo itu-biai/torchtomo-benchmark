@@ -73,6 +73,7 @@ def main() -> None:
     parser.add_argument("--size", type=int, default=256)
     parser.add_argument("--views", type=int, default=256)
     parser.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
+    parser.add_argument("--name", default="gradient_accuracy", help="output file stem")
     args = parser.parse_args()
     rows = []
     for geometry in GEOMETRIES:
@@ -85,10 +86,11 @@ def main() -> None:
                     f"torch32 {errors['torch32_relative_error']:.3e}",
                     flush=True,
                 )
-    raw = RESULTS / "raw" / "gradient_accuracy.json"
+    raw = RESULTS / "raw" / f"{args.name}.json"
     raw.parent.mkdir(parents=True, exist_ok=True)
     raw.write_text(json.dumps({"size": args.size, "views": args.views, "rows": rows}, indent=1))
-    stamp(raw, RESULTS / "gradient_accuracy.json", current("python isbi/gradient_accuracy.py"))
+    command = f"python isbi/gradient_accuracy.py --size {args.size} --views {args.views} --name {args.name}"
+    stamp(raw, RESULTS / f"{args.name}.json", current(command))
 
 
 if __name__ == "__main__":
