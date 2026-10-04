@@ -37,14 +37,22 @@ def _git(repo: Path, *args: str) -> str:
     return subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True, check=True).stdout.strip()
 
 
+SOURCE = ("*.py", "*.sh", "Makefile", "requirements.txt")
+
+
+def _dirty(repo: Path) -> bool:
+    """Uncommitted or untracked source files; result files written by the runs do not count."""
+    return bool(_git(repo, "status", "--porcelain", "--", *SOURCE))
+
+
 def current(command: str) -> Provenance:
     device = torch.cuda.get_device_name() if torch.cuda.is_available() else "cpu"
     return Provenance(
         torchtomo_version=torchtomo.__version__,
         torchtomo_commit=_git(TORCHTOMO, "rev-parse", "HEAD"),
-        torchtomo_dirty=bool(_git(TORCHTOMO, "status", "--porcelain", "src")),
+        torchtomo_dirty=_dirty(TORCHTOMO),
         benchmark_commit=_git(ROOT, "rev-parse", "HEAD"),
-        benchmark_dirty=bool(_git(ROOT, "status", "--porcelain", "geometry", "libraries", "isbi")),
+        benchmark_dirty=_dirty(ROOT),
         torch=torch.__version__,
         cuda=str(torch.version.cuda),
         device=device,

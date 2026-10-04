@@ -26,3 +26,12 @@ $PYTHON isbi/motion_stats.py | tee "$OUT/logs/motion_stats.log"
 $PYTHON isbi/make_fig2_calibration.py
 $PYTHON isbi/make_fig3_motion.py
 $PYTHON isbi/export_tables.py | tee "$OUT/logs/export_tables.log"
+
+# Extras: gradient accuracy at smaller sizes and the cross-library dot test. The dot test
+# needs ASTRA and torch-radon, which live in torchtomo's own venv (DOT_PYTHON).
+for size in 64 128; do
+  $PYTHON isbi/gradient_accuracy.py --size $size --views $size --name gradient_accuracy_size$size \
+    2>&1 | tee "$OUT/logs/gradient_accuracy_size$size.log"
+done
+DOT_PYTHON=${DOT_PYTHON:-../torchtomo/.venv/bin/python}
+$DOT_PYTHON isbi/dot_test.py 2>&1 | tee "$OUT/logs/dot_test.log"
