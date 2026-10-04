@@ -1,0 +1,19 @@
+shift        none            shift 1.573±0.525 angle 0.000±0.000 psnr 19.14±2.31 0.00 s
+shift        matching        shift 0.037±0.027 angle 0.000±0.000 psnr 25.78±1.13 0.19 s
+shift        gradient shift  shift 0.031±0.012 angle 0.000±0.000 psnr 25.81±1.21 0.56 s
+shift        gradient pose   shift 0.030±0.011 angle 0.081±0.049 psnr 25.79±1.20 0.65 s
+shift        oracle          shift 0.000±0.000 angle 0.000±0.000 psnr 25.83±1.22 0.00 s
+shift+angle  none            shift 1.573±0.525 angle 0.303±0.009 psnr 19.14±2.30 0.00 s
+shift+angle  matching        shift 0.041±0.025 angle 0.303±0.009 psnr 25.56±0.90 0.18 s
+shift+angle  gradient shift  shift 0.037±0.011 angle 0.303±0.009 psnr 25.58±0.95 0.61 s
+shift+angle  gradient pose   shift 0.032±0.009 angle 0.162±0.086 psnr 25.62±1.08 0.70 s
+shift+angle  oracle          shift 0.000±0.000 angle 0.000±0.000 psnr 25.66±1.11 0.00 s
+shift+angle  gradient pose vs matching        shift_rmse          median diff +0.0012 p_holm 1.00e+00 r +0.20
+shift+angle  gradient pose vs matching        angle_rmse_degrees  median diff +0.1738 p_holm 6.41e-04 r +0.93
+shift+angle  gradient pose vs matching        psnr                median diff -0.0085 p_holm 1.00e+00 r -0.08
+shift+angle  gradient pose vs gradient shift  shift_rmse          median diff +0.0033 p_holm 1.90e-02 r +0.73
+shift+angle  gradient pose vs gradient shift  angle_rmse_degrees  median diff +0.1738 p_holm 6.41e-04 r +0.93
+shift+angle  gradient pose vs gradient shift  psnr                median diff -0.0035 p_holm 1.00e+00 r -0.09
+shift        gradient shift vs matching        shift_rmse          median diff -0.0006 p_holm 1.00e+00 r -0.06
+shift        gradient shift vs matching        angle_rmse_degrees  median diff +0.0000 p_holm 1.00e+00 r +0.00
+shift        gradient shift vs matching        psnr                median diff -0.0011 p_holm 1.00e+00 r -0.06

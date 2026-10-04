@@ -1,0 +1,50 @@
+shift shepp_logan seed 0: none 0.854px 0.000deg 21.82dB  matching 0.042px 0.000deg 28.20dB  gradient shift 0.020px 0.000deg 28.26dB  gradient pose 0.022px 0.047deg 28.23dB  oracle 0.000px 0.000deg 28.26dB
+shift shepp_logan seed 1: none 1.982px 0.000deg 16.72dB  matching 0.083px 0.000deg 27.99dB  gradient shift 0.038px 0.000deg 28.22dB  gradient pose 0.039px 0.072deg 28.16dB  oracle 0.000px 0.000deg 28.27dB
+shift shepp_logan seed 2: none 1.883px 0.000deg 16.59dB  matching 0.090px 0.000deg 27.97dB  gradient shift 0.019px 0.000deg 28.30dB  gradient pose 0.024px 0.059deg 28.24dB  oracle 0.000px 0.000deg 28.31dB
+shift htc2022_solid_disc seed 0: none 0.854px 0.000deg 22.71dB  matching 0.016px 0.000deg 24.94dB  gradient shift 0.017px 0.000deg 24.94dB  gradient pose 0.017px 0.094deg 24.93dB  oracle 0.000px 0.000deg 24.94dB
+shift htc2022_solid_disc seed 1: none 1.982px 0.000deg 18.95dB  matching 0.021px 0.000deg 24.91dB  gradient shift 0.041px 0.000deg 24.89dB  gradient pose 0.041px 0.220deg 24.85dB  oracle 0.000px 0.000deg 24.91dB
+shift htc2022_solid_disc seed 2: none 1.883px 0.000deg 19.31dB  matching 0.027px 0.000deg 24.94dB  gradient shift 0.038px 0.000deg 24.93dB  gradient pose 0.033px 0.170deg 24.90dB  oracle 0.000px 0.000deg 24.94dB
+shift htc2022_ta seed 0: none 0.854px 0.000deg 22.04dB  matching 0.013px 0.000deg 25.30dB  gradient shift 0.014px 0.000deg 25.30dB  gradient pose 0.014px 0.041deg 25.29dB  oracle 0.000px 0.000deg 25.30dB
+shift htc2022_ta seed 1: none 1.982px 0.000deg 17.51dB  matching 0.025px 0.000deg 25.26dB  gradient shift 0.042px 0.000deg 25.24dB  gradient pose 0.041px 0.065deg 25.23dB  oracle 0.000px 0.000deg 25.26dB
+shift htc2022_ta seed 2: none 1.883px 0.000deg 18.06dB  matching 0.036px 0.000deg 25.13dB  gradient shift 0.040px 0.000deg 25.12dB  gradient pose 0.036px 0.078deg 25.11dB  oracle 0.000px 0.000deg 25.14dB
+shift htc2022_tb seed 0: none 0.854px 0.000deg 21.61dB  matching 0.013px 0.000deg 26.39dB  gradient shift 0.013px 0.000deg 26.39dB  gradient pose 0.013px 0.016deg 26.39dB  oracle 0.000px 0.000deg 26.40dB
+shift htc2022_tb seed 1: none 1.982px 0.000deg 16.20dB  matching 0.069px 0.000deg 26.27dB  gradient shift 0.040px 0.000deg 26.31dB  gradient pose 0.044px 0.045deg 26.29dB  oracle 0.000px 0.000deg 26.35dB
+shift htc2022_tb seed 2: none 1.883px 0.000deg 16.63dB  matching 0.088px 0.000deg 25.95dB  gradient shift 0.040px 0.000deg 26.02dB  gradient pose 0.034px 0.058deg 26.00dB  oracle 0.000px 0.000deg 26.06dB
+shift htc2022_tc seed 0: none 0.854px 0.000deg 21.64dB  matching 0.015px 0.000deg 25.12dB  gradient shift 0.015px 0.000deg 25.12dB  gradient pose 0.015px 0.048deg 25.11dB  oracle 0.000px 0.000deg 25.12dB
+shift htc2022_tc seed 1: none 1.982px 0.000deg 17.13dB  matching 0.027px 0.000deg 25.09dB  gradient shift 0.045px 0.000deg 25.07dB  gradient pose 0.045px 0.093deg 25.05dB  oracle 0.000px 0.000deg 25.10dB
+shift htc2022_tc seed 2: none 1.883px 0.000deg 17.67dB  matching 0.029px 0.000deg 25.16dB  gradient shift 0.037px 0.000deg 25.14dB  gradient pose 0.036px 0.086deg 25.13dB  oracle 0.000px 0.000deg 25.17dB
+shift htc2022_td seed 0: none 0.854px 0.000deg 22.62dB  matching 0.015px 0.000deg 25.21dB  gradient shift 0.015px 0.000deg 25.21dB  gradient pose 0.015px 0.052deg 25.21dB  oracle 0.000px 0.000deg 25.21dB
+shift htc2022_td seed 1: none 1.982px 0.000deg 18.47dB  matching 0.020px 0.000deg 25.18dB  gradient shift 0.043px 0.000deg 25.16dB  gradient pose 0.039px 0.085deg 25.15dB  oracle 0.000px 0.000deg 25.18dB
+shift htc2022_td seed 2: none 1.883px 0.000deg 18.85dB  matching 0.032px 0.000deg 25.01dB  gradient shift 0.037px 0.000deg 25.00dB  gradient pose 0.032px 0.127deg 24.98dB  oracle 0.000px 0.000deg 25.02dB
+shift+angle shepp_logan seed 0: none 0.854px 0.313deg 21.80dB  matching 0.047px 0.313deg 27.35dB  gradient shift 0.041px 0.313deg 27.37dB  gradient pose 0.026px 0.139deg 27.78dB  oracle 0.000px 0.000deg 27.89dB
+shift+angle shepp_logan seed 1: none 1.982px 0.291deg 16.72dB  matching 0.084px 0.291deg 27.34dB  gradient shift 0.032px 0.291deg 27.57dB  gradient pose 0.039px 0.142deg 27.82dB  oracle 0.000px 0.000deg 27.98dB
+shift+angle shepp_logan seed 2: none 1.883px 0.303deg 16.60dB  matching 0.090px 0.303deg 27.28dB  gradient shift 0.056px 0.303deg 27.42dB  gradient pose 0.025px 0.135deg 27.84dB  oracle 0.000px 0.000deg 27.95dB
+shift+angle htc2022_solid_disc seed 0: none 0.854px 0.313deg 22.71dB  matching 0.018px 0.313deg 24.87dB  gradient shift 0.019px 0.313deg 24.87dB  gradient pose 0.018px 0.318deg 24.87dB  oracle 0.000px 0.000deg 24.90dB
+shift+angle htc2022_solid_disc seed 1: none 1.982px 0.291deg 18.95dB  matching 0.022px 0.291deg 24.85dB  gradient shift 0.041px 0.291deg 24.83dB  gradient pose 0.042px 0.361deg 24.81dB  oracle 0.000px 0.000deg 24.88dB
+shift+angle htc2022_solid_disc seed 2: none 1.883px 0.303deg 19.31dB  matching 0.028px 0.303deg 24.87dB  gradient shift 0.038px 0.303deg 24.87dB  gradient pose 0.035px 0.355deg 24.85dB  oracle 0.000px 0.000deg 24.91dB
+shift+angle htc2022_ta seed 0: none 0.854px 0.313deg 22.01dB  matching 0.028px 0.313deg 25.17dB  gradient shift 0.029px 0.313deg 25.17dB  gradient pose 0.022px 0.096deg 25.17dB  oracle 0.000px 0.000deg 25.17dB
+shift+angle htc2022_ta seed 1: none 1.982px 0.291deg 17.52dB  matching 0.033px 0.291deg 25.16dB  gradient shift 0.047px 0.291deg 25.13dB  gradient pose 0.041px 0.118deg 25.12dB  oracle 0.000px 0.000deg 25.14dB
+shift+angle htc2022_ta seed 2: none 1.883px 0.303deg 18.05dB  matching 0.041px 0.303deg 25.03dB  gradient shift 0.046px 0.303deg 25.01dB  gradient pose 0.039px 0.115deg 25.00dB  oracle 0.000px 0.000deg 25.02dB
+shift+angle htc2022_tb seed 0: none 0.854px 0.313deg 21.57dB  matching 0.030px 0.313deg 26.16dB  gradient shift 0.029px 0.313deg 26.15dB  gradient pose 0.022px 0.125deg 26.14dB  oracle 0.000px 0.000deg 26.05dB
+shift+angle htc2022_tb seed 1: none 1.982px 0.291deg 16.21dB  matching 0.074px 0.291deg 26.07dB  gradient shift 0.051px 0.291deg 26.10dB  gradient pose 0.027px 0.114deg 26.12dB  oracle 0.000px 0.000deg 26.05dB
+shift+angle htc2022_tb seed 2: none 1.883px 0.303deg 16.62dB  matching 0.092px 0.303deg 25.73dB  gradient shift 0.040px 0.303deg 25.82dB  gradient pose 0.038px 0.100deg 25.74dB  oracle 0.000px 0.000deg 25.76dB
+shift+angle htc2022_tc seed 0: none 0.854px 0.313deg 21.62dB  matching 0.021px 0.313deg 24.97dB  gradient shift 0.020px 0.313deg 24.97dB  gradient pose 0.019px 0.136deg 25.00dB  oracle 0.000px 0.000deg 24.97dB
+shift+angle htc2022_tc seed 1: none 1.982px 0.291deg 17.14dB  matching 0.031px 0.291deg 24.97dB  gradient shift 0.045px 0.291deg 24.95dB  gradient pose 0.045px 0.113deg 24.92dB  oracle 0.000px 0.000deg 24.96dB
+shift+angle htc2022_tc seed 2: none 1.883px 0.303deg 17.68dB  matching 0.032px 0.303deg 25.02dB  gradient shift 0.039px 0.303deg 25.01dB  gradient pose 0.035px 0.147deg 24.96dB  oracle 0.000px 0.000deg 25.00dB
+shift+angle htc2022_td seed 0: none 0.854px 0.313deg 22.62dB  matching 0.018px 0.313deg 25.12dB  gradient shift 0.019px 0.313deg 25.12dB  gradient pose 0.022px 0.106deg 25.13dB  oracle 0.000px 0.000deg 25.13dB
+shift+angle htc2022_td seed 1: none 1.982px 0.291deg 18.47dB  matching 0.021px 0.291deg 25.10dB  gradient shift 0.044px 0.291deg 25.08dB  gradient pose 0.042px 0.126deg 25.09dB  oracle 0.000px 0.000deg 25.11dB
+shift+angle htc2022_td seed 2: none 1.883px 0.303deg 18.85dB  matching 0.034px 0.303deg 24.93dB  gradient shift 0.040px 0.303deg 24.91dB  gradient pose 0.037px 0.162deg 24.91dB  oracle 0.000px 0.000deg 24.95dB
+
+shift: mean over phantoms and seeds
+  none            shift rmse 1.573 px  angle rmse 0.000 deg  psnr 19.14 dB  0.0 s, 0 evals
+  matching        shift rmse 0.037 px  angle rmse 0.000 deg  psnr 25.78 dB  0.2 s, 100 evals
+  gradient shift  shift rmse 0.031 px  angle rmse 0.000 deg  psnr 25.81 dB  0.6 s, 96 evals
+  gradient pose   shift rmse 0.030 px  angle rmse 0.081 deg  psnr 25.79 dB  0.7 s, 105 evals
+  oracle          shift rmse 0.000 px  angle rmse 0.000 deg  psnr 25.83 dB  0.0 s, 0 evals
+
+shift+angle: mean over phantoms and seeds
+  none            shift rmse 1.573 px  angle rmse 0.303 deg  psnr 19.14 dB  0.0 s, 0 evals
+  matching        shift rmse 0.041 px  angle rmse 0.303 deg  psnr 25.56 dB  0.2 s, 100 evals
+  gradient shift  shift rmse 0.037 px  angle rmse 0.303 deg  psnr 25.58 dB  0.6 s, 113 evals
+  gradient pose   shift rmse 0.032 px  angle rmse 0.162 deg  psnr 25.62 dB  0.7 s, 112 evals
+  oracle          shift rmse 0.000 px  angle rmse 0.000 deg  psnr 25.66 dB  0.0 s, 0 evals

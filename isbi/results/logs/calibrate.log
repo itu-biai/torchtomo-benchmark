@@ -1,0 +1,84 @@
+
+htc2022_solid_disc: 9 s
+  gradient_detector    -0.106 bins    0.39 s  loss 2.18731e-04
+  grid_detector        -0.100 bins    0.58 s  loss 2.18741e-04
+  gradient_axis        -0.078 bins    0.20 s  loss 2.18731e-04
+  grid_axis            -0.080 bins    0.62 s  loss 2.18734e-04
+  vo                   -0.250 bins    0.65 s
+  phase_correlation    -0.150 bins    0.00 s
+  injection gradient_detector  errors [-0.006, +0.003, -0.000, -0.007] bins
+  injection grid_detector      errors [-0.020, +0.000, +0.000, -0.020] bins
+  injection vo                 errors [+0.050, +0.100, +0.150, -0.050] bins
+  injection phase_correlation  errors [-0.028, +0.064, -0.087, -0.094] bins
+
+htc2022_ta: 8 s
+  gradient_detector    -0.096 bins    0.19 s  loss 1.43815e-04
+  grid_detector        -0.100 bins    0.58 s  loss 1.43821e-04
+  gradient_axis        -0.071 bins    0.15 s  loss 1.43810e-04
+  grid_axis            -0.080 bins    0.56 s  loss 1.43864e-04
+  vo                   +0.000 bins    0.57 s
+  phase_correlation    -0.331 bins    0.00 s
+  injection gradient_detector  errors [+0.000, -0.004, +0.000, -0.013] bins
+  injection grid_detector      errors [-0.000, +0.000, -0.000, -0.000] bins
+  injection vo                 errors [-0.200, -0.150, -0.100, -0.050] bins
+  injection phase_correlation  errors [+0.141, +0.302, -0.104, +0.066] bins
+
+htc2022_tb: 7 s
+  gradient_detector    -0.206 bins    0.18 s  loss 1.10469e-04
+  grid_detector        -0.200 bins    0.53 s  loss 1.10487e-04
+  gradient_axis        -0.152 bins    0.07 s  loss 1.10482e-04
+  grid_axis            -0.160 bins    0.55 s  loss 1.10543e-04
+  vo                   -0.250 bins    0.53 s
+  phase_correlation    +0.533 bins    0.00 s
+  injection gradient_detector  errors [+0.004, -0.000, +0.007, +0.004] bins
+  injection grid_detector      errors [-0.000, +0.000, +0.000, -0.000] bins
+  injection vo                 errors [+0.050, +0.100, +0.150, -0.050] bins
+  injection phase_correlation  errors [+0.020, -1.589, -1.583, -1.696] bins
+
+htc2022_tc: 8 s
+  gradient_detector    -0.122 bins    0.09 s  loss 1.57215e-04
+  grid_detector        -0.120 bins    0.55 s  loss 1.57216e-04
+  gradient_axis        -0.090 bins    0.14 s  loss 1.57221e-04
+  grid_axis            -0.080 bins    0.57 s  loss 1.57296e-04
+  vo                   -0.250 bins    0.53 s
+  phase_correlation    -0.156 bins    0.00 s
+  injection gradient_detector  errors [+0.009, +0.001, +0.006, -0.001] bins
+  injection grid_detector      errors [-0.000, +0.000, +0.000, -0.000] bins
+  injection vo                 errors [+0.050, +0.100, -0.100, -0.050] bins
+  injection phase_correlation  errors [-0.031, -0.024, +0.026, -0.095] bins
+
+htc2022_td: 8 s
+  gradient_detector    -0.196 bins    0.24 s  loss 1.70601e-04
+  grid_detector        -0.200 bins    0.56 s  loss 1.70604e-04
+  gradient_axis        -0.145 bins    0.32 s  loss 1.70638e-04
+  grid_axis            -0.140 bins    0.57 s  loss 1.70649e-04
+  vo                   -0.250 bins    0.55 s
+  phase_correlation    -0.756 bins    0.00 s
+  injection gradient_detector  errors [+0.011, -0.001, +0.001, -0.009] bins
+  injection grid_detector      errors [+0.020, +0.000, +0.000, -0.000] bins
+  injection vo                 errors [+0.050, +0.100, -0.100, -0.050] bins
+  injection phase_correlation  errors [+0.118, -0.041, +44.149, +1.348] bins
+
+walnut: 10 s
+  gradient_detector    -1.426 bins    0.31 s  loss 3.61322e-05
+  grid_detector        -1.420 bins    0.85 s  loss 3.61373e-05
+  gradient_axis        -0.518 bins    0.17 s  loss 3.61894e-05
+  grid_axis            -0.520 bins    0.84 s  loss 3.61947e-05
+  vo                   -1.500 bins    0.81 s
+  phase_correlation    +2.921 bins    0.00 s
+  injection gradient_detector  errors [-0.014, -0.012, -0.001, +0.000] bins
+  injection grid_detector      errors [-0.020, -0.020, -0.000, +0.000] bins
+  injection vo                 errors [+0.050, +0.100, +0.150, +0.200] bins
+  injection phase_correlation  errors [+0.418, +0.191, +63.045, -84.727] bins
+
+walnut_120: 4 s
+  gradient_detector    -1.392 bins    0.12 s  loss 1.15892e-04
+  grid_detector        -1.400 bins    0.41 s  loss 1.15896e-04
+  gradient_axis        -0.507 bins    0.10 s  loss 1.15753e-04
+  grid_axis            -0.500 bins    0.39 s  loss 1.15783e-04
+  vo                   -2.250 bins    0.14 s
+  phase_correlation   -98.993 bins    0.00 s
+  injection gradient_detector  errors [+0.013, +0.021, +0.031, +0.027] bins
+  injection grid_detector      errors [+0.020, +0.040, +0.040, +0.040] bins
+  injection vo                 errors [+0.050, +0.100, +0.150, +0.200] bins
+  injection phase_correlation  errors [+0.273, +163.594, +212.929, -0.681] bins

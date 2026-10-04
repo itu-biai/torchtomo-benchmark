@@ -1,0 +1,77 @@
+{
+ "size": 512,
+ "views": 360,
+ "pairs": 100,
+ "rows": [
+  {
+   "geometry": "parallel",
+   "pair": "torchtomo CUDA exact",
+   "median": 4.306518956151824e-10,
+   "p95": 1.0406437741936002e-09,
+   "max": 1.3912775751875976e-09
+  },
+  {
+   "geometry": "parallel",
+   "pair": "torchtomo CUDA approximate",
+   "median": 5.13520757831035e-05,
+   "p95": 0.00014497908541842076,
+   "max": 0.00018154567188734312
+  },
+  {
+   "geometry": "parallel",
+   "pair": "torchtomo PyTorch",
+   "median": 2.354786951281034e-10,
+   "p95": 5.989545884963265e-10,
+   "max": 1.0561448101482801e-09
+  },
+  {
+   "geometry": "parallel",
+   "pair": "ASTRA",
+   "median": 0.00010840465605650891,
+   "p95": 0.0002739220032003195,
+   "max": 0.00035138676900945255
+  },
+  {
+   "geometry": "parallel",
+   "pair": "torch-radon",
+   "median": 5.439152257710672e-05,
+   "p95": 0.00016419563306818778,
+   "max": 0.00023537439273587122
+  },
+  {
+   "geometry": "fan",
+   "pair": "torchtomo CUDA exact",
+   "median": 3.2675160729215325e-10,
+   "p95": 1.0869274962237343e-09,
+   "max": 1.1887715024963774e-09
+  },
+  {
+   "geometry": "fan",
+   "pair": "torchtomo CUDA approximate",
+   "median": 9.911632374063496e-05,
+   "p95": 0.0002585042453781805,
+   "max": 0.00037050314961867335
+  },
+  {
+   "geometry": "fan",
+   "pair": "torchtomo PyTorch",
+   "median": 1.7306928115980462e-10,
+   "p95": 5.128595041962354e-10,
+   "max": 8.539349321042846e-10
+  },
+  {
+   "geometry": "fan",
+   "pair": "ASTRA",
+   "median": 9.792411911110716e-05,
+   "p95": 0.0003427430821880882,
+   "max": 0.00043576772603991665
+  },
+  {
+   "geometry": "fan",
+   "pair": "torch-radon",
+   "median": 0.00012225457430282413,
+   "p95": 0.0002712801525610476,
+   "max": 0.00039457906576746297
+  }
+ ]
+}

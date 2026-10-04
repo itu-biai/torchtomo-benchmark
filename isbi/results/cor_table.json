@@ -1,0 +1,209 @@
+{
+ "rows": [
+  {
+   "scans": "HTC 2022 (5)",
+   "method": "gradient_detector",
+   "median": 0.004044145345687866,
+   "worst": 0.012633006274699987,
+   "seconds": 0.21963297000329476
+  },
+  {
+   "scans": "HTC 2022 (5)",
+   "method": "grid_detector",
+   "median": 6.8833827526759706e-15,
+   "worst": 0.02000000000002533,
+   "seconds": 0.5600546839996241
+  },
+  {
+   "scans": "HTC 2022 (5)",
+   "method": "vo",
+   "median": 0.10000000000000009,
+   "worst": 0.20000000000000018,
+   "seconds": 0.5647081594041083
+  },
+  {
+   "scans": "HTC 2022 (5)",
+   "method": "phase_correlation",
+   "median": 0.09453657848873132,
+   "worst": 44.149054856413436,
+   "seconds": 0.0010184880055021494
+  },
+  {
+   "scans": "walnut, 1200 views",
+   "method": "gradient_detector",
+   "median": 0.006778895854949951,
+   "worst": 0.013897609710693537,
+   "seconds": 0.3064593360031722
+  },
+  {
+   "scans": "walnut, 1200 views",
+   "method": "grid_detector",
+   "median": 0.010000000000010889,
+   "worst": 0.020000000000027107,
+   "seconds": 0.8500364439969417
+  },
+  {
+   "scans": "walnut, 1200 views",
+   "method": "vo",
+   "median": 0.125,
+   "worst": 0.20000000000000018,
+   "seconds": 0.8134434259991394
+  },
+  {
+   "scans": "walnut, 1200 views",
+   "method": "phase_correlation",
+   "median": 31.731375509056793,
+   "worst": 84.72662532034563,
+   "seconds": 0.0010923749941866845
+  },
+  {
+   "scans": "walnut, 120 views",
+   "method": "gradient_detector",
+   "median": 0.023848676681518688,
+   "worst": 0.03140249252319327,
+   "seconds": 0.11797515999933239
+  },
+  {
+   "scans": "walnut, 120 views",
+   "method": "grid_detector",
+   "median": 0.03999999999998849,
+   "worst": 0.040000000000000036,
+   "seconds": 0.4090277240029536
+  },
+  {
+   "scans": "walnut, 120 views",
+   "method": "vo",
+   "median": 0.125,
+   "worst": 0.20000000000000018,
+   "seconds": 0.135744812010671
+  },
+  {
+   "scans": "walnut, 120 views",
+   "method": "phase_correlation",
+   "median": 82.13776702501272,
+   "worst": 212.9289413374425,
+   "seconds": 0.0011484840069897473
+  }
+ ],
+ "tests": [
+  {
+   "baseline": "grid_detector",
+   "n": 28,
+   "median_difference": -0.0005079619586463302,
+   "p_raw": 0.973184622824192,
+   "r": -0.009852216748768473,
+   "p_holm": 0.973184622824192
+  },
+  {
+   "baseline": "vo",
+   "n": 28,
+   "median_difference": 0.09582884460687646,
+   "p_raw": 7.450580596923828e-09,
+   "r": 1.0,
+   "p_holm": 2.2351741790771484e-08
+  },
+  {
+   "baseline": "phase_correlation",
+   "n": 28,
+   "median_difference": 0.1598894429413691,
+   "p_raw": 7.450580596923828e-09,
+   "r": 1.0,
+   "p_holm": 2.2351741790771484e-08
+  }
+ ],
+ "models": [
+  {
+   "scan": "htc2022_solid_disc",
+   "detector_bins": -0.10552888363599777,
+   "axis_bins": -0.0780450627207756,
+   "ratio": 1.3521532299045225
+  },
+  {
+   "scan": "htc2022_ta",
+   "detector_bins": -0.0962749794125557,
+   "axis_bins": -0.07098761945962906,
+   "ratio": 1.356222115143721
+  },
+  {
+   "scan": "htc2022_tb",
+   "detector_bins": -0.20573386549949646,
+   "axis_bins": -0.15200240910053253,
+   "ratio": 1.3534908210792014
+  },
+  {
+   "scan": "htc2022_tc",
+   "detector_bins": -0.12164973467588425,
+   "axis_bins": -0.08967220783233643,
+   "ratio": 1.3566046561866463
+  },
+  {
+   "scan": "htc2022_td",
+   "detector_bins": -0.1964627057313919,
+   "axis_bins": -0.1446516364812851,
+   "ratio": 1.3581782447156074
+  },
+  {
+   "scan": "walnut",
+   "detector_bins": -1.426455020904541,
+   "axis_bins": -0.5177190899848938,
+   "ratio": 2.7552683462882595
+  },
+  {
+   "scan": "walnut_120",
+   "detector_bins": -1.392272710800171,
+   "axis_bins": -0.5068109035491943,
+   "ratio": 2.7471246199521198
+  }
+ ],
+ "estimates": {
+  "htc2022_solid_disc": {
+   "gradient_detector": -0.10552888363599777,
+   "grid_detector": -0.0999999999999992,
+   "vo": -0.25,
+   "phase_correlation": -0.14996302345690538,
+   "gradient_axis": -0.0780450627207756
+  },
+  "htc2022_ta": {
+   "gradient_detector": -0.0962749794125557,
+   "grid_detector": -0.0999999999999992,
+   "vo": 0.0,
+   "phase_correlation": -0.3310108798870033,
+   "gradient_axis": -0.07098761945962906
+  },
+  "htc2022_tb": {
+   "gradient_detector": -0.20573386549949646,
+   "grid_detector": -0.1999999999999993,
+   "vo": -0.25,
+   "phase_correlation": 0.533356797115573,
+   "gradient_axis": -0.15200240910053253
+  },
+  "htc2022_tc": {
+   "gradient_detector": -0.12164973467588425,
+   "grid_detector": -0.11999999999999922,
+   "vo": -0.25,
+   "phase_correlation": -0.1556950684141043,
+   "gradient_axis": -0.08967220783233643
+  },
+  "htc2022_td": {
+   "gradient_detector": -0.1964627057313919,
+   "grid_detector": -0.1999999999999993,
+   "vo": -0.25,
+   "phase_correlation": -0.7556702970232436,
+   "gradient_axis": -0.1446516364812851
+  },
+  "walnut": {
+   "gradient_detector": -1.426455020904541,
+   "grid_detector": -1.4199999999999995,
+   "vo": -1.5,
+   "phase_correlation": 2.920848471710542,
+   "gradient_axis": -0.5177190899848938
+  },
+  "walnut_120": {
+   "gradient_detector": -1.392272710800171,
+   "grid_detector": -1.3999999999999995,
+   "vo": -2.25,
+   "phase_correlation": -98.99324201125813,
+   "gradient_axis": -0.5068109035491943
+  }
+ }
+}

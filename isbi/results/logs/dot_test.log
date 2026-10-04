@@ -1,0 +1,10 @@
+parallel torchtomo CUDA exact         median 4.31e-10  p95 1.04e-09
+parallel torchtomo CUDA approximate   median 5.14e-05  p95 1.45e-04
+parallel torchtomo PyTorch            median 2.35e-10  p95 5.99e-10
+parallel ASTRA                        median 1.08e-04  p95 2.74e-04
+parallel torch-radon                  median 5.44e-05  p95 1.64e-04
+fan      torchtomo CUDA exact         median 3.27e-10  p95 1.09e-09
+fan      torchtomo CUDA approximate   median 9.91e-05  p95 2.59e-04
+fan      torchtomo PyTorch            median 1.73e-10  p95 5.13e-10
+fan      ASTRA                        median 9.79e-05  p95 3.43e-04
+fan      torch-radon                  median 1.22e-04  p95 2.71e-04
