@@ -80,9 +80,9 @@ def thies_case(size, views, n_det, repeats):
     return timed(step, repeats)
 
 
-def torchtomo_case(size, views, n_det, operator, repeats):
+def torchtomo_case(size, views, n_det, operator, repeats, backend="auto"):
     device = torch.device("cuda")
-    projector = FanBeam(img_size=size, n_angles=views, n_det=n_det, backend="auto").to(device)
+    projector = FanBeam(img_size=size, n_angles=views, n_det=n_det, backend=backend).to(device)
     base = projector.pose.detach().clone()
     shift = torch.zeros(views, dtype=base.dtype, device=device, requires_grad=True)
     image = torch.rand(1, 1, size, size, device=device)
@@ -105,6 +105,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--thies", required=True, help="path to a clone of geometry_gradients_CT")
     parser.add_argument("--repeats", type=int, default=10)
+    parser.add_argument("--backends", nargs="+", default=["auto"], choices=["auto", "torch"], help="torchtomo backends")
+    parser.add_argument("--output", type=Path, default=RESULTS / "geometry-gradients.json")
     args = parser.parse_args()
     sys.path.insert(0, args.thies)
     # numba-cuda 0.30 still registers np.row_stack, which NumPy 2.4 removed.
@@ -116,13 +118,17 @@ def main():
     print(f"{'size':>5} {'views':>5} {'bins':>5}  {'method':38s} {'ms':>9} {'peak MiB':>9}")
     for size, views, n_det in cases:
         rows = [("Thies et al. backprojection", lambda: thies_case(size, views, n_det, args.repeats))]
-        for operator in ("forward", "adjoint", "backproject"):
-            rows.append(
-                (
-                    f"torchtomo {operator}",
-                    lambda operator=operator: torchtomo_case(size, views, n_det, operator, args.repeats),
+        for backend in args.backends:
+            prefix = "torchtomo" if backend == "auto" else f"torchtomo {backend}"
+            for operator in ("forward", "adjoint", "backproject"):
+                rows.append(
+                    (
+                        f"{prefix} {operator}",
+                        lambda operator=operator, backend=backend: torchtomo_case(
+                            size, views, n_det, operator, args.repeats, backend
+                        ),
+                    )
                 )
-            )
         for label, run in rows:
             torch.cuda.empty_cache()
             try:
@@ -135,7 +141,8 @@ def main():
                 dict(size=size, views=views, bins=n_det, method=label, milliseconds=milliseconds, peak_mib=peak)
             )
     device = torch.cuda.get_device_name()
-    (RESULTS / "geometry-gradients.json").write_text(json.dumps(dict(device=device, cases=records), indent=1))
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(dict(device=device, repeats=args.repeats, cases=records), indent=1))
 
 
 if __name__ == "__main__":
