@@ -1,0 +1,22 @@
+ size views  bins  method                                        ms  peak MiB
+  256   360   384  Thies et al. backprojection                63.99        19
+  256   360   384  torchtomo forward                           4.87        46
+  256   360   384  torchtomo adjoint                           5.02        46
+  256   360   384  torchtomo backproject                       2.12        19
+  256   360   384  torchtomo torch forward                   104.93      3419
+  256   360   384  torchtomo torch adjoint                   131.97      4634
+  256   360   384  torchtomo torch backproject                91.67      3154
+  512   360   768  Thies et al. backprojection               250.98        23
+  512   360   768  torchtomo forward                           6.37        76
+  512   360   768  torchtomo adjoint                           7.86        76
+  512   360   768  torchtomo backproject                       4.15        24
+  512   360   768  torchtomo torch forward                   413.42      7929
+  512   360   768  torchtomo torch adjoint                      OOM
+  512   360   768  torchtomo torch backproject               361.84      9020
+  512   720   768  Thies et al. backprojection               277.74        27
+  512   720   768  torchtomo forward                          10.48       133
+  512   720   768  torchtomo adjoint                          13.82       133
+  512   720   768  torchtomo backproject                       7.44        25
+  512   720   768  torchtomo torch forward                      OOM
+  512   720   768  torchtomo torch adjoint                      OOM
+  512   720   768  torchtomo torch backproject                  OOM

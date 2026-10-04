@@ -1,0 +1,10 @@
+\begin{tabular}{lccccc}
+\toprule
+Size, views & Thies et al. backprojection (ms) & torchtomo PyTorch backproject (ms) & torchtomo CUDA backproject (ms) & torchtomo CUDA forward (ms) & torchtomo CUDA adjoint (ms) \\
+\midrule
+256, 360 & 63.87 (62.91 to 63.99) & 91.72 (91.67 to 91.72) & 2.12 (2.11 to 2.13) & 4.87 (4.80 to 5.47) & 5.02 (4.36 to 5.50) \\
+512, 360 & 250.98 (248.93 to 251.00) & 361.84 (361.74 to 361.86) & 4.15 (4.10 to 4.21) & 6.37 (6.22 to 6.46) & 7.86 (7.78 to 7.89) \\
+512, 720 & 277.65 (277.64 to 277.74) & OOM & 7.44 (7.32 to 7.48) & 10.46 (10.10 to 10.48) & 13.79 (13.75 to 13.82) \\
+peak MiB at 512, 360 & n/a & 9020 & 24 & 76 & 76 \\
+\bottomrule
+\end{tabular}

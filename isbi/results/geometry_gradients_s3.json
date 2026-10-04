@@ -1,0 +1,188 @@
+{
+ "provenance": {
+  "torchtomo_version": "0.4.0",
+  "torchtomo_commit": "0c5f70039fa8ddb29303ae23943a9abe1486e98b",
+  "torchtomo_dirty": false,
+  "benchmark_commit": "545a6634b68b32f650acfa38746d2f9896019300",
+  "benchmark_dirty": false,
+  "torch": "2.4.0+cu121",
+  "cuda": "12.1",
+  "device": "NVIDIA GeForce RTX 2080 Ti",
+  "command": ".venv/bin/python libraries/compare_geometry_gradients.py --thies /home/ozan/lab/ext/geometry_gradients_CT --repeats 20 --backends auto torch --output isbi/results/raw/geometry_gradients_s3.json",
+  "timestamp": "2026-10-04T19:29:59.168213+00:00"
+ },
+ "results": {
+  "device": "NVIDIA GeForce RTX 2080 Ti",
+  "repeats": 20,
+  "cases": [
+   {
+    "size": 256,
+    "views": 360,
+    "bins": 384,
+    "method": "Thies et al. backprojection",
+    "milliseconds": 63.86918149655685,
+    "peak_mib": 18.90283203125
+   },
+   {
+    "size": 256,
+    "views": 360,
+    "bins": 384,
+    "method": "torchtomo forward",
+    "milliseconds": 5.473042001540307,
+    "peak_mib": 46.1689453125
+   },
+   {
+    "size": 256,
+    "views": 360,
+    "bins": 384,
+    "method": "torchtomo adjoint",
+    "milliseconds": 5.500591498275753,
+    "peak_mib": 46.1689453125
+   },
+   {
+    "size": 256,
+    "views": 360,
+    "bins": 384,
+    "method": "torchtomo backproject",
+    "milliseconds": 2.12667349842377,
+    "peak_mib": 18.556640625
+   },
+   {
+    "size": 256,
+    "views": 360,
+    "bins": 384,
+    "method": "torchtomo torch forward",
+    "milliseconds": 104.98008200374898,
+    "peak_mib": 3418.58984375
+   },
+   {
+    "size": 256,
+    "views": 360,
+    "bins": 384,
+    "method": "torchtomo torch adjoint",
+    "milliseconds": 132.0586009969702,
+    "peak_mib": 4634.33984375
+   },
+   {
+    "size": 256,
+    "views": 360,
+    "bins": 384,
+    "method": "torchtomo torch backproject",
+    "milliseconds": 91.72374400804983,
+    "peak_mib": 3153.548828125
+   },
+   {
+    "size": 512,
+    "views": 360,
+    "bins": 768,
+    "method": "Thies et al. backprojection",
+    "milliseconds": 250.99510500149336,
+    "peak_mib": 23.10302734375
+   },
+   {
+    "size": 512,
+    "views": 360,
+    "bins": 768,
+    "method": "torchtomo forward",
+    "milliseconds": 6.222580006578937,
+    "peak_mib": 76.41357421875
+   },
+   {
+    "size": 512,
+    "views": 360,
+    "bins": 768,
+    "method": "torchtomo adjoint",
+    "milliseconds": 7.782081003824715,
+    "peak_mib": 76.41357421875
+   },
+   {
+    "size": 512,
+    "views": 360,
+    "bins": 768,
+    "method": "torchtomo backproject",
+    "milliseconds": 4.205197001283523,
+    "peak_mib": 24.33544921875
+   },
+   {
+    "size": 512,
+    "views": 360,
+    "bins": 768,
+    "method": "torchtomo torch forward",
+    "milliseconds": 413.4181405097479,
+    "peak_mib": 7928.60498046875
+   },
+   {
+    "size": 512,
+    "views": 360,
+    "bins": 768,
+    "method": "torchtomo torch adjoint",
+    "milliseconds": null,
+    "peak_mib": null
+   },
+   {
+    "size": 512,
+    "views": 360,
+    "bins": 768,
+    "method": "torchtomo torch backproject",
+    "milliseconds": 361.7365485042683,
+    "peak_mib": 9020.36083984375
+   },
+   {
+    "size": 512,
+    "views": 720,
+    "bins": 768,
+    "method": "Thies et al. backprojection",
+    "milliseconds": 277.6449449956999,
+    "peak_mib": 26.77099609375
+   },
+   {
+    "size": 512,
+    "views": 720,
+    "bins": 768,
+    "method": "torchtomo forward",
+    "milliseconds": 10.103895998327062,
+    "peak_mib": 133.46240234375
+   },
+   {
+    "size": 512,
+    "views": 720,
+    "bins": 768,
+    "method": "torchtomo adjoint",
+    "milliseconds": 13.79485600773478,
+    "peak_mib": 133.46240234375
+   },
+   {
+    "size": 512,
+    "views": 720,
+    "bins": 768,
+    "method": "torchtomo backproject",
+    "milliseconds": 7.478330000594724,
+    "peak_mib": 25.41455078125
+   },
+   {
+    "size": 512,
+    "views": 720,
+    "bins": 768,
+    "method": "torchtomo torch forward",
+    "milliseconds": null,
+    "peak_mib": null
+   },
+   {
+    "size": 512,
+    "views": 720,
+    "bins": 768,
+    "method": "torchtomo torch adjoint",
+    "milliseconds": null,
+    "peak_mib": null
+   },
+   {
+    "size": 512,
+    "views": 720,
+    "bins": 768,
+    "method": "torchtomo torch backproject",
+    "milliseconds": null,
+    "peak_mib": null
+   }
+  ]
+ }
+}

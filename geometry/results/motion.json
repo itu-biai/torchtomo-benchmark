@@ -29,10 +29,10 @@
    "phantom": "shepp_logan",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.0422455258667469,
+   "shift_rmse": 0.042243145406246185,
    "angle_rmse_degrees": 0.0,
-   "psnr": 28.196060180664062,
-   "seconds": 0.2235278480220586,
+   "psnr": 28.196067810058594,
+   "seconds": 0.28110326499154326,
    "evaluations": 100
   },
   {
@@ -40,22 +40,22 @@
    "phantom": "shepp_logan",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.019613604992628098,
+   "shift_rmse": 0.0195480789989233,
    "angle_rmse_degrees": 0.0,
-   "psnr": 28.260480880737305,
-   "seconds": 1.505538061959669,
-   "evaluations": 143
+   "psnr": 28.261125564575195,
+   "seconds": 1.8268210599926533,
+   "evaluations": 205
   },
   {
    "scenario": "shift",
    "phantom": "shepp_logan",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.02149324119091034,
-   "angle_rmse_degrees": 0.042577461619888894,
-   "psnr": 28.2371826171875,
-   "seconds": 0.9617107210215181,
-   "evaluations": 152
+   "shift_rmse": 0.02231810800731182,
+   "angle_rmse_degrees": 0.04694306640733114,
+   "psnr": 28.228870391845703,
+   "seconds": 1.401804880995769,
+   "evaluations": 224
   },
   {
    "scenario": "shift",
@@ -64,7 +64,7 @@
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
    "angle_rmse_degrees": 0.0,
-   "psnr": 28.261030197143555,
+   "psnr": 28.261028289794922,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -73,7 +73,7 @@
    "phantom": "shepp_logan",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.0,
    "psnr": 16.71604347229004,
    "seconds": 0.0,
@@ -84,10 +84,10 @@
    "phantom": "shepp_logan",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.08286066353321075,
+   "shift_rmse": 0.08286017179489136,
    "angle_rmse_degrees": 0.0,
-   "psnr": 27.986621856689453,
-   "seconds": 0.1275053970166482,
+   "psnr": 27.98662567138672,
+   "seconds": 0.18384675899869762,
    "evaluations": 100
   },
   {
@@ -95,22 +95,22 @@
    "phantom": "shepp_logan",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.025624116882681847,
+   "shift_rmse": 0.03771566227078438,
    "angle_rmse_degrees": 0.0,
-   "psnr": 28.26521110534668,
-   "seconds": 0.9341271719895303,
-   "evaluations": 183
+   "psnr": 28.223398208618164,
+   "seconds": 1.1448246740037575,
+   "evaluations": 178
   },
   {
    "scenario": "shift",
    "phantom": "shepp_logan",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.023981275036931038,
-   "angle_rmse_degrees": 0.06903975890379384,
-   "psnr": 28.198328018188477,
-   "seconds": 1.4084391290089116,
-   "evaluations": 219
+   "shift_rmse": 0.038538988679647446,
+   "angle_rmse_degrees": 0.0723556223127433,
+   "psnr": 28.160877227783203,
+   "seconds": 1.012930918004713,
+   "evaluations": 147
   },
   {
    "scenario": "shift",
@@ -139,10 +139,10 @@
    "phantom": "shepp_logan",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.08967384696006775,
+   "shift_rmse": 0.08967176079750061,
    "angle_rmse_degrees": 0.0,
-   "psnr": 27.974565505981445,
-   "seconds": 0.1349441329948604,
+   "psnr": 27.97458267211914,
+   "seconds": 0.1919921929948032,
    "evaluations": 100
   },
   {
@@ -150,22 +150,22 @@
    "phantom": "shepp_logan",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.01396951638162136,
+   "shift_rmse": 0.018610360100865364,
    "angle_rmse_degrees": 0.0,
-   "psnr": 28.31467628479004,
-   "seconds": 0.8036860290449113,
-   "evaluations": 160
+   "psnr": 28.302946090698242,
+   "seconds": 0.8345602109911852,
+   "evaluations": 149
   },
   {
    "scenario": "shift",
    "phantom": "shepp_logan",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.025359435006976128,
-   "angle_rmse_degrees": 0.055368661702443915,
-   "psnr": 28.244192123413086,
-   "seconds": 0.9364678040146828,
-   "evaluations": 147
+   "shift_rmse": 0.023529596626758575,
+   "angle_rmse_degrees": 0.058732383126329744,
+   "psnr": 28.241432189941406,
+   "seconds": 1.3459904659976019,
+   "evaluations": 216
   },
   {
    "scenario": "shift",
@@ -185,7 +185,7 @@
    "method": "none",
    "shift_rmse": 0.8542434573173523,
    "angle_rmse_degrees": 0.0,
-   "psnr": 22.708208084106445,
+   "psnr": 22.708209991455078,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -194,10 +194,10 @@
    "phantom": "htc2022_solid_disc",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.016182126477360725,
+   "shift_rmse": 0.016182001680135727,
    "angle_rmse_degrees": 0.0,
    "psnr": 24.9376277923584,
-   "seconds": 0.12764763698214665,
+   "seconds": 0.18719140300527215,
    "evaluations": 100
   },
   {
@@ -205,22 +205,22 @@
    "phantom": "htc2022_solid_disc",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.015818430110812187,
+   "shift_rmse": 0.01678057760000229,
    "angle_rmse_degrees": 0.0,
-   "psnr": 24.93731689453125,
-   "seconds": 0.369386741949711,
-   "evaluations": 91
+   "psnr": 24.937255859375,
+   "seconds": 0.4219356300018262,
+   "evaluations": 89
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_solid_disc",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.015771619975566864,
-   "angle_rmse_degrees": 0.10550405780922918,
-   "psnr": 24.924707412719727,
-   "seconds": 0.5615391739993356,
-   "evaluations": 88
+   "shift_rmse": 0.01656016893684864,
+   "angle_rmse_degrees": 0.09388355148340369,
+   "psnr": 24.925621032714844,
+   "seconds": 0.5108962219965179,
+   "evaluations": 86
   },
   {
    "scenario": "shift",
@@ -229,7 +229,7 @@
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
    "angle_rmse_degrees": 0.0,
-   "psnr": 24.93889617919922,
+   "psnr": 24.938892364501953,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -238,7 +238,7 @@
    "phantom": "htc2022_solid_disc",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.0,
    "psnr": 18.948108673095703,
    "seconds": 0.0,
@@ -249,10 +249,10 @@
    "phantom": "htc2022_solid_disc",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.021365517750382423,
+   "shift_rmse": 0.021365324035286903,
    "angle_rmse_degrees": 0.0,
    "psnr": 24.905719757080078,
-   "seconds": 0.12664153898367658,
+   "seconds": 0.18305777599744033,
    "evaluations": 100
   },
   {
@@ -260,22 +260,22 @@
    "phantom": "htc2022_solid_disc",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.04137815535068512,
+   "shift_rmse": 0.04061947762966156,
    "angle_rmse_degrees": 0.0,
-   "psnr": 24.8902530670166,
-   "seconds": 0.4265042209881358,
-   "evaluations": 89
+   "psnr": 24.890939712524414,
+   "seconds": 0.4791559330042219,
+   "evaluations": 86
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_solid_disc",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.04205409437417984,
-   "angle_rmse_degrees": 0.1678069423345029,
-   "psnr": 24.861454010009766,
-   "seconds": 0.5056183389970101,
-   "evaluations": 83
+   "shift_rmse": 0.04112562537193298,
+   "angle_rmse_degrees": 0.21992864949939914,
+   "psnr": 24.854042053222656,
+   "seconds": 0.5196072190010455,
+   "evaluations": 85
   },
   {
    "scenario": "shift",
@@ -295,7 +295,7 @@
    "method": "none",
    "shift_rmse": 1.8831431865692139,
    "angle_rmse_degrees": 0.0,
-   "psnr": 19.310916900634766,
+   "psnr": 19.310914993286133,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -304,10 +304,10 @@
    "phantom": "htc2022_solid_disc",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.026563018560409546,
+   "shift_rmse": 0.026562703773379326,
    "angle_rmse_degrees": 0.0,
-   "psnr": 24.936630249023438,
-   "seconds": 0.13015542103676125,
+   "psnr": 24.936635971069336,
+   "seconds": 0.18440433198702522,
    "evaluations": 100
   },
   {
@@ -315,22 +315,22 @@
    "phantom": "htc2022_solid_disc",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.03831476345658302,
+   "shift_rmse": 0.038256410509347916,
    "angle_rmse_degrees": 0.0,
-   "psnr": 24.92560386657715,
-   "seconds": 0.39526804198976606,
-   "evaluations": 88
+   "psnr": 24.925674438476562,
+   "seconds": 0.5241854570049327,
+   "evaluations": 92
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_solid_disc",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.03575144708156586,
-   "angle_rmse_degrees": 0.16560140488239705,
-   "psnr": 24.898845672607422,
-   "seconds": 0.5194424449582584,
-   "evaluations": 82
+   "shift_rmse": 0.03340378403663635,
+   "angle_rmse_degrees": 0.16972044917895107,
+   "psnr": 24.900014877319336,
+   "seconds": 0.48850556199613493,
+   "evaluations": 78
   },
   {
    "scenario": "shift",
@@ -339,7 +339,7 @@
    "method": "oracle",
    "shift_rmse": 3.896001743441957e-08,
    "angle_rmse_degrees": 0.0,
-   "psnr": 24.942367553710938,
+   "psnr": 24.94236946105957,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -359,10 +359,10 @@
    "phantom": "htc2022_ta",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.013486040756106377,
+   "shift_rmse": 0.013485807925462723,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.29599952697754,
-   "seconds": 0.12662574800197035,
+   "psnr": 25.295997619628906,
+   "seconds": 0.1865425099967979,
    "evaluations": 100
   },
   {
@@ -370,22 +370,22 @@
    "phantom": "htc2022_ta",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.014014508575201035,
+   "shift_rmse": 0.01393525768071413,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.295570373535156,
-   "seconds": 0.291832358983811,
-   "evaluations": 70
+   "psnr": 25.29559326171875,
+   "seconds": 0.32985311599622946,
+   "evaluations": 69
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_ta",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.01403291430324316,
-   "angle_rmse_degrees": 0.041128887886677616,
-   "psnr": 25.292585372924805,
-   "seconds": 0.5263839359977283,
-   "evaluations": 83
+   "shift_rmse": 0.014045579358935356,
+   "angle_rmse_degrees": 0.04114235816697922,
+   "psnr": 25.292346954345703,
+   "seconds": 0.5248157290043309,
+   "evaluations": 88
   },
   {
    "scenario": "shift",
@@ -394,7 +394,7 @@
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.297916412353516,
+   "psnr": 25.29791259765625,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -403,9 +403,9 @@
    "phantom": "htc2022_ta",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.0,
-   "psnr": 17.514751434326172,
+   "psnr": 17.514747619628906,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -414,10 +414,10 @@
    "phantom": "htc2022_ta",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.024937720969319344,
+   "shift_rmse": 0.024938199669122696,
    "angle_rmse_degrees": 0.0,
    "psnr": 25.257305145263672,
-   "seconds": 0.12720090104267,
+   "seconds": 0.1824712149973493,
    "evaluations": 100
   },
   {
@@ -425,22 +425,22 @@
    "phantom": "htc2022_ta",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.041191354393959045,
+   "shift_rmse": 0.041630227118730545,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.236894607543945,
-   "seconds": 0.34683777298778296,
-   "evaluations": 77
+   "psnr": 25.2375431060791,
+   "seconds": 0.49383027300063986,
+   "evaluations": 91
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_ta",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.038902461528778076,
-   "angle_rmse_degrees": 0.08111226500413682,
-   "psnr": 25.225357055664062,
-   "seconds": 0.49735655199037865,
-   "evaluations": 81
+   "shift_rmse": 0.040603335946798325,
+   "angle_rmse_degrees": 0.06529944993073833,
+   "psnr": 25.226696014404297,
+   "seconds": 0.5379110039939405,
+   "evaluations": 90
   },
   {
    "scenario": "shift",
@@ -449,7 +449,7 @@
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.260467529296875,
+   "psnr": 25.260465621948242,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -460,7 +460,7 @@
    "method": "none",
    "shift_rmse": 1.8831431865692139,
    "angle_rmse_degrees": 0.0,
-   "psnr": 18.059833526611328,
+   "psnr": 18.05983543395996,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -469,10 +469,10 @@
    "phantom": "htc2022_ta",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.03627617284655571,
+   "shift_rmse": 0.036275506019592285,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.133621215820312,
-   "seconds": 0.12774186400929466,
+   "psnr": 25.133625030517578,
+   "seconds": 0.1848975639877608,
    "evaluations": 100
   },
   {
@@ -480,22 +480,22 @@
    "phantom": "htc2022_ta",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.037876952439546585,
+   "shift_rmse": 0.03977392241358757,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.118864059448242,
-   "seconds": 0.3605064990115352,
-   "evaluations": 83
+   "psnr": 25.118005752563477,
+   "seconds": 0.44854416999442037,
+   "evaluations": 84
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_ta",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.036215830594301224,
-   "angle_rmse_degrees": 0.08168920921569794,
-   "psnr": 25.105632781982422,
-   "seconds": 0.5437290909467265,
-   "evaluations": 86
+   "shift_rmse": 0.035864926874637604,
+   "angle_rmse_degrees": 0.07819285272184562,
+   "psnr": 25.106754302978516,
+   "seconds": 0.49329370200575795,
+   "evaluations": 80
   },
   {
    "scenario": "shift",
@@ -524,10 +524,10 @@
    "phantom": "htc2022_tb",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.012844515964388847,
+   "shift_rmse": 0.012844480574131012,
    "angle_rmse_degrees": 0.0,
-   "psnr": 26.392614364624023,
-   "seconds": 0.12823115597711876,
+   "psnr": 26.39261245727539,
+   "seconds": 0.18368664899026044,
    "evaluations": 100
   },
   {
@@ -535,22 +535,22 @@
    "phantom": "htc2022_tb",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.013255604542791843,
+   "shift_rmse": 0.013274679891765118,
    "angle_rmse_degrees": 0.0,
-   "psnr": 26.391698837280273,
-   "seconds": 0.35622755996882915,
-   "evaluations": 85
+   "psnr": 26.391681671142578,
+   "seconds": 0.26283717100159265,
+   "evaluations": 55
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_tb",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.013295547105371952,
-   "angle_rmse_degrees": 0.016363565776296888,
-   "psnr": 26.390941619873047,
-   "seconds": 0.5133328590309247,
-   "evaluations": 81
+   "shift_rmse": 0.013310141861438751,
+   "angle_rmse_degrees": 0.01614762274228139,
+   "psnr": 26.390911102294922,
+   "seconds": 0.5594955630076583,
+   "evaluations": 96
   },
   {
    "scenario": "shift",
@@ -559,7 +559,7 @@
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
    "angle_rmse_degrees": 0.0,
-   "psnr": 26.395347595214844,
+   "psnr": 26.395343780517578,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -568,7 +568,7 @@
    "phantom": "htc2022_tb",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.0,
    "psnr": 16.20285415649414,
    "seconds": 0.0,
@@ -579,10 +579,10 @@
    "phantom": "htc2022_tb",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.06883109360933304,
+   "shift_rmse": 0.06883177161216736,
    "angle_rmse_degrees": 0.0,
-   "psnr": 26.269729614257812,
-   "seconds": 0.1272499900078401,
+   "psnr": 26.269725799560547,
+   "seconds": 0.1851544550008839,
    "evaluations": 100
   },
   {
@@ -590,22 +590,22 @@
    "phantom": "htc2022_tb",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.040699250996112823,
+   "shift_rmse": 0.04030336067080498,
    "angle_rmse_degrees": 0.0,
-   "psnr": 26.309316635131836,
-   "seconds": 0.4292576080188155,
-   "evaluations": 94
+   "psnr": 26.309940338134766,
+   "seconds": 0.5060093339998275,
+   "evaluations": 89
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_tb",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.04437384009361267,
-   "angle_rmse_degrees": 0.044742451493904434,
-   "psnr": 26.2923526763916,
-   "seconds": 0.5877041129861027,
-   "evaluations": 98
+   "shift_rmse": 0.0437396839261055,
+   "angle_rmse_degrees": 0.04467411958672455,
+   "psnr": 26.294086456298828,
+   "seconds": 0.6201633099990431,
+   "evaluations": 96
   },
   {
    "scenario": "shift",
@@ -614,7 +614,7 @@
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
    "angle_rmse_degrees": 0.0,
-   "psnr": 26.345375061035156,
+   "psnr": 26.34537124633789,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -625,7 +625,7 @@
    "method": "none",
    "shift_rmse": 1.8831431865692139,
    "angle_rmse_degrees": 0.0,
-   "psnr": 16.631681442260742,
+   "psnr": 16.631683349609375,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -634,10 +634,10 @@
    "phantom": "htc2022_tb",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.08847455680370331,
+   "shift_rmse": 0.08847344666719437,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.949424743652344,
-   "seconds": 0.13314020703546703,
+   "psnr": 25.949432373046875,
+   "seconds": 0.20578140900761355,
    "evaluations": 100
   },
   {
@@ -645,22 +645,22 @@
    "phantom": "htc2022_tb",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.041475214064121246,
+   "shift_rmse": 0.03995845839381218,
    "angle_rmse_degrees": 0.0,
-   "psnr": 26.0177059173584,
-   "seconds": 0.39772795798489824,
-   "evaluations": 91
+   "psnr": 26.01987075805664,
+   "seconds": 0.4791610449901782,
+   "evaluations": 83
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_tb",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.033901818096637726,
-   "angle_rmse_degrees": 0.0590480259113916,
-   "psnr": 26.001461029052734,
-   "seconds": 0.5562718629953451,
-   "evaluations": 88
+   "shift_rmse": 0.034229785203933716,
+   "angle_rmse_degrees": 0.057521892178503654,
+   "psnr": 26.002979278564453,
+   "seconds": 0.6027796889975434,
+   "evaluations": 89
   },
   {
    "scenario": "shift",
@@ -669,7 +669,7 @@
    "method": "oracle",
    "shift_rmse": 3.896001743441957e-08,
    "angle_rmse_degrees": 0.0,
-   "psnr": 26.056394577026367,
+   "psnr": 26.056396484375,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -689,10 +689,10 @@
    "phantom": "htc2022_tc",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.01450423151254654,
+   "shift_rmse": 0.014504325576126575,
    "angle_rmse_degrees": 0.0,
    "psnr": 25.11713409423828,
-   "seconds": 0.12707197800045833,
+   "seconds": 0.21002656700147782,
    "evaluations": 100
   },
   {
@@ -700,22 +700,22 @@
    "phantom": "htc2022_tc",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.015121253207325935,
+   "shift_rmse": 0.015089641325175762,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.115875244140625,
-   "seconds": 0.3414882229990326,
-   "evaluations": 83
+   "psnr": 25.115880966186523,
+   "seconds": 0.46799385000485927,
+   "evaluations": 86
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_tc",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.014888104982674122,
-   "angle_rmse_degrees": 0.04808482524158066,
-   "psnr": 25.112255096435547,
-   "seconds": 0.5343127840314992,
-   "evaluations": 87
+   "shift_rmse": 0.01493481732904911,
+   "angle_rmse_degrees": 0.0477525939013764,
+   "psnr": 25.112171173095703,
+   "seconds": 0.6023369979957351,
+   "evaluations": 89
   },
   {
    "scenario": "shift",
@@ -733,7 +733,7 @@
    "phantom": "htc2022_tc",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.0,
    "psnr": 17.130420684814453,
    "seconds": 0.0,
@@ -744,10 +744,10 @@
    "phantom": "htc2022_tc",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.02737099677324295,
+   "shift_rmse": 0.027370700612664223,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.094646453857422,
-   "seconds": 0.1268016149988398,
+   "psnr": 25.094650268554688,
+   "seconds": 0.2165277840103954,
    "evaluations": 100
   },
   {
@@ -755,22 +755,22 @@
    "phantom": "htc2022_tc",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.04259450361132622,
+   "shift_rmse": 0.044940147548913956,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.069194793701172,
-   "seconds": 0.4098699120222591,
-   "evaluations": 90
+   "psnr": 25.068904876708984,
+   "seconds": 0.48006631899625063,
+   "evaluations": 82
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_tc",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.04214797541499138,
-   "angle_rmse_degrees": 0.0967796784235147,
-   "psnr": 25.051267623901367,
-   "seconds": 0.5501451200107113,
-   "evaluations": 90
+   "shift_rmse": 0.04468715190887451,
+   "angle_rmse_degrees": 0.09297929180021085,
+   "psnr": 25.051240921020508,
+   "seconds": 0.5303334149939474,
+   "evaluations": 84
   },
   {
    "scenario": "shift",
@@ -779,7 +779,7 @@
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.098461151123047,
+   "psnr": 25.098464965820312,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -790,7 +790,7 @@
    "method": "none",
    "shift_rmse": 1.8831431865692139,
    "angle_rmse_degrees": 0.0,
-   "psnr": 17.671812057495117,
+   "psnr": 17.671810150146484,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -799,10 +799,10 @@
    "phantom": "htc2022_tc",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.028712691739201546,
+   "shift_rmse": 0.02871336042881012,
    "angle_rmse_degrees": 0.0,
    "psnr": 25.15936851501465,
-   "seconds": 0.13042581698391587,
+   "seconds": 0.18580228899372742,
    "evaluations": 100
   },
   {
@@ -810,21 +810,21 @@
    "phantom": "htc2022_tc",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.03676651418209076,
+   "shift_rmse": 0.03723956644535065,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.145816802978516,
-   "seconds": 0.3941518510109745,
-   "evaluations": 87
+   "psnr": 25.14470100402832,
+   "seconds": 0.39318795400322415,
+   "evaluations": 73
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_tc",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.034088797867298126,
-   "angle_rmse_degrees": 0.08656064820811782,
-   "psnr": 25.12950897216797,
-   "seconds": 0.5281626090290956,
+   "shift_rmse": 0.03567929565906525,
+   "angle_rmse_degrees": 0.0857992622085399,
+   "psnr": 25.12733268737793,
+   "seconds": 0.4851041400106624,
    "evaluations": 86
   },
   {
@@ -834,7 +834,7 @@
    "method": "oracle",
    "shift_rmse": 3.896001743441957e-08,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.16718864440918,
+   "psnr": 25.167190551757812,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -845,7 +845,7 @@
    "method": "none",
    "shift_rmse": 0.8542434573173523,
    "angle_rmse_degrees": 0.0,
-   "psnr": 22.624732971191406,
+   "psnr": 22.62472915649414,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -854,10 +854,10 @@
    "phantom": "htc2022_td",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.015027541667222977,
+   "shift_rmse": 0.015027211979031563,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.21147918701172,
-   "seconds": 0.12890807795338333,
+   "psnr": 25.211477279663086,
+   "seconds": 0.18476820399519056,
    "evaluations": 100
   },
   {
@@ -865,21 +865,21 @@
    "phantom": "htc2022_td",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.014215925708413124,
+   "shift_rmse": 0.014968604780733585,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.211196899414062,
-   "seconds": 0.3477104780031368,
-   "evaluations": 84
+   "psnr": 25.211078643798828,
+   "seconds": 0.42742561499471776,
+   "evaluations": 90
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_td",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.01392429880797863,
-   "angle_rmse_degrees": 0.04462892294432611,
-   "psnr": 25.207820892333984,
-   "seconds": 0.5304518530028872,
+   "shift_rmse": 0.014685149304568768,
+   "angle_rmse_degrees": 0.05205058381809949,
+   "psnr": 25.20604133605957,
+   "seconds": 0.5134701060014777,
    "evaluations": 87
   },
   {
@@ -889,7 +889,7 @@
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.212574005126953,
+   "psnr": 25.21257209777832,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -898,9 +898,9 @@
    "phantom": "htc2022_td",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.0,
-   "psnr": 18.46856689453125,
+   "psnr": 18.468563079833984,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -909,10 +909,10 @@
    "phantom": "htc2022_td",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.019920220598578453,
+   "shift_rmse": 0.019920339807868004,
    "angle_rmse_degrees": 0.0,
    "psnr": 25.178791046142578,
-   "seconds": 0.12867921497672796,
+   "seconds": 0.1844266630068887,
    "evaluations": 100
   },
   {
@@ -920,22 +920,22 @@
    "phantom": "htc2022_td",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.04298737645149231,
+   "shift_rmse": 0.04339156672358513,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.161205291748047,
-   "seconds": 0.39264713804004714,
-   "evaluations": 86
+   "psnr": 25.161821365356445,
+   "seconds": 0.34786179999355227,
+   "evaluations": 67
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_td",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.037828512489795685,
-   "angle_rmse_degrees": 0.10105817161861284,
-   "psnr": 25.149688720703125,
-   "seconds": 0.5082641910412349,
-   "evaluations": 83
+   "shift_rmse": 0.03934869542717934,
+   "angle_rmse_degrees": 0.08512726897776718,
+   "psnr": 25.152719497680664,
+   "seconds": 0.509889150998788,
+   "evaluations": 85
   },
   {
    "scenario": "shift",
@@ -944,7 +944,7 @@
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.1810359954834,
+   "psnr": 25.18103790283203,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -955,7 +955,7 @@
    "method": "none",
    "shift_rmse": 1.8831431865692139,
    "angle_rmse_degrees": 0.0,
-   "psnr": 18.845382690429688,
+   "psnr": 18.84538459777832,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -964,10 +964,10 @@
    "phantom": "htc2022_td",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.032149650156497955,
+   "shift_rmse": 0.03214913606643677,
    "angle_rmse_degrees": 0.0,
-   "psnr": 25.0136775970459,
-   "seconds": 0.126514092029538,
+   "psnr": 25.01367950439453,
+   "seconds": 0.1547369420004543,
    "evaluations": 100
   },
   {
@@ -975,22 +975,22 @@
    "phantom": "htc2022_td",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.036998357623815536,
+   "shift_rmse": 0.036526989191770554,
    "angle_rmse_degrees": 0.0,
-   "psnr": 24.999313354492188,
-   "seconds": 0.3698676640051417,
-   "evaluations": 83
+   "psnr": 24.999740600585938,
+   "seconds": 0.27549654500035103,
+   "evaluations": 60
   },
   {
    "scenario": "shift",
    "phantom": "htc2022_td",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.031872984021902084,
-   "angle_rmse_degrees": 0.12597368785461444,
-   "psnr": 24.979534149169922,
-   "seconds": 0.49774159397929907,
-   "evaluations": 81
+   "shift_rmse": 0.032430827617645264,
+   "angle_rmse_degrees": 0.1272751056957663,
+   "psnr": 24.980304718017578,
+   "seconds": 0.5093691589863738,
+   "evaluations": 82
   },
   {
    "scenario": "shift",
@@ -1019,10 +1019,10 @@
    "phantom": "shepp_logan",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.04738720506429672,
+   "shift_rmse": 0.047385890036821365,
    "angle_rmse_degrees": 0.31286095039853307,
-   "psnr": 27.354652404785156,
-   "seconds": 0.12416767596732825,
+   "psnr": 27.354656219482422,
+   "seconds": 0.1808815479889745,
    "evaluations": 100
   },
   {
@@ -1030,21 +1030,21 @@
    "phantom": "shepp_logan",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.03497462347149849,
+   "shift_rmse": 0.04075970873236656,
    "angle_rmse_degrees": 0.31286095039853307,
-   "psnr": 27.387859344482422,
-   "seconds": 0.9410811950219795,
-   "evaluations": 185
+   "psnr": 27.371816635131836,
+   "seconds": 1.1997445989982225,
+   "evaluations": 245
   },
   {
    "scenario": "shift+angle",
    "phantom": "shepp_logan",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.025942208245396614,
-   "angle_rmse_degrees": 0.1387909780591797,
-   "psnr": 27.7778263092041,
-   "seconds": 0.9976580640068278,
+   "shift_rmse": 0.02602159045636654,
+   "angle_rmse_degrees": 0.1389482458328619,
+   "psnr": 27.777101516723633,
+   "seconds": 0.9171551659965189,
    "evaluations": 157
   },
   {
@@ -1053,8 +1053,8 @@
    "seed": 0,
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
-   "angle_rmse_degrees": 8.924407833818898e-10,
-   "psnr": 27.892187118530273,
+   "angle_rmse_degrees": 8.882471226420463e-10,
+   "psnr": 27.89218521118164,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1063,7 +1063,7 @@
    "phantom": "shepp_logan",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.2914399030162128,
    "psnr": 16.724193572998047,
    "seconds": 0.0,
@@ -1074,10 +1074,10 @@
    "phantom": "shepp_logan",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.08397212624549866,
+   "shift_rmse": 0.08397338539361954,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 27.343994140625,
-   "seconds": 0.1322205460164696,
+   "psnr": 27.343982696533203,
+   "seconds": 0.17900233100226615,
    "evaluations": 100
   },
   {
@@ -1085,22 +1085,22 @@
    "phantom": "shepp_logan",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.03219997510313988,
+   "shift_rmse": 0.032286129891872406,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 27.567827224731445,
-   "seconds": 1.2726672970457003,
-   "evaluations": 240
+   "psnr": 27.56821632385254,
+   "seconds": 1.3425167530076578,
+   "evaluations": 228
   },
   {
    "scenario": "shift+angle",
    "phantom": "shepp_logan",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.041071124374866486,
-   "angle_rmse_degrees": 0.1343708051295501,
-   "psnr": 27.84095001220703,
-   "seconds": 1.3138293780502863,
-   "evaluations": 210
+   "shift_rmse": 0.03854229301214218,
+   "angle_rmse_degrees": 0.1420664539725975,
+   "psnr": 27.822307586669922,
+   "seconds": 0.9385084539972013,
+   "evaluations": 154
   },
   {
    "scenario": "shift+angle",
@@ -1108,8 +1108,8 @@
    "seed": 1,
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
-   "angle_rmse_degrees": 1.9061791757894242e-09,
-   "psnr": 27.978076934814453,
+   "angle_rmse_degrees": 2.389171451037776e-09,
+   "psnr": 27.97807502746582,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1119,7 +1119,7 @@
    "seed": 2,
    "method": "none",
    "shift_rmse": 1.8831431865692139,
-   "angle_rmse_degrees": 0.30321474893891814,
+   "angle_rmse_degrees": 0.30321477561934457,
    "psnr": 16.603334426879883,
    "seconds": 0.0,
    "evaluations": 0
@@ -1129,10 +1129,10 @@
    "phantom": "shepp_logan",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.0903610959649086,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 27.277639389038086,
-   "seconds": 0.13199682295089588,
+   "shift_rmse": 0.0903596356511116,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 27.277645111083984,
+   "seconds": 0.18641523100086488,
    "evaluations": 100
   },
   {
@@ -1140,22 +1140,22 @@
    "phantom": "shepp_logan",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.05348685011267662,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 27.425500869750977,
-   "seconds": 1.2594439220265485,
-   "evaluations": 231
+   "shift_rmse": 0.056093696504831314,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 27.415447235107422,
+   "seconds": 1.278429732992663,
+   "evaluations": 224
   },
   {
    "scenario": "shift+angle",
    "phantom": "shepp_logan",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.028264133259654045,
-   "angle_rmse_degrees": 0.14083404505444655,
-   "psnr": 27.804859161376953,
-   "seconds": 1.0319593289750628,
-   "evaluations": 159
+   "shift_rmse": 0.024771563708782196,
+   "angle_rmse_degrees": 0.1348208105421908,
+   "psnr": 27.837831497192383,
+   "seconds": 1.4123727799888002,
+   "evaluations": 215
   },
   {
    "scenario": "shift+angle",
@@ -1164,7 +1164,7 @@
    "method": "oracle",
    "shift_rmse": 3.896001743441957e-08,
    "angle_rmse_degrees": 5.028146847312377e-09,
-   "psnr": 27.94845199584961,
+   "psnr": 27.948448181152344,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1184,10 +1184,10 @@
    "phantom": "htc2022_solid_disc",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.018062129616737366,
+   "shift_rmse": 0.018062032759189606,
    "angle_rmse_degrees": 0.31286095039853307,
    "psnr": 24.870092391967773,
-   "seconds": 0.13165364996530116,
+   "seconds": 0.18663448198640253,
    "evaluations": 100
   },
   {
@@ -1195,21 +1195,21 @@
    "phantom": "htc2022_solid_disc",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.018626540899276733,
+   "shift_rmse": 0.018558751791715622,
    "angle_rmse_degrees": 0.31286095039853307,
-   "psnr": 24.869701385498047,
-   "seconds": 0.3970937120029703,
-   "evaluations": 87
+   "psnr": 24.869726181030273,
+   "seconds": 0.4376262180012418,
+   "evaluations": 91
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_solid_disc",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.018314601853489876,
-   "angle_rmse_degrees": 0.3174871495811738,
-   "psnr": 24.865047454833984,
-   "seconds": 0.5408195059862919,
+   "shift_rmse": 0.018334126099944115,
+   "angle_rmse_degrees": 0.3180524811371246,
+   "psnr": 24.866230010986328,
+   "seconds": 0.5016336599946953,
    "evaluations": 86
   },
   {
@@ -1218,8 +1218,8 @@
    "seed": 0,
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
-   "angle_rmse_degrees": 8.924407833818898e-10,
-   "psnr": 24.900123596191406,
+   "angle_rmse_degrees": 8.882471226420463e-10,
+   "psnr": 24.900121688842773,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1228,7 +1228,7 @@
    "phantom": "htc2022_solid_disc",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.2914399030162128,
    "psnr": 18.948253631591797,
    "seconds": 0.0,
@@ -1239,10 +1239,10 @@
    "phantom": "htc2022_solid_disc",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.02221359685063362,
+   "shift_rmse": 0.022213557735085487,
    "angle_rmse_degrees": 0.2914399030162128,
    "psnr": 24.847801208496094,
-   "seconds": 0.12571623298572376,
+   "seconds": 0.18162486200162675,
    "evaluations": 100
   },
   {
@@ -1250,22 +1250,22 @@
    "phantom": "htc2022_solid_disc",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.04620824381709099,
+   "shift_rmse": 0.041480958461761475,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 24.83159637451172,
-   "seconds": 0.38100619096076116,
-   "evaluations": 87
+   "psnr": 24.833276748657227,
+   "seconds": 0.5029552460036939,
+   "evaluations": 89
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_solid_disc",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.04061947762966156,
-   "angle_rmse_degrees": 0.34965603323103805,
-   "psnr": 24.81167221069336,
-   "seconds": 0.5090559270465747,
-   "evaluations": 81
+   "shift_rmse": 0.0415029376745224,
+   "angle_rmse_degrees": 0.3605702486378953,
+   "psnr": 24.811538696289062,
+   "seconds": 0.5439766630006488,
+   "evaluations": 92
   },
   {
    "scenario": "shift+angle",
@@ -1273,7 +1273,7 @@
    "seed": 1,
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
-   "angle_rmse_degrees": 1.9061791757894242e-09,
+   "angle_rmse_degrees": 2.389171451037776e-09,
    "psnr": 24.879852294921875,
    "seconds": 0.0,
    "evaluations": 0
@@ -1284,8 +1284,8 @@
    "seed": 2,
    "method": "none",
    "shift_rmse": 1.8831431865692139,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 19.310779571533203,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 19.31077766418457,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1294,10 +1294,10 @@
    "phantom": "htc2022_solid_disc",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.02782089076936245,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 24.874279022216797,
-   "seconds": 0.12368360901018605,
+   "shift_rmse": 0.027820564806461334,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 24.874282836914062,
+   "seconds": 0.18382273201132193,
    "evaluations": 100
   },
   {
@@ -1305,22 +1305,22 @@
    "phantom": "htc2022_solid_disc",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.04017750173807144,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 24.863338470458984,
-   "seconds": 0.3826815100037493,
-   "evaluations": 87
+   "shift_rmse": 0.037767715752124786,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 24.865381240844727,
+   "seconds": 0.5185431190038798,
+   "evaluations": 90
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_solid_disc",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.03650158643722534,
-   "angle_rmse_degrees": 0.3456732058517008,
-   "psnr": 24.84973907470703,
-   "seconds": 0.5261571519658901,
-   "evaluations": 83
+   "shift_rmse": 0.034947820007801056,
+   "angle_rmse_degrees": 0.3548883049808116,
+   "psnr": 24.848621368408203,
+   "seconds": 0.47662730800220743,
+   "evaluations": 81
   },
   {
    "scenario": "shift+angle",
@@ -1329,7 +1329,7 @@
    "method": "oracle",
    "shift_rmse": 3.896001743441957e-08,
    "angle_rmse_degrees": 5.028146847312377e-09,
-   "psnr": 24.91163444519043,
+   "psnr": 24.911636352539062,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1349,10 +1349,10 @@
    "phantom": "htc2022_ta",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.028296343982219696,
+   "shift_rmse": 0.02829636074602604,
    "angle_rmse_degrees": 0.31286095039853307,
-   "psnr": 25.174381256103516,
-   "seconds": 0.12024003796977922,
+   "psnr": 25.17437744140625,
+   "seconds": 0.18973842599370982,
    "evaluations": 100
   },
   {
@@ -1360,22 +1360,22 @@
    "phantom": "htc2022_ta",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.02855096571147442,
+   "shift_rmse": 0.028537752106785774,
    "angle_rmse_degrees": 0.31286095039853307,
-   "psnr": 25.173643112182617,
-   "seconds": 0.26416486100060865,
-   "evaluations": 66
+   "psnr": 25.17364501953125,
+   "seconds": 0.35689803899731487,
+   "evaluations": 71
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_ta",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.021712331101298332,
-   "angle_rmse_degrees": 0.09601700509336081,
-   "psnr": 25.170005798339844,
-   "seconds": 0.54622921400005,
-   "evaluations": 87
+   "shift_rmse": 0.02172131836414337,
+   "angle_rmse_degrees": 0.09584899177792774,
+   "psnr": 25.170230865478516,
+   "seconds": 0.5413813530030893,
+   "evaluations": 89
   },
   {
    "scenario": "shift+angle",
@@ -1383,8 +1383,8 @@
    "seed": 0,
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
-   "angle_rmse_degrees": 8.924407833818898e-10,
-   "psnr": 25.17329216003418,
+   "angle_rmse_degrees": 8.882471226420463e-10,
+   "psnr": 25.173290252685547,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1393,9 +1393,9 @@
    "phantom": "htc2022_ta",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 17.52090835571289,
+   "psnr": 17.520906448364258,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1404,10 +1404,10 @@
    "phantom": "htc2022_ta",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.033319633454084396,
+   "shift_rmse": 0.033319924026727676,
    "angle_rmse_degrees": 0.2914399030162128,
    "psnr": 25.155128479003906,
-   "seconds": 0.12232134997611865,
+   "seconds": 0.16440542199416086,
    "evaluations": 100
   },
   {
@@ -1415,22 +1415,22 @@
    "phantom": "htc2022_ta",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.04869319498538971,
+   "shift_rmse": 0.04730996489524841,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 25.132944107055664,
-   "seconds": 0.19494917104020715,
-   "evaluations": 49
+   "psnr": 25.13421058654785,
+   "seconds": 0.34598308498971164,
+   "evaluations": 67
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_ta",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.040834568440914154,
-   "angle_rmse_degrees": 0.12977311398256625,
-   "psnr": 25.11248016357422,
-   "seconds": 0.5232573190005496,
-   "evaluations": 81
+   "shift_rmse": 0.04116273298859596,
+   "angle_rmse_degrees": 0.1176810377894256,
+   "psnr": 25.119182586669922,
+   "seconds": 0.5425685079972027,
+   "evaluations": 86
   },
   {
    "scenario": "shift+angle",
@@ -1438,8 +1438,8 @@
    "seed": 1,
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
-   "angle_rmse_degrees": 1.9061791757894242e-09,
-   "psnr": 25.143186569213867,
+   "angle_rmse_degrees": 2.389171451037776e-09,
+   "psnr": 25.1431884765625,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1449,7 +1449,7 @@
    "seed": 2,
    "method": "none",
    "shift_rmse": 1.8831431865692139,
-   "angle_rmse_degrees": 0.30321474893891814,
+   "angle_rmse_degrees": 0.30321477561934457,
    "psnr": 18.052467346191406,
    "seconds": 0.0,
    "evaluations": 0
@@ -1459,10 +1459,10 @@
    "phantom": "htc2022_ta",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.041494157165288925,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 25.027427673339844,
-   "seconds": 0.12288823403650895,
+   "shift_rmse": 0.04149355739355087,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 25.027429580688477,
+   "seconds": 0.18547173899423797,
    "evaluations": 100
   },
   {
@@ -1470,22 +1470,22 @@
    "phantom": "htc2022_ta",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.044316366314888,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 25.014076232910156,
-   "seconds": 0.38684788200771436,
-   "evaluations": 88
+   "shift_rmse": 0.0458429679274559,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 25.01361656188965,
+   "seconds": 0.5260339599917643,
+   "evaluations": 93
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_ta",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.0386093407869339,
-   "angle_rmse_degrees": 0.11417510969258599,
-   "psnr": 24.994592666625977,
-   "seconds": 0.5333681299816817,
-   "evaluations": 86
+   "shift_rmse": 0.038631193339824677,
+   "angle_rmse_degrees": 0.11495313760815919,
+   "psnr": 24.996055603027344,
+   "seconds": 0.49602489899552893,
+   "evaluations": 80
   },
   {
    "scenario": "shift+angle",
@@ -1494,7 +1494,7 @@
    "method": "oracle",
    "shift_rmse": 3.896001743441957e-08,
    "angle_rmse_degrees": 5.028146847312377e-09,
-   "psnr": 25.023239135742188,
+   "psnr": 25.02324104309082,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1514,10 +1514,10 @@
    "phantom": "htc2022_tb",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.030089745298027992,
+   "shift_rmse": 0.03008962981402874,
    "angle_rmse_degrees": 0.31286095039853307,
-   "psnr": 26.157516479492188,
-   "seconds": 0.11995273502543569,
+   "psnr": 26.157514572143555,
+   "seconds": 0.18642685300437734,
    "evaluations": 100
   },
   {
@@ -1525,22 +1525,22 @@
    "phantom": "htc2022_tb",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.028873352333903313,
+   "shift_rmse": 0.028871620073914528,
    "angle_rmse_degrees": 0.31286095039853307,
    "psnr": 26.154281616210938,
-   "seconds": 0.3497357300366275,
-   "evaluations": 85
+   "seconds": 0.40432924299966544,
+   "evaluations": 84
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_tb",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.022099975496530533,
-   "angle_rmse_degrees": 0.11923697355865301,
-   "psnr": 26.116500854492188,
-   "seconds": 0.9046681810286827,
-   "evaluations": 140
+   "shift_rmse": 0.021627822890877724,
+   "angle_rmse_degrees": 0.12525212906161284,
+   "psnr": 26.136083602905273,
+   "seconds": 1.021276466010022,
+   "evaluations": 154
   },
   {
    "scenario": "shift+angle",
@@ -1548,7 +1548,7 @@
    "seed": 0,
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
-   "angle_rmse_degrees": 8.924407833818898e-10,
+   "angle_rmse_degrees": 8.882471226420463e-10,
    "psnr": 26.053260803222656,
    "seconds": 0.0,
    "evaluations": 0
@@ -1558,7 +1558,7 @@
    "phantom": "htc2022_tb",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.2914399030162128,
    "psnr": 16.209972381591797,
    "seconds": 0.0,
@@ -1569,10 +1569,10 @@
    "phantom": "htc2022_tb",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.07402462512254715,
+   "shift_rmse": 0.07402485609054565,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 26.0698299407959,
-   "seconds": 0.12820139504037797,
+   "psnr": 26.06982421875,
+   "seconds": 0.19981189699319657,
    "evaluations": 100
   },
   {
@@ -1580,22 +1580,22 @@
    "phantom": "htc2022_tb",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.05135089159011841,
+   "shift_rmse": 0.050649575889110565,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 26.099468231201172,
-   "seconds": 0.4219737559906207,
-   "evaluations": 97
+   "psnr": 26.1005859375,
+   "seconds": 0.5343411659996491,
+   "evaluations": 89
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_tb",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.045208320021629333,
-   "angle_rmse_degrees": 0.09398491709357623,
-   "psnr": 26.029022216796875,
-   "seconds": 0.5890875110053457,
-   "evaluations": 93
+   "shift_rmse": 0.02747390791773796,
+   "angle_rmse_degrees": 0.11441635410850495,
+   "psnr": 26.116064071655273,
+   "seconds": 0.962593605989241,
+   "evaluations": 157
   },
   {
    "scenario": "shift+angle",
@@ -1603,7 +1603,7 @@
    "seed": 1,
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
-   "angle_rmse_degrees": 1.9061791757894242e-09,
+   "angle_rmse_degrees": 2.389171451037776e-09,
    "psnr": 26.045021057128906,
    "seconds": 0.0,
    "evaluations": 0
@@ -1614,7 +1614,7 @@
    "seed": 2,
    "method": "none",
    "shift_rmse": 1.8831431865692139,
-   "angle_rmse_degrees": 0.30321474893891814,
+   "angle_rmse_degrees": 0.30321477561934457,
    "psnr": 16.621631622314453,
    "seconds": 0.0,
    "evaluations": 0
@@ -1624,10 +1624,10 @@
    "phantom": "htc2022_tb",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.09161680936813354,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 25.726938247680664,
-   "seconds": 0.12399531801929697,
+   "shift_rmse": 0.09161641448736191,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 25.726940155029297,
+   "seconds": 0.18791606799641158,
    "evaluations": 100
   },
   {
@@ -1635,22 +1635,22 @@
    "phantom": "htc2022_tb",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.050414107739925385,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 25.79819679260254,
-   "seconds": 0.41865749401040375,
-   "evaluations": 98
+   "shift_rmse": 0.0397505909204483,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 25.81764030456543,
+   "seconds": 0.7401416070060804,
+   "evaluations": 135
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_tb",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.03799442946910858,
-   "angle_rmse_degrees": 0.10712389986989984,
-   "psnr": 25.73040199279785,
-   "seconds": 0.5552244290011004,
-   "evaluations": 105
+   "shift_rmse": 0.03807095065712929,
+   "angle_rmse_degrees": 0.1003239396230497,
+   "psnr": 25.736557006835938,
+   "seconds": 0.5701795219938504,
+   "evaluations": 94
   },
   {
    "scenario": "shift+angle",
@@ -1679,10 +1679,10 @@
    "phantom": "htc2022_tc",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.02146676741540432,
+   "shift_rmse": 0.021466754376888275,
    "angle_rmse_degrees": 0.31286095039853307,
    "psnr": 24.973237991333008,
-   "seconds": 0.1229039310128428,
+   "seconds": 0.18404099298641086,
    "evaluations": 100
   },
   {
@@ -1690,22 +1690,22 @@
    "phantom": "htc2022_tc",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.019993145018815994,
+   "shift_rmse": 0.02002193219959736,
    "angle_rmse_degrees": 0.31286095039853307,
-   "psnr": 24.97165870666504,
-   "seconds": 0.367158183013089,
-   "evaluations": 79
+   "psnr": 24.97162628173828,
+   "seconds": 0.4565344879956683,
+   "evaluations": 96
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_tc",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.02075112797319889,
-   "angle_rmse_degrees": 0.10019518655513099,
-   "psnr": 24.964031219482422,
-   "seconds": 0.6072589289979078,
-   "evaluations": 96
+   "shift_rmse": 0.018727464601397514,
+   "angle_rmse_degrees": 0.13611365062624048,
+   "psnr": 24.99500274658203,
+   "seconds": 0.9108784159907373,
+   "evaluations": 156
   },
   {
    "scenario": "shift+angle",
@@ -1713,7 +1713,7 @@
    "seed": 0,
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
-   "angle_rmse_degrees": 8.924407833818898e-10,
+   "angle_rmse_degrees": 8.882471226420463e-10,
    "psnr": 24.966739654541016,
    "seconds": 0.0,
    "evaluations": 0
@@ -1723,7 +1723,7 @@
    "phantom": "htc2022_tc",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.2914399030162128,
    "psnr": 17.13580322265625,
    "seconds": 0.0,
@@ -1734,10 +1734,10 @@
    "phantom": "htc2022_tc",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.031243449077010155,
+   "shift_rmse": 0.031243005767464638,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 24.973791122436523,
-   "seconds": 0.12925679999170825,
+   "psnr": 24.973793029785156,
+   "seconds": 0.15400480999960564,
    "evaluations": 100
   },
   {
@@ -1745,22 +1745,22 @@
    "phantom": "htc2022_tc",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.04577638581395149,
+   "shift_rmse": 0.04488253593444824,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 24.95006561279297,
-   "seconds": 0.3987133569899015,
-   "evaluations": 92
+   "psnr": 24.949256896972656,
+   "seconds": 0.3862153400114039,
+   "evaluations": 85
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_tc",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.0456719845533371,
-   "angle_rmse_degrees": 0.11046013378444035,
-   "psnr": 24.918184280395508,
-   "seconds": 0.5435603220248595,
-   "evaluations": 85
+   "shift_rmse": 0.04493318125605583,
+   "angle_rmse_degrees": 0.11266813250588581,
+   "psnr": 24.915868759155273,
+   "seconds": 0.4107489309972152,
+   "evaluations": 83
   },
   {
    "scenario": "shift+angle",
@@ -1768,8 +1768,8 @@
    "seed": 1,
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
-   "angle_rmse_degrees": 1.9061791757894242e-09,
-   "psnr": 24.96051025390625,
+   "angle_rmse_degrees": 2.389171451037776e-09,
+   "psnr": 24.960514068603516,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1779,7 +1779,7 @@
    "seed": 2,
    "method": "none",
    "shift_rmse": 1.8831431865692139,
-   "angle_rmse_degrees": 0.30321474893891814,
+   "angle_rmse_degrees": 0.30321477561934457,
    "psnr": 17.683805465698242,
    "seconds": 0.0,
    "evaluations": 0
@@ -1789,10 +1789,10 @@
    "phantom": "htc2022_tc",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.03209712356328964,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 25.0229434967041,
-   "seconds": 0.12306100100977346,
+   "shift_rmse": 0.03209763392806053,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 25.022945404052734,
+   "seconds": 0.15704700200876687,
    "evaluations": 100
   },
   {
@@ -1800,10 +1800,10 @@
    "phantom": "htc2022_tc",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.03897908329963684,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 25.006752014160156,
-   "seconds": 0.3877757390146144,
+   "shift_rmse": 0.039194103330373764,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 25.006446838378906,
+   "seconds": 0.5051662269979715,
    "evaluations": 88
   },
   {
@@ -1811,11 +1811,11 @@
    "phantom": "htc2022_tc",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.0353974774479866,
-   "angle_rmse_degrees": 0.1485474230408669,
-   "psnr": 24.95683479309082,
-   "seconds": 0.5336704479996115,
-   "evaluations": 86
+   "shift_rmse": 0.0351235531270504,
+   "angle_rmse_degrees": 0.14722506106495542,
+   "psnr": 24.957578659057617,
+   "seconds": 0.5198713080026209,
+   "evaluations": 82
   },
   {
    "scenario": "shift+angle",
@@ -1835,7 +1835,7 @@
    "method": "none",
    "shift_rmse": 0.8542434573173523,
    "angle_rmse_degrees": 0.31286095039853307,
-   "psnr": 22.61726188659668,
+   "psnr": 22.61725616455078,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1844,10 +1844,10 @@
    "phantom": "htc2022_td",
    "seed": 0,
    "method": "matching",
-   "shift_rmse": 0.017787614837288857,
+   "shift_rmse": 0.01778724230825901,
    "angle_rmse_degrees": 0.31286095039853307,
    "psnr": 25.115976333618164,
-   "seconds": 0.12310983100906014,
+   "seconds": 0.15050687600160018,
    "evaluations": 100
   },
   {
@@ -1855,22 +1855,22 @@
    "phantom": "htc2022_td",
    "seed": 0,
    "method": "gradient shift",
-   "shift_rmse": 0.018857784569263458,
+   "shift_rmse": 0.0188535675406456,
    "angle_rmse_degrees": 0.31286095039853307,
-   "psnr": 25.115478515625,
-   "seconds": 0.36698881903430447,
-   "evaluations": 93
+   "psnr": 25.115488052368164,
+   "seconds": 0.41169652399548795,
+   "evaluations": 89
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_td",
    "seed": 0,
    "method": "gradient pose",
-   "shift_rmse": 0.022053739055991173,
-   "angle_rmse_degrees": 0.10382174353003669,
-   "psnr": 25.12700843811035,
-   "seconds": 0.5868873650324531,
-   "evaluations": 93
+   "shift_rmse": 0.022064032033085823,
+   "angle_rmse_degrees": 0.10590494455678397,
+   "psnr": 25.126174926757812,
+   "seconds": 0.595018424995942,
+   "evaluations": 87
   },
   {
    "scenario": "shift+angle",
@@ -1878,7 +1878,7 @@
    "seed": 0,
    "method": "oracle",
    "shift_rmse": 2.7939677238464355e-09,
-   "angle_rmse_degrees": 8.924407833818898e-10,
+   "angle_rmse_degrees": 8.882471226420463e-10,
    "psnr": 25.130111694335938,
    "seconds": 0.0,
    "evaluations": 0
@@ -1888,9 +1888,9 @@
    "phantom": "htc2022_td",
    "seed": 1,
    "method": "none",
-   "shift_rmse": 1.9822932481765747,
+   "shift_rmse": 1.9822931289672852,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 18.471786499023438,
+   "psnr": 18.471782684326172,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1899,10 +1899,10 @@
    "phantom": "htc2022_td",
    "seed": 1,
    "method": "matching",
-   "shift_rmse": 0.02095581591129303,
+   "shift_rmse": 0.020955512300133705,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 25.099735260009766,
-   "seconds": 0.12288994900882244,
+   "psnr": 25.0997371673584,
+   "seconds": 0.18305448901082855,
    "evaluations": 100
   },
   {
@@ -1910,22 +1910,22 @@
    "phantom": "htc2022_td",
    "seed": 1,
    "method": "gradient shift",
-   "shift_rmse": 0.044339001178741455,
+   "shift_rmse": 0.04353741183876991,
    "angle_rmse_degrees": 0.2914399030162128,
-   "psnr": 25.084224700927734,
-   "seconds": 0.345280243025627,
-   "evaluations": 81
+   "psnr": 25.084054946899414,
+   "seconds": 0.5799100430012913,
+   "evaluations": 92
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_td",
    "seed": 1,
    "method": "gradient pose",
-   "shift_rmse": 0.04070913791656494,
-   "angle_rmse_degrees": 0.12018845092654752,
-   "psnr": 25.087745666503906,
-   "seconds": 0.5332929120049812,
-   "evaluations": 83
+   "shift_rmse": 0.042399462312459946,
+   "angle_rmse_degrees": 0.12583829803061744,
+   "psnr": 25.086631774902344,
+   "seconds": 0.609370083999238,
+   "evaluations": 84
   },
   {
    "scenario": "shift+angle",
@@ -1933,7 +1933,7 @@
    "seed": 1,
    "method": "oracle",
    "shift_rmse": 4.664987329761061e-08,
-   "angle_rmse_degrees": 1.9061791757894242e-09,
+   "angle_rmse_degrees": 2.389171451037776e-09,
    "psnr": 25.113536834716797,
    "seconds": 0.0,
    "evaluations": 0
@@ -1944,8 +1944,8 @@
    "seed": 2,
    "method": "none",
    "shift_rmse": 1.8831431865692139,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 18.847503662109375,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 18.847505569458008,
    "seconds": 0.0,
    "evaluations": 0
   },
@@ -1954,10 +1954,10 @@
    "phantom": "htc2022_td",
    "seed": 2,
    "method": "matching",
-   "shift_rmse": 0.033907923847436905,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 24.926074981689453,
-   "seconds": 0.12252859701402485,
+   "shift_rmse": 0.03390748053789139,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 24.92607879638672,
+   "seconds": 0.21096144399780314,
    "evaluations": 100
   },
   {
@@ -1965,21 +1965,21 @@
    "phantom": "htc2022_td",
    "seed": 2,
    "method": "gradient shift",
-   "shift_rmse": 0.04165196791291237,
-   "angle_rmse_degrees": 0.30321474893891814,
-   "psnr": 24.911048889160156,
-   "seconds": 0.343687210988719,
-   "evaluations": 81
+   "shift_rmse": 0.040368419140577316,
+   "angle_rmse_degrees": 0.30321477561934457,
+   "psnr": 24.911958694458008,
+   "seconds": 0.48840979899978265,
+   "evaluations": 75
   },
   {
    "scenario": "shift+angle",
    "phantom": "htc2022_td",
    "seed": 2,
    "method": "gradient pose",
-   "shift_rmse": 0.03616040572524071,
-   "angle_rmse_degrees": 0.1758913516712857,
-   "psnr": 24.9118709564209,
-   "seconds": 0.5197727069607936,
+   "shift_rmse": 0.03651929274201393,
+   "angle_rmse_degrees": 0.16176251840373254,
+   "psnr": 24.91330337524414,
+   "seconds": 0.5452254819974769,
    "evaluations": 81
   },
   {
