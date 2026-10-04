@@ -45,6 +45,48 @@ def latex(header: list[str], rows: list[list[str]]) -> str:
     return "\n".join(lines + ["\\bottomrule", "\\end{tabular}"])
 
 
+LIBRARIES = Path(__file__).resolve().parents[1] / "libraries" / "results" / "0.4.0"
+OPERATOR_ROWS: dict[str, tuple[str, str]] = {
+    "torchtomo-cuda": ("torchtomo CUDA", "torchtomo CUDA exact"),
+    "leap": ("LEAP", ""),
+    "torch-radon": ("torch-radon", "torch-radon"),
+    "astra": ("ASTRA", "ASTRA"),
+}
+
+
+def table1a_operators(size: int = 512, views: int = 360, batch: int = 4) -> tuple[list[str], list[list[str]]]:
+    """Fixed-geometry operators: speed and Shepp-Logan PSNR from the Week 1 library benchmark, adjoint defect."""
+    dot = json.loads((RESULTS / "dot_test.json").read_text())["results"]["rows"]
+    rows = []
+    for geometry in ("parallel", "fan"):
+        comparison = json.loads((LIBRARIES / geometry / "library-comparison.json").read_text())
+        for library, (label, dot_name) in OPERATOR_ROWS.items():
+            times = {
+                r["operation"]: r["milliseconds"]
+                for r in comparison["performance"]
+                if (r["library"], r["size"], r["angles"], r["batch"]) == (library, size, views, batch)
+            }
+            psnr = [
+                r["psnr_db"]
+                for r in comparison["quality"]
+                if (r["library"], r["size"], r["angles"], r["phantom"]) == (library, size, views, "shepp-logan")
+            ]
+            defect = [r["median"] for r in dot if (r["geometry"], r["pair"]) == (geometry, dot_name) and "median" in r]
+            rows.append(
+                [
+                    label,
+                    geometry,
+                    f"{times['forward']:.2f}",
+                    f"{times['backproject']:.2f}",
+                    f"{times['fbp']:.2f}",
+                    f"{psnr[0]:.2f}",
+                    f"{defect[0]:.0e}" if defect else "not measured",
+                ]
+            )
+    header = ["Library", "Geometry", "Forward (ms)", "Backproject (ms)", "FBP (ms)", "PSNR (dB)", "Adjoint defect"]
+    return header, rows
+
+
 def cost_cell(values: list[float | None]) -> str:
     if any(v is None for v in values):
         return "OOM"
@@ -52,7 +94,7 @@ def cost_cell(values: list[float | None]) -> str:
     return f"{np.median(values):.2f} ({values.min():.2f} to {values.max():.2f})"
 
 
-def table1a() -> tuple[list[str], list[list[str]]]:
+def table1b_cost() -> tuple[list[str], list[list[str]]]:
     sessions = [json.loads(p.read_text())["results"] for p in sorted(RESULTS.glob("geometry_gradients_s*.json"))]
     cases = sorted({(c["size"], c["views"], c["bins"]) for c in sessions[0]["cases"]})
     rows = []
@@ -79,7 +121,7 @@ def table1a() -> tuple[list[str], list[list[str]]]:
     return ["Size, views"] + list(COST_COLUMNS.values()), rows + [memory]
 
 
-def table1b() -> tuple[list[str], list[list[str]]]:
+def gradient_accuracy() -> tuple[list[str], list[list[str]]]:
     rows = json.loads((RESULTS / "gradient_accuracy.json").read_text())["results"]["rows"]
     out = []
     for operator in ("forward", "adjoint", "backproject", "fbp"):
@@ -108,8 +150,14 @@ def table2() -> tuple[list[str], list[list[str]]]:
 
 def main() -> None:
     TABLES.mkdir(parents=True, exist_ok=True)
+    tables = {
+        "table1a": table1a_operators(),
+        "table1b": table1b_cost(),
+        "table2": table2(),
+        "supplement_gradient_accuracy": gradient_accuracy(),
+    }
     blocks = []
-    for name, (header, rows) in {"table1a": table1a(), "table1b": table1b(), "table2": table2()}.items():
+    for name, (header, rows) in tables.items():
         (TABLES / f"{name}.tex").write_text(latex(header, rows))
         blocks.append(f"**{name}**\n\n" + markdown(header, rows))
     text = "\n\n".join(blocks) + "\n"
