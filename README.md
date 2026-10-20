@@ -27,6 +27,7 @@ FBP runtime on an RTX 2080 Ti. Each library reconstructs its own sinogram.
 | Experiment | What it measures | Guide |
 | --- | --- | --- |
 | **Library comparisons** | Operator agreement, FBP quality, runtime, and GPU-memory observations for TorchTomo, LEAP, torch-radon, ASTRA, TIGRE, and scikit-image, where supported | [`libraries/`](libraries/README.md) |
+| **3D cone beam and tomosynthesis** | TorchTomo's `ConeBeam` and `BreastTomosynthesis` against ASTRA and LEAP: operator agreement, speed, geometry-gradient cost, SIRT, FBP, and OS-SART on a circular scan and on TCIA VICTRE | [`libraries/`](libraries/README.md#3d-cone-beam-and-breast-tomosynthesis) |
 | **Reconstruction methods** | Ten analytical, iterative, supervised, and self-supervised methods plus validation-tuned FBP on ellipse phantoms or CT slices | [`training/`](training/README.md) |
 | **Geometry calibration** | Centre of rotation on HTC 2022 and FIPS walnut scans; per-view motion and angle errors; classical calibration baselines | [`geometry/`](geometry/README.md) |
 | **Research tables and figures** | Repeated geometry-gradient timings, adjoint diagnostics, paired statistics, and exported tables and figures | [`isbi/`](isbi), [recorded tables](isbi/results/tables/final_tables.md) |
@@ -57,6 +58,7 @@ apply to that setup. TIGRE was unavailable in this 0.4.0 measurement environment
 | [Parallel-beam results](libraries/results/0.4.0/parallel/library-comparison.json) | Raw settings, quality, runtime, memory observations, and software provenance |
 | [Fan-beam results](libraries/results/0.4.0/fan/library-comparison.json) | The same measurements for flat-detector fan beam |
 | [0.4.0 summary](libraries/results/0.4.0/README.md#real-ct-validation-tuned-fbp) | Validation-selected FBP filters evaluated on held-out real CT slices |
+| [Cone beam](libraries/results/cone/cone-comparison.json) and [tomosynthesis](libraries/results/dbt/cone-comparison.json) results | 3D operators on torchtomo's CUDA kernels against ASTRA and LEAP; the kernels are newer than 0.4.0 |
 | [Geometry results](geometry/README.md) | Measured-scan calibration and controlled motion/angle-error experiments |
 | [Repeated-seed training smoke runs](training/smoke-0.4.0-summary.json) | Execution and bookkeeping checks at 32 × 32 for two epochs |
 | [Historical training results](training/README.md) | Full earlier runs, with their version and protocol context |
