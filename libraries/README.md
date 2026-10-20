@@ -229,6 +229,9 @@ ASTRA and TIGRE also allocate their working buffers outside it.
 
 ## 3D cone beam and breast tomosynthesis
 
+Browse the [interactive tables and figures](results/cone-dbt-report/report.html)
+offline, or view the [SVG figures](results/cone-dbt-report/README.md) on GitHub.
+
 torchtomo's `ConeBeam` and `BreastTomosynthesis` against ASTRA and LEAP, from
 `compare_cone.py`, RTX 2080 Ti, PyTorch 2.14.0+cu130, ASTRA 2.5.0, LEAP 1.26,
 2026-10-20. `torchtomo` is ConeBeam's CUDA kernels (`backend="cuda"`), which are
