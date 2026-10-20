@@ -30,8 +30,7 @@ Sections:
 
 ``torchtomo`` is ConeBeam's CUDA kernels (``backend="cuda"``), the reference the
 agreement is measured against; ``--libraries torchtomo-pytorch`` adds its PyTorch
-path. ConeBeam, BreastTomosynthesis, and the kernels are newer than torchtomo
-0.4.0, so these need a torchtomo checkout that has them on the path.
+path. ConeBeam, BreastTomosynthesis, and the kernels need torchtomo 0.5.0.
 """
 
 import argparse

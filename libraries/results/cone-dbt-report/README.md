@@ -11,8 +11,8 @@ The figures summarize the recorded RTX 2080 Ti measurements from 20 October 2026
 - [Cone beam PyTorch comparison](../cone/pytorch-path/cone-comparison.json).
 - [Tomosynthesis PyTorch comparison](../dbt/pytorch-path/cone-comparison.json).
 
-TorchTomo uses unreleased CUDA kernels on `feat/cone-cuda-kernels`, based on
-`e2ca99c`, with source hash `4ca1fd5e9653`. The software provenance and benchmark
+TorchTomo uses the CUDA kernels released in 0.5.0, measured at commit `47cb25b`
+with source hash `4ca1fd5e9653`; 0.5.0 differs only in its version string. The software provenance and benchmark
 settings are recorded in each JSON file. The figures show aggregate measurements;
 reconstruction slice images were not saved with these results.
 
