@@ -2,7 +2,7 @@
 
 **CT projector comparisons, reconstruction experiments, and differentiable geometry calibration — with recorded results and reproducible scripts.**
 
-[![TorchTomo](https://img.shields.io/badge/TorchTomo-0.4.0-2563eb)](https://github.com/itu-biai/torchtomo)
+[![TorchTomo](https://img.shields.io/badge/TorchTomo-0.5.0-2563eb)](https://github.com/itu-biai/torchtomo)
 [![PyTorch](https://img.shields.io/badge/framework-PyTorch-ee4c2c)](https://pytorch.org/)
 [![Results](https://img.shields.io/badge/results-JSON%20%2B%20figures-16a34a)](libraries/results/0.4.0/README.md)
 
@@ -58,7 +58,7 @@ apply to that setup. TIGRE was unavailable in this 0.4.0 measurement environment
 | [Parallel-beam results](libraries/results/0.4.0/parallel/library-comparison.json) | Raw settings, quality, runtime, memory observations, and software provenance |
 | [Fan-beam results](libraries/results/0.4.0/fan/library-comparison.json) | The same measurements for flat-detector fan beam |
 | [0.4.0 summary](libraries/results/0.4.0/README.md#real-ct-validation-tuned-fbp) | Validation-selected FBP filters evaluated on held-out real CT slices |
-| [Cone beam](libraries/results/cone/cone-comparison.json) and [tomosynthesis](libraries/results/dbt/cone-comparison.json) results | 3D operators on torchtomo's CUDA kernels against ASTRA and LEAP; the kernels are newer than 0.4.0 |
+| [Cone beam](libraries/results/cone/cone-comparison.json) and [tomosynthesis](libraries/results/dbt/cone-comparison.json) results | 3D operators on torchtomo's CUDA kernels against ASTRA and LEAP, measured on the code released in 0.5.0 |
 | [Geometry results](geometry/README.md) | Measured-scan calibration and controlled motion/angle-error experiments |
 | [Repeated-seed training smoke runs](training/smoke-0.4.0-summary.json) | Execution and bookkeeping checks at 32 × 32 for two epochs |
 | [Historical training results](training/README.md) | Full earlier runs, with their version and protocol context |
@@ -80,7 +80,7 @@ python -m pip install -r requirements.txt
 make test
 ```
 
-The requirements install `torchtomo==0.4.0`, Matplotlib, NumPy, pytest, Ruff,
+The requirements install `torchtomo==0.5.0`, Matplotlib, NumPy, pytest, Ruff,
 scikit-image, SciPy, and algotom. To work against a matching local TorchTomo
 checkout, install it after the requirements:
 

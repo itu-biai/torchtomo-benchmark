@@ -6,8 +6,8 @@ and a tomosynthesis arc with thick slices must give the same projections and
 backprojections with no fitted scale, and each library's pair must pass a
 dot-product test. A volume flipped in x or y catches a transposed convention.
 
-ConeBeam and BreastTomosynthesis are newer than torchtomo 0.4.0; these tests skip
-when the installed torchtomo lacks them.
+ConeBeam and BreastTomosynthesis need torchtomo 0.5.0; these tests skip when the
+installed torchtomo lacks them.
 
     pytest tests/test_cone_consistency.py
 """

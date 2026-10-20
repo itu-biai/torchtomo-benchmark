@@ -235,8 +235,8 @@ offline, or view the [SVG figures](results/cone-dbt-report/README.md) on GitHub.
 torchtomo's `ConeBeam` and `BreastTomosynthesis` against ASTRA and LEAP, from
 `compare_cone.py`, RTX 2080 Ti, PyTorch 2.14.0+cu130, ASTRA 2.5.0, LEAP 1.26,
 2026-10-20. `torchtomo` is ConeBeam's CUDA kernels (`backend="cuda"`), which are
-newer than torchtomo 0.4.0: the measurements use the `feat/cone-cuda-kernels`
-branch, on top of commit `e2ca99c`, on `PYTHONPATH` (source hash `4ca1fd5e9653` in the JSON). The rows are in
+released in torchtomo 0.5.0: the measurements use commit `47cb25b` on `PYTHONPATH`
+(source hash `4ca1fd5e9653` in the JSON), which differs from 0.5.0 only in the version string. The rows are in
 `results/cone/cone-comparison.json` and `results/dbt/cone-comparison.json`, with
 every table in each folder's `tables.md`; the PyTorch path's rows are in the
 `pytorch-path/` folder inside each. TIGRE was not installed on the benchmark
