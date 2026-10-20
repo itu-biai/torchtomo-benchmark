@@ -1,0 +1,1352 @@
+{
+  "geometry": "dbt",
+  "libraries": [
+    "torchtomo",
+    "astra",
+    "leap"
+  ],
+  "device": "NVIDIA GeForce RTX 2080 Ti",
+  "metadata": {
+    "benchmark_source_sha256": "60f06c98d37eca39e3cc506e41f636291b5fa52f56433f1fe8bfe64ff2bf6fb8",
+    "torchtomo_version": "0.4.0",
+    "torchtomo_source_sha256": "4ca1fd5e9653a6c6acb9e306cfc5150cde3aeeb4b453506ed28d68dba5596b2f",
+    "torchtomo_commit": "e2ca99c + uncommitted cone CUDA kernels (feat/cone-cuda-kernels)",
+    "python": "3.12.14",
+    "torch": "2.14.0+cu130",
+    "cuda": "13.0",
+    "packages": {
+      "torchtomo": "0.4.0",
+      "numpy": "2.5.3",
+      "scikit-image": "0.26.0",
+      "leapct": "1.26",
+      "torch-radon": null,
+      "astra-toolbox": "2.5.0",
+      "pytigre": null
+    }
+  },
+  "started": "2026-10-20T06:34:38.878215+00:00",
+  "settings": {
+    "geometry": "dbt",
+    "sections": "['agreement', 'performance', 'quality']",
+    "libraries": "None",
+    "cone_cases": "[(32, 90), (64, 180), (128, 360), (256, 360)]",
+    "bins": "[16, 8, 4]",
+    "victre": "../torchtomo/benchmark/dbt/results/victre/input_bin4.npz",
+    "sirt_iterations": "30",
+    "sart_iterations": "10",
+    "subsets": "5",
+    "depth_margin": "8",
+    "quality_max_size": "256",
+    "torchtomo_commit": "e2ca99c + uncommitted cone CUDA kernels (feat/cone-cuda-kernels)",
+    "output": "None"
+  },
+  "agreement": [
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "torchtomo",
+      "forward_relative_l2": 0.0,
+      "forward_scale": 1.0,
+      "adjoint_relative_l2": 9.789948762772838e-08,
+      "adjoint_scale": 0.999999999905331,
+      "dot_test_ratio": 1.0000000003420244
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "astra",
+      "forward_relative_l2": 0.00259052193723619,
+      "forward_scale": 1.0001664485672743,
+      "adjoint_relative_l2": 0.04020162299275398,
+      "adjoint_scale": 0.9621830131762771,
+      "dot_test_ratio": 1.0444480736334194
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "leap",
+      "forward_relative_l2": 0.010664211586117744,
+      "forward_scale": 0.9907021070951374,
+      "adjoint_relative_l2": 0.15903480350971222,
+      "adjoint_scale": 0.9640602016431503,
+      "dot_test_ratio": 1.030759082607892
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "torchtomo",
+      "forward_relative_l2": 0.0,
+      "forward_scale": 1.0,
+      "adjoint_relative_l2": 4.906705797225186e-08,
+      "adjoint_scale": 0.9999999999651403,
+      "dot_test_ratio": 1.0000000009190586
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "astra",
+      "forward_relative_l2": 0.00458896066993475,
+      "forward_scale": 1.0038504143725857,
+      "adjoint_relative_l2": 0.04269794002175331,
+      "adjoint_scale": 0.965137758434765,
+      "dot_test_ratio": 1.0447039404005776
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "leap",
+      "forward_relative_l2": 0.0022550811991095543,
+      "forward_scale": 0.9999708028587503,
+      "adjoint_relative_l2": 0.07671821862459183,
+      "adjoint_scale": 0.9668029315623813,
+      "dot_test_ratio": 1.037821203436773
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "torchtomo",
+      "forward_relative_l2": 0.0,
+      "forward_scale": 1.0,
+      "adjoint_relative_l2": 5.5765514872518906e-08,
+      "adjoint_scale": 1.00000000001657,
+      "dot_test_ratio": 1.000000001126725
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "astra",
+      "forward_relative_l2": 0.005671222694218159,
+      "forward_scale": 1.003865753162166,
+      "adjoint_relative_l2": 0.042253296822309494,
+      "adjoint_scale": 0.9649605985357584,
+      "dot_test_ratio": 1.0447930603527362
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "leap",
+      "forward_relative_l2": 0.0030727831181138754,
+      "forward_scale": 1.002753074084366,
+      "adjoint_relative_l2": 0.04690806195139885,
+      "adjoint_scale": 0.9666444449810392,
+      "dot_test_ratio": 1.0413474369529685
+    }
+  ],
+  "performance": [
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "torchtomo",
+      "operation": "forward",
+      "milliseconds": 0.49051397300566046,
+      "runs": 2039,
+      "torch_peak_mb": 6.252544,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "torchtomo",
+      "operation": "adjoint",
+      "milliseconds": 0.6837028790356353,
+      "runs": 1463,
+      "torch_peak_mb": 7.037952,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "torchtomo",
+      "operation": "forward + geometry gradient",
+      "milliseconds": 1.4073418452680824,
+      "runs": 711,
+      "torch_peak_mb": 17.02912,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "astra",
+      "operation": "forward",
+      "milliseconds": 1.280694599182878,
+      "runs": 781,
+      "torch_peak_mb": 3.6096,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "astra",
+      "operation": "adjoint",
+      "milliseconds": 1.2968843950590823,
+      "runs": 772,
+      "torch_peak_mb": 3.907584,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "leap",
+      "operation": "forward",
+      "milliseconds": 0.5904361174756346,
+      "runs": 1694,
+      "torch_peak_mb": 5.505536,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "leap",
+      "operation": "adjoint",
+      "milliseconds": 1.1612993538495273,
+      "runs": 862,
+      "torch_peak_mb": 4.204544,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "torchtomo",
+      "operation": "forward",
+      "milliseconds": 1.6029233557697482,
+      "runs": 624,
+      "torch_peak_mb": 24.392192,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "torchtomo",
+      "operation": "adjoint",
+      "milliseconds": 2.7582941157679195,
+      "runs": 363,
+      "torch_peak_mb": 24.987136,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "torchtomo",
+      "operation": "forward + geometry gradient",
+      "milliseconds": 3.826330591638338,
+      "runs": 262,
+      "torch_peak_mb": 67.70944,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "astra",
+      "operation": "forward",
+      "milliseconds": 1.871161429955685,
+      "runs": 535,
+      "torch_peak_mb": 14.4384,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "astra",
+      "operation": "adjoint",
+      "milliseconds": 1.499211010547539,
+      "runs": 668,
+      "torch_peak_mb": 15.628288,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "leap",
+      "operation": "forward",
+      "milliseconds": 1.651865092456562,
+      "runs": 606,
+      "torch_peak_mb": 26.195456,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "leap",
+      "operation": "adjoint",
+      "milliseconds": 6.522228350551412,
+      "runs": 154,
+      "torch_peak_mb": 19.329536,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "torchtomo",
+      "operation": "forward",
+      "milliseconds": 9.223544137625007,
+      "runs": 109,
+      "torch_peak_mb": 96.599552,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "torchtomo",
+      "operation": "adjoint",
+      "milliseconds": 15.53065786138177,
+      "runs": 65,
+      "torch_peak_mb": 98.696704,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "torchtomo",
+      "operation": "forward + geometry gradient",
+      "milliseconds": 20.752819816876507,
+      "runs": 49,
+      "torch_peak_mb": 269.379072,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "astra",
+      "operation": "forward",
+      "milliseconds": 9.93062763378061,
+      "runs": 101,
+      "torch_peak_mb": 58.720256,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "astra",
+      "operation": "adjoint",
+      "milliseconds": 3.217723633468127,
+      "runs": 311,
+      "torch_peak_mb": 62.91456,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "leap",
+      "operation": "forward",
+      "milliseconds": 8.745508878390588,
+      "runs": 115,
+      "torch_peak_mb": 150.994944,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "leap",
+      "operation": "adjoint",
+      "milliseconds": 49.64898018876002,
+      "runs": 21,
+      "torch_peak_mb": 123.731968,
+      "external_allocations_measured": false
+    }
+  ],
+  "quality": [
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "torchtomo",
+      "mask_voxels": 195278,
+      "fbp_seconds": 0.000971950008533895,
+      "fbp_reference_correlation": 0.8568015292787403,
+      "sart_seconds": 0.03785353200510144,
+      "sart_held_out_relative_residual": 0.03539455309510231,
+      "sart_reference_correlation": 0.4306268378614139,
+      "sart": {
+        "iterations": 10,
+        "subsets": 5,
+        "depth_margin_slices": 8
+      }
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "astra",
+      "mask_voxels": 195278,
+      "fbp_seconds": 0.001432589953765273,
+      "fbp_reference_correlation": 0.8645631905572707,
+      "sart_seconds": 0.133923429006245,
+      "sart_held_out_relative_residual": 0.03534819185733795,
+      "sart_reference_correlation": 0.4331396664250068,
+      "sart": {
+        "iterations": 10,
+        "subsets": 5,
+        "depth_margin_slices": 8
+      }
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 1.36 mm bins",
+      "volume_shape_zyx": [
+        57,
+        84,
+        102
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.3600000143051147,
+        1.3600000143051147
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        188,
+        96
+      ],
+      "rays": 451200,
+      "torchtomo_samples_per_ray": 55,
+      "torchtomo_ray_chunk": 38130,
+      "library": "leap",
+      "mask_voxels": 195278,
+      "fbp_seconds": 0.0014049300225451589,
+      "fbp_reference_correlation": 0.7928605124419583,
+      "sart_seconds": 0.054351863975171,
+      "sart_held_out_relative_residual": 0.03599056974053383,
+      "sart_reference_correlation": 0.4233628689936937,
+      "sart": {
+        "iterations": 10,
+        "subsets": 5,
+        "depth_margin_slices": 8
+      }
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "torchtomo",
+      "mask_voxels": 782470,
+      "fbp_seconds": 0.0033882400020956993,
+      "fbp_reference_correlation": 0.8843333855036187,
+      "sart_seconds": 0.0794373259996064,
+      "sart_held_out_relative_residual": 0.03571899235248566,
+      "sart_reference_correlation": 0.44945735188756725,
+      "sart": {
+        "iterations": 10,
+        "subsets": 5,
+        "depth_margin_slices": 8
+      }
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "astra",
+      "mask_voxels": 782470,
+      "fbp_seconds": 0.001835979986935854,
+      "fbp_reference_correlation": 0.8915235842765598,
+      "sart_seconds": 0.145588570041582,
+      "sart_held_out_relative_residual": 0.03586747869849205,
+      "sart_reference_correlation": 0.4545310903346106,
+      "sart": {
+        "iterations": 10,
+        "subsets": 5,
+        "depth_margin_slices": 8
+      }
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.68 mm bins",
+      "volume_shape_zyx": [
+        57,
+        168,
+        204
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.6800000071525574,
+        0.6800000071525574
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        376,
+        192
+      ],
+      "rays": 1804800,
+      "torchtomo_samples_per_ray": 109,
+      "torchtomo_ray_chunk": 19239,
+      "library": "leap",
+      "mask_voxels": 782470,
+      "fbp_seconds": 0.006457021052483469,
+      "fbp_reference_correlation": 0.8787777225823736,
+      "sart_seconds": 0.11046041699592024,
+      "sart_held_out_relative_residual": 0.03615914285182953,
+      "sart_reference_correlation": 0.453599736363789,
+      "sart": {
+        "iterations": 10,
+        "subsets": 5,
+        "depth_margin_slices": 8
+      }
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "torchtomo",
+      "mask_voxels": 3122515,
+      "fbp_seconds": 0.01752113801194355,
+      "fbp_reference_correlation": 0.8835450417818768,
+      "sart_seconds": 0.3219904910074547,
+      "sart_held_out_relative_residual": 0.0365050733089447,
+      "sart_reference_correlation": 0.4352640070972397,
+      "sart": {
+        "iterations": 10,
+        "subsets": 5,
+        "depth_margin_slices": 8
+      }
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "astra",
+      "mask_voxels": 3122515,
+      "fbp_seconds": 0.003981371002737433,
+      "fbp_reference_correlation": 0.8864143919275836,
+      "sart_seconds": 0.31311050202930346,
+      "sart_held_out_relative_residual": 0.03662988543510437,
+      "sart_reference_correlation": 0.4380981139917176,
+      "sart": {
+        "iterations": 10,
+        "subsets": 5,
+        "depth_margin_slices": 8
+      }
+    },
+    {
+      "case": "VICTRE 694607065 (scattered), 0.34 mm bins",
+      "volume_shape_zyx": [
+        57,
+        336,
+        408
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        0.3400000035762787,
+        0.3400000035762787
+      ],
+      "volume_center_xyz": [
+        8.76449966430664,
+        -8.15999984741211,
+        -1.409000039100647
+      ],
+      "views": 25,
+      "detector_rows_columns": [
+        752,
+        384
+      ],
+      "rays": 7219200,
+      "torchtomo_samples_per_ray": 218,
+      "torchtomo_ray_chunk": 9619,
+      "library": "leap",
+      "mask_voxels": 3122515,
+      "fbp_seconds": 0.048162528953980654,
+      "fbp_reference_correlation": 0.8882855825638319,
+      "sart_seconds": 0.5798383809742518,
+      "sart_held_out_relative_residual": 0.03675061836838722,
+      "sart_reference_correlation": 0.43780011443527506,
+      "sart": {
+        "iterations": 10,
+        "subsets": 5,
+        "depth_margin_slices": 8
+      }
+    }
+  ],
+  "finished": "2026-10-20T06:37:13.683210+00:00"
+}

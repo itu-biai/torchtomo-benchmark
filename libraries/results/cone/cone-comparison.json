@@ -1,0 +1,1810 @@
+{
+  "geometry": "cone",
+  "libraries": [
+    "torchtomo",
+    "astra",
+    "leap"
+  ],
+  "device": "NVIDIA GeForce RTX 2080 Ti",
+  "metadata": {
+    "benchmark_source_sha256": "60f06c98d37eca39e3cc506e41f636291b5fa52f56433f1fe8bfe64ff2bf6fb8",
+    "torchtomo_version": "0.4.0",
+    "torchtomo_source_sha256": "4ca1fd5e9653a6c6acb9e306cfc5150cde3aeeb4b453506ed28d68dba5596b2f",
+    "torchtomo_commit": "e2ca99c + uncommitted cone CUDA kernels (feat/cone-cuda-kernels)",
+    "python": "3.12.14",
+    "torch": "2.14.0+cu130",
+    "cuda": "13.0",
+    "packages": {
+      "torchtomo": "0.4.0",
+      "numpy": "2.5.3",
+      "scikit-image": "0.26.0",
+      "leapct": "1.26",
+      "torch-radon": null,
+      "astra-toolbox": "2.5.0",
+      "pytigre": null
+    }
+  },
+  "started": "2026-10-20T06:37:15.381921+00:00",
+  "settings": {
+    "geometry": "cone",
+    "sections": "['agreement', 'performance', 'quality']",
+    "libraries": "None",
+    "cone_cases": "[(32, 90), (64, 180), (128, 360), (256, 360)]",
+    "bins": "[16, 8, 4]",
+    "victre": "../torchtomo/benchmark/dbt/results/victre/input_bin4.npz",
+    "sirt_iterations": "30",
+    "sart_iterations": "10",
+    "subsets": "5",
+    "depth_margin": "8",
+    "quality_max_size": "256",
+    "torchtomo_commit": "e2ca99c + uncommitted cone CUDA kernels (feat/cone-cuda-kernels)",
+    "output": "None"
+  },
+  "agreement": [
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "torchtomo",
+      "forward_relative_l2": 0.0,
+      "forward_scale": 1.0,
+      "adjoint_relative_l2": 2.4393676767431316e-07,
+      "adjoint_scale": 1.0000000028333587,
+      "dot_test_ratio": 1.0000000039357353
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "astra",
+      "forward_relative_l2": 0.019390569999814034,
+      "forward_scale": 1.0017050665827127,
+      "adjoint_relative_l2": 0.027191175147891045,
+      "adjoint_scale": 1.00231403191606,
+      "dot_test_ratio": 1.0054069710152702
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "leap",
+      "forward_relative_l2": 0.020362161099910736,
+      "forward_scale": 1.0014511250165803,
+      "adjoint_relative_l2": 0.0275589507073164,
+      "adjoint_scale": 1.0050031926870246,
+      "dot_test_ratio": 1.0627876906667793
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "torchtomo",
+      "forward_relative_l2": 0.0,
+      "forward_scale": 1.0,
+      "adjoint_relative_l2": 1.6489761378579715e-07,
+      "adjoint_scale": 0.9999999999509401,
+      "dot_test_ratio": 1.0000000130245497
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "astra",
+      "forward_relative_l2": 0.010707647539675236,
+      "forward_scale": 1.0007152303104183,
+      "adjoint_relative_l2": 0.01946110464632511,
+      "adjoint_scale": 0.9999785718051263,
+      "dot_test_ratio": 1.0053699527851045
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "leap",
+      "forward_relative_l2": 0.007442809641361237,
+      "forward_scale": 1.0004719794557893,
+      "adjoint_relative_l2": 0.019607285037636757,
+      "adjoint_scale": 1.0024928527009906,
+      "dot_test_ratio": 1.0319004788885378
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "torchtomo",
+      "forward_relative_l2": 0.0,
+      "forward_scale": 1.0,
+      "adjoint_relative_l2": 1.0000012196087482e-07,
+      "adjoint_scale": 0.9999999999792634,
+      "dot_test_ratio": 1.0000000423097526
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "astra",
+      "forward_relative_l2": 0.005059659481048584,
+      "forward_scale": 1.00029087196167,
+      "adjoint_relative_l2": 0.013990258798003197,
+      "adjoint_scale": 0.998854746166926,
+      "dot_test_ratio": 1.0053314967365843
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "leap",
+      "forward_relative_l2": 0.004064689856022596,
+      "forward_scale": 1.0004416120226767,
+      "adjoint_relative_l2": 0.014001699164509773,
+      "adjoint_scale": 1.0013723113411748,
+      "dot_test_ratio": 1.0158925176145464
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "torchtomo",
+      "forward_relative_l2": 0.0,
+      "forward_scale": 1.0,
+      "adjoint_relative_l2": 5.1653664456807746e-08,
+      "adjoint_scale": 1.0000000000002656,
+      "dot_test_ratio": 1.0000000419086807
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "astra",
+      "forward_relative_l2": 0.002528479555621743,
+      "forward_scale": 1.0000950334846213,
+      "adjoint_relative_l2": 0.010172313079237938,
+      "adjoint_scale": 0.9983077720098469,
+      "dot_test_ratio": 1.0053416513597402
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "leap",
+      "forward_relative_l2": 0.00216263672336936,
+      "forward_scale": 1.0003574840144605,
+      "adjoint_relative_l2": 0.01004389300942421,
+      "adjoint_scale": 1.000820787229986,
+      "dot_test_ratio": 1.0079462722209982
+    }
+  ],
+  "performance": [
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "torchtomo",
+      "operation": "forward",
+      "milliseconds": 0.3850061755256012,
+      "runs": 2598,
+      "torch_peak_mb": 1.203712,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "torchtomo",
+      "operation": "adjoint",
+      "milliseconds": 0.4606238088398084,
+      "runs": 2171,
+      "torch_peak_mb": 0.505344,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "torchtomo",
+      "operation": "forward + geometry gradient",
+      "milliseconds": 0.9700692211689697,
+      "runs": 1031,
+      "torch_peak_mb": 6.184448,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "astra",
+      "operation": "forward",
+      "milliseconds": 1.6359288758656094,
+      "runs": 612,
+      "torch_peak_mb": 1.65888,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "astra",
+      "operation": "adjoint",
+      "milliseconds": 1.061917294072375,
+      "runs": 942,
+      "torch_peak_mb": 0.960512,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "leap",
+      "operation": "forward",
+      "milliseconds": 0.3888994739541181,
+      "runs": 2572,
+      "torch_peak_mb": 1.65888,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "leap",
+      "operation": "adjoint",
+      "milliseconds": 0.6009021591445481,
+      "runs": 1665,
+      "torch_peak_mb": 0.960512,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "torchtomo",
+      "operation": "forward",
+      "milliseconds": 2.2342768817387486,
+      "runs": 448,
+      "torch_peak_mb": 9.964032,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "torchtomo",
+      "operation": "adjoint",
+      "milliseconds": 2.6546117188211342,
+      "runs": 377,
+      "torch_peak_mb": 4.377088,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "torchtomo",
+      "operation": "forward + geometry gradient",
+      "milliseconds": 4.2485688939805035,
+      "runs": 236,
+      "torch_peak_mb": 49.783296,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "astra",
+      "operation": "forward",
+      "milliseconds": 2.4570390810624807,
+      "runs": 407,
+      "torch_peak_mb": 13.27104,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "astra",
+      "operation": "adjoint",
+      "milliseconds": 1.4022767255363167,
+      "runs": 714,
+      "torch_peak_mb": 7.684096,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "leap",
+      "operation": "forward",
+      "milliseconds": 1.8872461716626894,
+      "runs": 530,
+      "torch_peak_mb": 13.27104,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "leap",
+      "operation": "adjoint",
+      "milliseconds": 1.1565402080843257,
+      "runs": 865,
+      "torch_peak_mb": 7.684096,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "torchtomo",
+      "operation": "forward",
+      "milliseconds": 32.13116259394155,
+      "runs": 32,
+      "torch_peak_mb": 72.27136,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "torchtomo",
+      "operation": "adjoint",
+      "milliseconds": 37.40387155536424,
+      "runs": 27,
+      "torch_peak_mb": 26.789376,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "torchtomo",
+      "operation": "forward + geometry gradient",
+      "milliseconds": 50.06687525019515,
+      "runs": 20,
+      "torch_peak_mb": 390.262272,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "astra",
+      "operation": "forward",
+      "milliseconds": 13.919573999980154,
+      "runs": 72,
+      "torch_peak_mb": 106.16832,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "astra",
+      "operation": "adjoint",
+      "milliseconds": 5.238366869146599,
+      "runs": 191,
+      "torch_peak_mb": 61.472768,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "leap",
+      "operation": "forward",
+      "milliseconds": 25.72531356380727,
+      "runs": 39,
+      "torch_peak_mb": 106.954752,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "leap",
+      "operation": "adjoint",
+      "milliseconds": 11.20680983359408,
+      "runs": 90,
+      "torch_peak_mb": 61.472768,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "torchtomo",
+      "operation": "forward",
+      "milliseconds": 262.14606025314424,
+      "runs": 4,
+      "torch_peak_mb": 355.992064,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "torchtomo",
+      "operation": "adjoint",
+      "milliseconds": 332.20612625882495,
+      "runs": 4,
+      "torch_peak_mb": 207.717888,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "torchtomo",
+      "operation": "forward + geometry gradient",
+      "milliseconds": 396.9715049994799,
+      "runs": 3,
+      "torch_peak_mb": 1630.022144,
+      "external_allocations_measured": true
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "astra",
+      "operation": "forward",
+      "milliseconds": 101.45191780175082,
+      "runs": 10,
+      "torch_peak_mb": 424.67328,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "astra",
+      "operation": "adjoint",
+      "milliseconds": 31.65978578181239,
+      "runs": 32,
+      "torch_peak_mb": 279.445504,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "leap",
+      "operation": "forward",
+      "milliseconds": 207.23872859962285,
+      "runs": 5,
+      "torch_peak_mb": 425.721856,
+      "external_allocations_measured": false
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "leap",
+      "operation": "adjoint",
+      "milliseconds": 82.60397292458667,
+      "runs": 13,
+      "torch_peak_mb": 280.49408,
+      "external_allocations_measured": false
+    }
+  ],
+  "quality": [
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "torchtomo",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 18.78680246157995,
+      "seconds": 0.039766034053172916
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "astra",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 18.95437993351133,
+      "seconds": 0.08704091497929767
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "astra",
+      "method": "FDK",
+      "psnr_db": 18.52137165008738,
+      "seconds": 0.004943067964632064
+    },
+    {
+      "case": "cone 32^3, 90 views",
+      "volume_shape_zyx": [
+        32,
+        32,
+        32
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 90,
+      "detector_rows_columns": [
+        48,
+        48
+      ],
+      "rays": 207360,
+      "torchtomo_samples_per_ray": 64,
+      "torchtomo_ray_chunk": 32768,
+      "library": "leap",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 18.896694663950996,
+      "seconds": 0.031965563946869224
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "torchtomo",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 19.26845002145419,
+      "seconds": 0.21444144198903814
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "astra",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 19.37327349545308,
+      "seconds": 0.12214183795731515
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "astra",
+      "method": "FDK",
+      "psnr_db": 21.770868844350076,
+      "seconds": 0.0052813800284639
+    },
+    {
+      "case": "cone 64^3, 180 views",
+      "volume_shape_zyx": [
+        64,
+        64,
+        64
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 180,
+      "detector_rows_columns": [
+        96,
+        96
+      ],
+      "rays": 1658880,
+      "torchtomo_samples_per_ray": 128,
+      "torchtomo_ray_chunk": 16384,
+      "library": "leap",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 19.336337747410425,
+      "seconds": 0.0959948519594036
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "torchtomo",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 20.09622471882657,
+      "seconds": 3.3265025279833935
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "astra",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 20.147091301008047,
+      "seconds": 0.6097774560330436
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "astra",
+      "method": "FDK",
+      "psnr_db": 24.942928553601405,
+      "seconds": 0.013361867982894182
+    },
+    {
+      "case": "cone 128^3, 360 views",
+      "volume_shape_zyx": [
+        128,
+        128,
+        128
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        192,
+        192
+      ],
+      "rays": 13271040,
+      "torchtomo_samples_per_ray": 256,
+      "torchtomo_ray_chunk": 8192,
+      "library": "leap",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 20.12615488718811,
+      "seconds": 1.1774316389928572
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "torchtomo",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 20.603054030477914,
+      "seconds": 29.186007086012978
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "astra",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 20.619532200094973,
+      "seconds": 4.226417377998587
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "astra",
+      "method": "FDK",
+      "psnr_db": 27.82478926475934,
+      "seconds": 0.0507749620010145
+    },
+    {
+      "case": "cone 256^3, 360 views",
+      "volume_shape_zyx": [
+        256,
+        256,
+        256
+      ],
+      "voxel_spacing_zyx": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "volume_center_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "views": 360,
+      "detector_rows_columns": [
+        384,
+        384
+      ],
+      "rays": 53084160,
+      "torchtomo_samples_per_ray": 512,
+      "torchtomo_ray_chunk": 4096,
+      "library": "leap",
+      "method": "SIRT, 30 iterations",
+      "psnr_db": 20.611055223677702,
+      "seconds": 9.18226292100735
+    }
+  ],
+  "finished": "2026-10-20T06:38:54.805436+00:00"
+}

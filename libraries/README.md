@@ -16,12 +16,14 @@ scikit-image are optional: every script and test here skips what is not installe
 | `leap_projector.py` | `LeapParallelBeam` and `LeapFanBeam`, drop-ins for torchtomo's projectors backed by LEAP's kernels |
 | `astra_projector.py` | `AstraParallelBeam` and `AstraFanBeam`, the same for ASTRA, on the torch tensors in place through DLPack |
 | `tigre_projector.py` | `TigreParallelBeam` and `TigreFanBeam`, the same for TIGRE |
+| `compare_cone.py` | torchtomo's 3D cone beam and breast tomosynthesis against ASTRA and LEAP: agreement, speed, memory, and reconstruction quality; writes `results/cone/` and `results/dbt/` |
+| `cone_projectors.py` | `AstraConeBeam` and `LeapConeBeam`, ASTRA's `cone_vec` and LEAP's modular beam driven by torchtomo's source and detector positions |
 | `matched_pair.py` | the autograd the drop-ins share: each library's forward and backprojection as each other's gradient |
 | `results/` | the recorded comparison: `README.md`, `speed-table.json`, and `library-comparison.json` with its figures per geometry in `results/parallel/` and `results/fan/` |
 
 The operator agreement tests are `tests/test_leap_consistency.py`,
 `tests/test_torchradon_consistency.py`, `tests/test_astra_tigre_consistency.py`,
-and `tests/test_skimage_consistency.py`.
+`tests/test_cone_consistency.py`, and `tests/test_skimage_consistency.py`.
 `training/leap_compare.py` scores LEAP's own FBP, SIRT, and SART on the data a
 training run wrote.
 
@@ -224,3 +226,165 @@ GPU memory is reported two ways. LEAP allocates outside PyTorch's caching
 allocator, so `torch.cuda.max_memory_allocated` cannot see it; the driver-level
 figure from `torch.cuda.mem_get_info` is the one that covers every library.
 ASTRA and TIGRE also allocate their working buffers outside it.
+
+## 3D cone beam and breast tomosynthesis
+
+torchtomo's `ConeBeam` and `BreastTomosynthesis` against ASTRA and LEAP, from
+`compare_cone.py`, RTX 2080 Ti, PyTorch 2.14.0+cu130, ASTRA 2.5.0, LEAP 1.26,
+2026-10-20. `torchtomo` is ConeBeam's CUDA kernels (`backend="cuda"`), which are
+newer than torchtomo 0.4.0: the measurements use the `feat/cone-cuda-kernels`
+branch, on top of commit `e2ca99c`, on `PYTHONPATH` (source hash `4ca1fd5e9653` in the JSON). The rows are in
+`results/cone/cone-comparison.json` and `results/dbt/cone-comparison.json`, with
+every table in each folder's `tables.md`; the PyTorch path's rows are in the
+`pytorch-path/` folder inside each. TIGRE was not installed on the benchmark
+machine.
+
+```bash
+export PYTHONPATH=../torchtomo/src:libraries
+python libraries/compare_cone.py --geometry cone     # writes libraries/results/cone/
+python libraries/compare_cone.py --geometry dbt \
+    --victre ../torchtomo/benchmark/dbt/results/victre/input_bin4.npz      # writes libraries/results/dbt/
+python libraries/compare_cone.py --geometry cone --cone-cases 32x90 64x180 128x360 \
+    --libraries torchtomo torchtomo-pytorch --sections agreement performance \
+    --output libraries/results/cone/pytorch-path
+pytest tests/test_cone_consistency.py
+```
+
+`cone_projectors.py` gives the other two libraries torchtomo's source and
+detector element positions, so the three see one geometry. ASTRA gets them as a
+`cone_vec` and LEAP as a modular beam. Two scans are measured:
+
+- **cone**: a circular flat panel scan over a full turn, magnification 2, of a 3D
+  modified Shepp-Logan phantom. torchtomo takes two samples per voxel along each
+  ray.
+- **dbt**: the published VICTRE arc (25 views over 50 degrees, stationary
+  detector) on the measured projections and VICTRE's own reconstruction of TCIA
+  phantom 694607065, which torchtomo's `benchmark/dbt/prepare_victre.py`
+  prepares. Bin 4, 8, and 16 detector pixels are 0.34, 0.68, and 1.36 mm, with
+  voxels of the same width and 1 mm slices.
+
+LEAP's modular beam needs cubic voxels. The adapter interpolates thicker or
+thinner slices linearly onto cubic voxels before projecting, and maps the
+backprojection back with the transpose, so its pair stays matched. Its
+`libleapct.so` also wants `cudaGetDeviceProperties_v2` from a CUDA 12 runtime,
+which a CUDA 13 PyTorch does not load. `load_leap_runtime()` loads the pip
+`nvidia-cuda-runtime-cu12` library globally first.
+
+### Agreement
+
+Relative L2 against torchtomo with no fitted scale. The dot test is
+`<A x, y> / <x, A^T y>` for random `x` and `y`.
+
+| Case | ASTRA forward | ASTRA adjoint | ASTRA dot test | LEAP forward | LEAP adjoint | LEAP dot test |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| cone 32³, 90 views | 1.94% | 2.72% | 1.0054 | 2.04% | 2.76% | 1.0628 |
+| cone 64³, 180 views | 1.07% | 1.95% | 1.0054 | 0.74% | 1.96% | 1.0319 |
+| cone 128³, 360 views | 0.51% | 1.40% | 1.0053 | 0.41% | 1.40% | 1.0159 |
+| cone 256³, 360 views | 0.25% | 1.02% | 1.0053 | 0.22% | 1.00% | 1.0079 |
+| VICTRE, 1.36 mm | 0.26% | 4.02% | 1.0444 | 1.07% | 15.90% | 1.0308 |
+| VICTRE, 0.68 mm | 0.46% | 4.27% | 1.0447 | 0.23% | 7.67% | 1.0378 |
+| VICTRE, 0.34 mm | 0.57% | 4.23% | 1.0448 | 0.31% | 4.69% | 1.0413 |
+
+The forward projectors agree to within 2%, and closer as the grid gets finer,
+so the conventions and the absolute scale match: the fitted forward scale is
+1 to within 0.4%, except LEAP at 1.36 mm (0.991). torchtomo's dot test is 1 to
+within 3e-7 in every case, because its adjoint is the exact transpose of its
+forward. ASTRA's and LEAP's backprojectors are only approximately matched to
+their projectors, off by 0.5% to 6%. In tomosynthesis both backproject about
+3.5% less than torchtomo (fitted scale 0.962 to 0.967), which is their 4% dot
+test departure. LEAP's 15.9% at 1.36 mm comes from interpolating 1 mm slices
+onto 1.36 mm cubic voxels. torchtomo's kernels and its PyTorch path agree to
+within 6e-6 relative L2 everywhere (the `pytorch-path` tables).
+
+### Speed and memory
+
+Milliseconds per forward / backprojection of one volume, mean of at least three
+calls after a warmup:
+
+| Case | torchtomo | ASTRA | LEAP | torchtomo forward + geometry gradient |
+| --- | ---: | ---: | ---: | ---: |
+| cone 32³, 90 views | 0.4 / 0.5 | 1.6 / 1.1 | 0.4 / 0.6 | 1.0 |
+| cone 64³, 180 views | 2.2 / 2.7 | 2.5 / 1.4 | 1.9 / 1.2 | 4.2 |
+| cone 128³, 360 views | 32.1 / 37.4 | 13.9 / 5.2 | 25.7 / 11.2 | 50.1 |
+| cone 256³, 360 views | 262 / 332 | 102 / 31.7 | 207 / 82.6 | 397 |
+| VICTRE, 1.36 mm | 0.5 / 0.7 | 1.3 / 1.3 | 0.6 / 1.2 | 1.4 |
+| VICTRE, 0.68 mm | 1.6 / 2.8 | 1.9 / 1.5 | 1.7 / 6.5 | 3.8 |
+| VICTRE, 0.34 mm | 9.2 / 15.5 | 9.9 / 3.2 | 8.7 / 49.6 | 20.8 |
+
+The kernels sample every ray at fixed steps, with exact trilinear weights, at
+about 100 million samples per millisecond on this card at every size. A ray
+reads the volume from a copy stored in 4 x 4 x 4 voxel bricks with a zero border,
+so a sample's eight voxels share one or two cache blocks, and consecutive samples
+that share all eight load nothing. In tomosynthesis torchtomo's forward is as fast
+as ASTRA's and LEAP's. In the circular scan it is faster up to 64³ and 2.3 to 2.6
+times slower than ASTRA from 128³ up: ASTRA steps once per voxel through the
+GPU's texture interpolation, where torchtomo takes two exact samples per voxel,
+which `n_samples` sets.
+
+The adjoint is the exact transpose, scattered with atomic additions: each ray
+sums its consecutive samples' weights per voxel in registers and adds a voxel
+once its stencil has moved past it, which makes it about three times faster than
+one atomic per sample and voxel. Rays whose value is zero, outside the phantom
+here, cost nothing; with random projections the 256³ adjoint takes 0.74 s.
+ASTRA's and LEAP's backprojectors gather per voxel, which is faster from 128³ up
+(torchtomo takes 7 to 10 times ASTRA's time and 3 to 4 times LEAP's) but is not
+their projector's transpose. In tomosynthesis at 0.34 mm torchtomo's adjoint is 3
+times faster than LEAP's and 5 times slower than ASTRA's.
+
+The geometry gradient, with respect to every source and detector element
+position, comes from a kernel of its own that accumulates, per ray, the sampled
+values and the trilinear gradient along it, so it stores nothing per sample. The
+other two libraries do not offer one.
+
+| Case | torchtomo, PyTorch path | torchtomo, CUDA kernels |
+| --- | ---: | ---: |
+| cone 32³, 90 views: forward / adjoint / with geometry gradient | 101 / 106 / 3,966 ms, 4.1 GB | 0.4 / 0.4 / 0.9 ms |
+| cone 64³, 180 views | 1,612 / 1,769 ms / out of memory | 2.3 / 2.7 / 4.3 ms |
+| cone 128³, 360 views | 25,789 / 27,935 ms / out of memory | 32.3 / 37.6 / 50.5 ms |
+| VICTRE, 1.36 mm | 189 / 206 / 7,485 ms, 6.4 GB | 0.5 / 0.7 / 1.4 ms |
+| VICTRE, 0.68 mm | 1,494 / 1,629 ms / out of memory | 1.6 / 2.8 / 3.9 ms |
+| VICTRE, 0.34 mm | 11,985 / 13,175 ms / out of memory | 9.4 / 15.7 / 21.1 ms |
+
+That is 250 to 1,300 times faster for the operators and 4,400 to 5,300 times for
+the geometry gradient where the PyTorch path fits, whose autograd keeps about 300
+bytes per sample. The kernels' peak PyTorch allocation for the gradient is 1.6 GB
+at 256³ with 360 views, and 0.27 GB for VICTRE at 0.34 mm.
+
+The PyTorch peak memory in the JSON counts only the input and output tensors
+for ASTRA and LEAP. Both allocate their working buffers outside PyTorch's
+allocator, so those figures are not a memory comparison.
+
+### Reconstruction quality
+
+Every library runs the same reconstruction code with its own operators.
+
+Cone, noiseless projections of each library's own forward projector, 30 SIRT
+iterations, PSNR inside the inscribed cylinder:
+
+| Case | torchtomo SIRT | ASTRA SIRT | LEAP SIRT | ASTRA FDK |
+| --- | ---: | ---: | ---: | ---: |
+| cone 32³, 90 views | 18.79 dB | 18.95 dB | 18.90 dB | 18.52 dB |
+| cone 64³, 180 views | 19.27 dB | 19.37 dB | 19.34 dB | 21.77 dB |
+| cone 128³, 360 views | 20.10 dB, 3.3 s | 20.15 dB, 0.6 s | 20.13 dB, 1.2 s | 24.94 dB |
+| cone 256³, 360 views | 20.60 dB, 29.2 s | 20.62 dB, 4.2 s | 20.61 dB, 9.2 s | 27.82 dB |
+
+torchtomo has no FDK, so that column is ASTRA's `FDK_CUDA` for reference. On the
+PyTorch path the 128³ SIRT took 1,667 s.
+
+VICTRE, measured projections. FBP is the Hann-windowed ramp of torchtomo's
+`reconstruct_victre.py` followed by each library's backprojector. OS-SART is 10
+iterations of 5 subsets fitted to the 13 even views. Both are scored by their
+correlation with VICTRE's own reconstruction inside the breast, and OS-SART also
+by its relative residual on the 12 held-out odd views:
+
+| Case | FBP corr. (torchtomo / ASTRA / LEAP) | OS-SART corr. | Held-out residual | OS-SART seconds |
+| --- | --- | --- | --- | --- |
+| VICTRE, 1.36 mm | 0.857 / 0.865 / 0.793 | 0.431 / 0.433 / 0.423 | 3.54% / 3.53% / 3.60% | 0.0 / 0.1 / 0.1 |
+| VICTRE, 0.68 mm | 0.884 / 0.892 / 0.879 | 0.449 / 0.455 / 0.454 | 3.57% / 3.59% / 3.62% | 0.1 / 0.1 / 0.1 |
+| VICTRE, 0.34 mm | 0.884 / 0.886 / 0.888 | 0.435 / 0.438 / 0.438 | 3.65% / 3.66% / 3.68% | 0.3 / 0.3 / 0.6 |
+
+The three reconstruct equally well: within 0.16 dB in SIRT, and in
+tomosynthesis within 0.015 in correlation and 0.1 percentage points in held-out
+residual. The exception is LEAP's FBP at 1.36 mm, which carries the slice
+interpolation above. OS-SART correlates less with the reference than FBP does
+because the reference is itself an FBP.
